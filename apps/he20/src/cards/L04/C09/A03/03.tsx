@@ -1,0 +1,212 @@
+import { Box, BoxWrap, ChipButton, EChipButtonType, EStyleButtonTypes, IQuestionProps, List, TMainHeaderInfoTypes, Typography } from '@maidt-cntn/ui';
+import { Container } from '@maidt-cntn/ui/en';
+import { useEffect } from 'react';
+import { getUserSubmission, userSubmissionType } from '@maidt-cntn/api';
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { studentAtom } from '@/stores/student';
+import usePageData from '@/hooks/usePageData';
+import { pageIdsAtom } from '@/stores/page';
+import { L04C09A03 } from './store';
+
+const P03 = () => {
+  const PAGE_NUMBER = 'P03';
+  const { changeData, initData, submitData, saveData } = usePageData();
+  const pageIds = useRecoilValue(pageIdsAtom);
+  const { userId } = useRecoilValue(studentAtom);
+  const [cardData, setCardData] = useRecoilState(L04C09A03);
+
+  const headerInfo: TMainHeaderInfoTypes = {
+    headerText: 'Plan and Write',
+  };
+
+  const questionInfo: IQuestionProps = {
+    text: 'Self-Review',
+    size: 'medium',
+  };
+
+  const questionList = [
+    {
+      title: 'Content',
+      question: '디지털 시대에 필요한 역량을 적절하게 제시했나요?',
+    },
+    {
+      title: 'Organization',
+      question: '설득하는 글의 구조에 따라 글을 전개했나요?',
+    },
+    {
+      title: 'Language',
+      question: '다양하고 적절한 어휘와 정확한 언어 형식을 사용했나요?',
+    },
+    {
+      title: 'Ethics',
+      question: '정보 윤리를 준수하여 글을 작성했나요?',
+    },
+  ];
+
+  const defaultSubmission: userSubmissionType[] = [
+    {
+      mainKey: 1,
+      inputData: [
+        {
+          subKey: 1,
+          type: 'TEXT_LIST',
+          value: ['', '', '', ''],
+          isAnswer: true,
+        },
+      ],
+    },
+  ];
+
+  const init = async () => {
+    const pageId = pageIds.find(page => page.page === PAGE_NUMBER)?.pageId;
+    if (pageId) {
+      const { userSubmissionList, isSubmitted } = await getUserSubmission(userId, pageId);
+      if (userSubmissionList.length > 0) {
+        setCardData(prev => ({
+          ...prev,
+          p03: {
+            ...prev.p03,
+            answer: userSubmissionList[0].inputData[0]?.value || cardData.p03.answer,
+            isSubmitted,
+          },
+        }));
+      }
+      initData(PAGE_NUMBER, userSubmissionList, defaultSubmission, isSubmitted);
+    }
+  };
+
+  useEffect(() => {
+    if (pageIds.length > 0) {
+      init();
+    }
+  }, [pageIds]);
+
+  useEffect(() => {
+    return () => {
+      saveData(PAGE_NUMBER);
+    };
+  }, []);
+
+  const handleChangeValue = (value: string, index: number) => {
+    //const updatedAnswers = cardData.p03.answer.map((ans, idx) => (idx === index ? value : ans));
+    const updatedAnswers = cardData.p03.answer.map((val, idx) => {
+      if (idx === index) {
+        const isChecked = val === value;
+        return isChecked ? '' : value;
+      } else return val;
+    });
+
+    setCardData(prev => ({
+      ...prev,
+      p03: {
+        ...prev.p03,
+        answer: updatedAnswers,
+      },
+    }));
+    changeData(PAGE_NUMBER, 1, 1, cardData.p03.answer);
+  };
+
+  const submitAnswer = () => {
+    if (cardData.p03.isSubmitted) {
+      return;
+    }
+    setCardData(prev => ({ ...prev, p03: { ...prev.p03, isSubmitted: true } }));
+    const userSubmission: userSubmissionType[] = [
+      {
+        mainKey: 1,
+        inputData: [
+          {
+            subKey: 1,
+            type: 'TEXT_LIST',
+            value: cardData.p03.answer,
+            isAnswer: true,
+          },
+        ],
+      },
+    ];
+    submitData(PAGE_NUMBER, userSubmission);
+  };
+
+  const checkDisableInput = () => {
+    return cardData.p03.answer.some(val => val === '');
+  };
+
+  return (
+    <Container
+      headerInfo={headerInfo}
+      questionInfo={questionInfo}
+      vAlign='flex-start'
+      submitLabel='완료하기'
+      submitBtnColor={cardData.p03.isSubmitted || checkDisableInput() ? EStyleButtonTypes.SECONDARY : EStyleButtonTypes.PRIMARY}
+      submitDisabled={cardData.p03.isSubmitted || checkDisableInput()}
+      onSubmit={submitAnswer}
+    >
+      <List data={questionList} gap={20}>
+        {({ value, index = 0 }) => (
+          <BoxWrap tabIndex={101} alignItems='start' justifyContent='space-between' marginTop='24px' useFull>
+            <Box width='20%'>
+              <Typography key={Number(`1${index}1`)} color={'var(--color-blue-900)'} weight='var(--font-weight-bold)'>
+                {value?.title}
+              </Typography>
+            </Box>
+            <Box width='80%'>
+              <BoxWrap
+                alignItems='start'
+                justifyContent='space-between'
+                paddingBottom='20px'
+                borderBottom={(index === 4 && '0') || '1px dotted #E0E2E6'}
+              >
+                <Box width='75%'>{value?.question}</Box>
+                <Box width='20%'>
+                  <BoxWrap>
+                    <ChipButton
+                      key={Number(`1${index}2`)}
+                      type='radio'
+                      name={`chip-radio-${index}`}
+                      status={EChipButtonType.GOOD}
+                      isActive={cardData.p03.answer[index - 1] === EChipButtonType.GOOD}
+                      size={'40px'}
+                      onClick={(e: React.MouseEvent<HTMLButtonElement | HTMLInputElement>) =>
+                        handleChangeValue((e.target as HTMLInputElement).value, index - 1)
+                      }
+                      ariaLabel='좋음'
+                      readOnly={cardData.p03.isSubmitted}
+                    />
+                    <ChipButton
+                      key={Number(`1${index}3`)}
+                      type='radio'
+                      name={`chip-radio-${index}`}
+                      status={EChipButtonType.NOT_GOOD}
+                      isActive={cardData.p03.answer[index - 1] === EChipButtonType.NOT_GOOD}
+                      size={'40px'}
+                      onClick={(e: React.MouseEvent<HTMLButtonElement | HTMLInputElement>) =>
+                        handleChangeValue((e.target as HTMLInputElement).value, index - 1)
+                      }
+                      ariaLabel='보통'
+                      readOnly={cardData.p03.isSubmitted}
+                    />
+                    <ChipButton
+                      key={Number(`1${index}4`)}
+                      type='radio'
+                      name={`chip-radio-${index}`}
+                      status={EChipButtonType.BAD}
+                      isActive={cardData.p03.answer[index - 1] === EChipButtonType.BAD}
+                      size={'40px'}
+                      onClick={(e: React.MouseEvent<HTMLButtonElement | HTMLInputElement>) =>
+                        handleChangeValue((e.target as HTMLInputElement).value, index - 1)
+                      }
+                      ariaLabel='나쁨'
+                      readOnly={cardData.p03.isSubmitted}
+                    />
+                  </BoxWrap>
+                </Box>
+              </BoxWrap>
+            </Box>
+          </BoxWrap>
+        )}
+      </List>
+    </Container>
+  );
+};
+
+export default P03;

@@ -1,0 +1,129 @@
+@font-face {
+  font-family: 'SUIT';
+  src: url('./SUITVariable.woff2') format('woff2');
+  font-style: normal;
+}
+
+/* SCDream */
+@font-face {
+  font-family: 'sdc-Regular';
+  font-weight: var(--font-weight-regular);
+  src: url('./SCDream4.otf') format('opentype');
+}
+@font-face {
+  font-family: 'scd-Medium';
+  font-weight: var(--font-weight-medium);
+  src: url('./SCDream5.otf') format('opentype');
+}
+@font-face {
+  font-family: 'sdc-SemiBold';
+  font-weight: var(--font-weight-semiBold);
+  src: url('./SCDream6.otf') format('opentype');
+}
+@font-face {
+  font-family: 'scd-Bold';
+  font-weight: var(--font-weight-bold);
+  src: url('./SCDream7.otf') format('opentype');
+}
+@font-face {
+  font-family: 'scd-ExtraBold';
+  font-weight: var(--font-weight-extraBold);
+  src: url('./SCDream8.otf') format('opentype');
+}
+
+/* noto */
+@font-face {
+  font-family: 'noto-Regular';
+  font-weight: var(--font-weight-regular);
+  src: url('./NotoSerif-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'noto-Medium';
+  font-weight: var(--font-weight-medium);
+  src: url('./NotoSerif-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'noto-SemiBold';
+  font-weight: var(--font-weight-semiBold);
+  src: url('./NotoSerif-SemiBold.woff') format('woff');
+}
+@font-face {
+  font-family: 'noto-Bold';
+  font-weight: var(--font-weight-bold);
+  src: url('./NotoSerif-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'noto-ExtraBold';
+  font-weight: var(--font-weight-extraBold);
+  src: url('./NotoSerif-Black.woff') format('woff');
+}
+
+/* Lexend */
+@font-face {
+  font-family: 'lexend-Thin';
+  font-weight: var(--font-weight-regular);
+  src: url('./Lexend-Thin.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'lexend-Light';
+  font-weight: var(--font-weight-regular);
+  src: url('./Lexend-Light.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'lexend-ExtraLight';
+  font-weight: var(--font-weight-regular);
+  src: url('./Lexend-ExtraLight.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'lexend-Regular';
+  font-weight: var(--font-weight-regular);
+  src: url('./Lexend-Regular.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'lexend-Medium';
+  font-weight: var(--font-weight-regular);
+  src: url('./Lexend-Medium.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'lexend-SemiBold';
+  font-weight: var(--font-weight-regular);
+  src: url('./Lexend-SemiBold.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'lexend-Bold';
+  font-weight: var(--font-weight-regular);
+  src: url('./Lexend-Bold.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'lexend-ExtraBold';
+  font-weight: var(--font-weight-regular);
+  src: url('./Lexend-ExtraBold.ttf') format('ttf');
+}
+
+/* todo: deprecated*/
+@font-face {
+  font-family: 'NOTO';
+  font-weight: var(--font-weight-regular);
+  src: url('./NotoSerif-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'NOTO';
+  font-weight: var(--font-weight-medium);
+  src: url('./NotoSerif-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'NOTO';
+  font-weight: var(--font-weight-semiBold);
+  src: url('./NotoSerif-SemiBold.woff') format('woff');
+}
+@font-face {
+  font-family: 'NOTO';
+  font-weight: var(--font-weight-bold);
+  src: url('./NotoSerif-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'NOTO';
+  font-weight: var(--font-weight-extraBold);
+  src: url('./NotoSerif-Black.woff') format('woff');
+}

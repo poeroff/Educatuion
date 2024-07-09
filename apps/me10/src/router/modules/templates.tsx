@@ -1,0 +1,476 @@
+import { layouts } from '@/constants/layout';
+import { lazyLoad, IRouteObject } from '@maidt-cntn/router';
+import { ELayout } from '@maidt-cntn/ui';
+
+const templates: IRouteObject[] = [
+  {
+    path: 'samples',
+    element: lazyLoad(() => import('../../App')),
+    children: [
+      {
+        path: `L01-C02-A02`,
+        element: lazyLoad(() => import('../../samples/L01/C02')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          subChapter: 'Listen & Speak 1 : New School, New Life',
+        },
+        children: [],
+      },
+      {
+        path: `ME-101-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-101-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'purple',
+        },
+        children: [],
+      },
+      {
+        path: `ME-102-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-102-01')),
+        params: {
+          ...layouts[ELayout.TERTIARY],
+          backGroundColor: 'green',
+          chapterNum: 'Unit1.',
+          mainChapter: 'Are You Ready?',
+          subChapter: 'Communicate',
+        },
+        children: [],
+      },
+      {
+        path: `ME-103-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-103-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'green',
+          chapterNum: 'Unit1.',
+          mainChapter: 'Are You Ready?',
+          subChapter: 'Communicate',
+        },
+        children: [],
+      },
+      {
+        path: `ME-104-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-104-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'green',
+        },
+        children: [],
+      },
+      {
+        path: `ME-105-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-105-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'green',
+          chapterNum: 'Unit1.',
+          mainChapter: 'Are You Ready?',
+          subChapter: 'Talk to Play',
+        },
+        children: [],
+      },
+      {
+        path: `ME-106-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-106-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'yellow',
+          chapterNum: 'Unit1.',
+          mainChapter: 'Are You Ready?',
+          subChapter: 'Talk to Play',
+        },
+        children: [],
+      },
+      {
+        path: `ME-107-01`,
+        element: lazyLoad(() => import('../../../../me10/src/samples/L01/ME-107-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'yellow',
+          chapterNum: 'Unit1.',
+          mainChapter: 'Are You Ready?',
+          subChapter: 'After You Read',
+        },
+        children: [],
+      },
+      {
+        path: `ME-108-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-108-01')),
+        params: {
+          ...layouts[ELayout.TERTIARY],
+          backGroundColor: 'pink',
+          chapterNum: 'Unit1.',
+          mainChapter: 'Are You Ready?',
+          subChapter: 'Communicate',
+        },
+        children: [],
+      },
+      {
+        path: `ME-109-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-109-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'pink',
+          chapterNum: 'Unit1.',
+          mainChapter: 'Are You Ready?',
+          subChapter: 'Language Use',
+        },
+        children: [],
+      },
+      {
+        path: `ME-110-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-110-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'pink',
+        },
+        children: [],
+      },
+      {
+        path: `ME-111-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-111-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'blue',
+        },
+      },
+      {
+        path: `ME-112-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-112-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'purple',
+        },
+        children: [],
+      },
+      {
+        path: `ME-113-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-113-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'blue',
+          chapterNum: 'Unit1.',
+          mainChapter: 'Are You Ready?',
+          subChapter: '보충학습',
+        },
+        children: [],
+      },
+      {
+        path: `ME-113-02`,
+        element: lazyLoad(() => import('../../samples/L01/ME-113-02')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'blue',
+        },
+        children: [],
+      },
+      {
+        path: `ME-114-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-114-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'green',
+          chapterNum: 'Unit1.',
+          mainChapter: 'Are You Ready?',
+          subChapter: 'Talk to Play',
+        },
+        children: [],
+      },
+      {
+        path: `ME-115-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-115-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'green',
+          chapterNum: 'Unit1.',
+          mainChapter: 'Are You Ready?',
+          subChapter: 'Time to Present',
+        },
+        children: [],
+      },
+      {
+        path: `ME-116-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-116-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'yellow',
+        },
+        children: [],
+      },
+      {
+        path: `ME-116-02`,
+        element: lazyLoad(() => import('../../samples/L01/ME-116-02')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'yellow',
+        },
+        children: [],
+      },
+      {
+        path: `ME-117-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-117-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'green',
+          chapterNum: 'Unit 2.',
+          mainChapter: 'My Happy Life',
+          subChapter: 'Communicate ',
+        },
+        children: [],
+      },
+      {
+        path: `ME-117-02`,
+        element: lazyLoad(() => import('../../samples/L01/ME-117-02')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'green',
+          chapterNum: 'Unit1.',
+          mainChapter: 'My Happy Life',
+          subChapter: 'Communicate',
+        },
+        children: [],
+      },
+      {
+        path: `ME-118-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-118-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'green',
+          chapterNum: 'Unit 2.',
+          mainChapter: 'My Happy Life',
+          subChapter: 'Communicate ',
+        },
+        children: [],
+      },
+      {
+        path: `ME-119-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-119-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'blue',
+          chapterNum: 'Unit 3.',
+          mainChapter: 'Be Open to Differences',
+          subChapter: 'Time to Present',
+        },
+        children: [],
+      },
+      {
+        path: `ME-119-02`,
+        element: lazyLoad(() => import('../../samples/L01/ME-119-02')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'yellow',
+          chapterNum: 'Unit 2.',
+          mainChapter: 'My Happy Life',
+          subChapter: 'Before You Read ',
+        },
+        children: [],
+      },
+      {
+        path: `ME-120-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-120-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'green',
+          chapterNum: 'Unit3. ',
+          mainChapter: 'Be Open to Differences',
+          subChapter: 'Time to Present',
+        },
+        children: [],
+      },
+      {
+        path: `ME-121-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-121-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'green',
+          chapterNum: 'Unit4. ',
+          mainChapter: 'Let`s Travel Together!',
+          subChapter: 'Talk to Play',
+        },
+        children: [],
+      },
+      {
+        path: `ME-122-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-122-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'yellow',
+          chapterNum: 'Unit1. ',
+          mainChapter: 'Are You Ready?',
+          subChapter: 'After You Read',
+        },
+        children: [],
+      },
+      {
+        path: `ME-122-02`,
+        element: lazyLoad(() => import('../../samples/L01/ME-122-02')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'yellow',
+          chapterNum: 'Unit7. ',
+          mainChapter: 'You Know What?',
+          subChapter: 'After You Read',
+        },
+        children: [],
+      },
+      {
+        path: `ME-123-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-123-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'yellow',
+          chapterNum: 'Unit1. ',
+          mainChapter: 'Are You Ready?',
+          subChapter: 'After You Read',
+        },
+        children: [],
+      },
+      {
+        path: `ME-123-02`,
+        element: lazyLoad(() => import('../../samples/L01/ME-123-02')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'yellow',
+          chapterNum: 'Unit 1. ',
+        },
+        children: [],
+      },
+      {
+        path: `ME-124-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-124-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'yellow',
+          chapterNum: 'Unit3. ',
+          mainChapter: 'Be Open to Differences',
+          subChapter: 'After You Read',
+        },
+        children: [],
+      },
+      {
+        path: `ME-125-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-125-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'yellow',
+          chapterNum: 'Unit 6. ',
+          mainChapter: 'Dear Future Me',
+          subChapter: 'After You Read',
+        },
+        children: [],
+      },
+      {
+        path: `ME-126-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-126-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'pink',
+        },
+        children: [],
+      },
+      {
+        path: `ME-126-02`,
+        element: lazyLoad(() => import('../../samples/L01/ME-126-02')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'purple',
+          chapterNum: '',
+          mainChapter: 'Unit 7. You Know What?',
+          subChapter: 'Language Use',
+        },
+        children: [],
+      },
+      {
+        path: `ME-126-03`,
+        element: lazyLoad(() => import('../../samples/L01/ME-126-03')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'purple',
+        },
+        children: [],
+      },
+      {
+        path: `ME-127-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-127-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'purple',
+          chapterNum: '',
+          mainChapter: 'Unit 5. Think Green, Live Green',
+          subChapter: 'Language Use',
+        },
+        children: [],
+      },
+      {
+        path: `ME-127-02`,
+        element: lazyLoad(() => import('../../samples/L01/ME-127-02')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'purple',
+          chapterNum: '',
+          mainChapter: 'Unit 4. Let’s Travel Together!',
+          subChapter: 'Language Use',
+        },
+        children: [],
+      },
+      {
+        path: `ME-128-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-128-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'yellow',
+        },
+        children: [],
+      },
+      {
+        path: `ME-129-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-129-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'yellow',
+          chapterNum: 'Unit 3. ',
+          mainChapter: 'Be Open to Differences',
+          subChapter: 'After You Read',
+        },
+        children: [],
+      },
+      {
+        path: `ME-129-02`,
+        element: lazyLoad(() => import('../../samples/L01/ME-129-02')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'yellow',
+          chapterNum: 'Unit 4. ',
+          mainChapter: 'Let’s Travel Together!',
+          subChapter: 'After You Read',
+        },
+        children: [],
+      },
+      {
+        path: `ME-129-03`,
+        element: lazyLoad(() => import('../../samples/L01/ME-129-03')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'purple',
+          chapterNum: 'Unit 4. ',
+          mainChapter: 'Be Open to Differences',
+          subChapter: 'Language Use',
+        },
+        children: [],
+      },
+      {
+        path: `ME-130-01`,
+        element: lazyLoad(() => import('../../samples/L01/ME-130-01')),
+        params: {
+          ...layouts[ELayout.INTRO],
+          backGroundColor: 'yellow',
+        },
+        children: [],
+      },
+    ],
+  },
+];
+
+export default templates;

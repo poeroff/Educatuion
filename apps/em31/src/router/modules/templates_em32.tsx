@@ -1,0 +1,671 @@
+import { layouts } from '@/constants/layout';
+import { lazyLoad } from '@maidt-cntn/router';
+import { EMathLayout } from '@maidt-cntn/ui';
+
+export const templates_em32 = [
+  {
+    path: `EM-000-02`, // 변경해서 사용해주세요
+    element: lazyLoad(() => import('../../samples/A01')),
+    params: {
+      ...layouts[EMathLayout.INTRO],
+      // subChapter: '',
+    },
+    children: [],
+  },
+  {
+    path: `EM-009-04`,
+    element: lazyLoad(() => import('../../samples/A01/EM-009-04')),
+    params: {
+      ...layouts[EMathLayout.INTRO],
+      chapterNum: '3. ',
+      mainChapter: '나눗셈',
+      subChapter: '단원 도입',
+    },
+    children: [],
+  },
+  {
+    path: `EM-009-05`,
+    element: lazyLoad(() => import('../../samples/A01/EM-009-05')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '4. (두자리 수)÷(한자리 수)를 계산해요(4)',
+    },
+    children: [],
+  },
+  {
+    path: `EM-009-06`,
+    element: lazyLoad(() => import('../../samples/A01/EM-009-06')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '4. (두자리 수)÷(한자리 수)를 계산해요(3)',
+    },
+    children: [],
+  },
+  {
+    path: `EMA-015-01`,
+    element: lazyLoad(() => import('../../samples/A01/EMA-015-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '',
+    },
+    children: [],
+  },
+  {
+    path: `EMA32-017-01`,
+    element: lazyLoad(() => import('../../samples/A01/EMA32-017-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '4.',
+      mainChapter: '무게와 들이',
+      subChapter: '1. 무게를 비교해요',
+    },
+    children: [],
+  },
+  {
+    path: `EMA31-016-01`,
+    element: lazyLoad(() => import('../../samples/A01/EMA31-016-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '5.',
+      mainChapter: '길이와 시간',
+      subChapter: '2. km를 알아봐요',
+    },
+  },
+  {
+    path: `EMA32-016-01`,
+    element: lazyLoad(() => import('../../samples/A01/EMA32-016-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '4.',
+      mainChapter: '무게와 들이',
+      subChapter: '1. 무게를 비교해요',
+    },
+    children: [],
+  },
+  {
+    path: `EMA31-018-01`,
+    element: lazyLoad(() => import('../../samples/A01/EMA31-018-01')),
+    params: {
+      ...layouts[EMathLayout.TERTIARY],
+      chapterNum: '5.',
+      mainChapter: '길이와 시간',
+      subChapter: '해결하는 수학',
+    },
+  },
+  {
+    path: `EMA32-018-01`,
+    element: lazyLoad(() => import('../../samples/A01/EMA32-018-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '4.',
+      mainChapter: '무게와 들이',
+      subChapter: '1. 무게를 비교해요',
+    },
+  },
+  {
+    path: `EMA31-019-01`,
+    element: lazyLoad(() => import('../../samples/A01/EMA31-019-01')),
+    params: {
+      ...layouts[EMathLayout.INTRO],
+      chapterNum: '5.',
+      mainChapter: '길이와 시간',
+      subChapter: '단원도입',
+    },
+  },
+  {
+    path: `EMA32-019-01`,
+    element: lazyLoad(() => import('../../samples/A01/EMA32-019-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '4.',
+      mainChapter: '무게와 들이',
+      subChapter: '1. 무게를 비교해요',
+    },
+  },
+  {
+    path: `EM-020-03`,
+    element: lazyLoad(() => import('../../samples/A01/EM-020-03')),
+    params: {
+      ...layouts[EMathLayout.QUATERNARY],
+      chapterNum: '3. ',
+      mainChapter: '나눗셈',
+      subChapter: '문제로 마무리',
+    },
+    children: [],
+  },
+  {
+    path: `EM-021-04`,
+    element: lazyLoad(() => import('../../samples/A01/EM-021-04')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '3. (두자리 수)÷(한자리 수)를 계산해요(3)',
+    },
+  },
+  {
+    path: `EM-026-04`,
+    element: lazyLoad(() => import('../../samples/A01/EM-026-04')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '1. (두 자리 수)÷(한 자리 수)를 계산해요(1)',
+    },
+  },
+  {
+    path: `EM-026-05`,
+    element: lazyLoad(() => import('../../samples/A01/EM-026-05')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '1. (두자리 수)÷(한자리 수)를 계산해요(1)',
+    },
+    children: [],
+  },
+  {
+    path: `EM-026-06`,
+    element: lazyLoad(() => import('../../samples/A01/EM-026-06')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '4. (두자리 수)÷(한자리 수)를 계산해요(3)',
+    },
+    children: [],
+  },
+  {
+    path: `EM-037-03`,
+    element: lazyLoad(() => import('../../samples/A01/EM-037-03')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '7. 계산이 맞는지 확인해요',
+    },
+    children: [],
+  },
+  {
+    path: `EM-037-05`,
+    element: lazyLoad(() => import('../../samples/A01/EM-037-05')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '7. 계산이 맞는지 확인해요.',
+    },
+    children: [],
+  },
+  {
+    path: `EM-032-02`,
+    element: lazyLoad(() => import('../../samples/A01/EM-032-02')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '1. (두자리 수)÷(한자리 수)를 계산해요(1)',
+    },
+    children: [],
+  },
+  {
+    path: `EM-039-02`,
+    element: lazyLoad(() => import('../../samples/A01/EM-039-02')),
+    params: {
+      ...layouts[EMathLayout.TERTIARY],
+      chapterNum: '3. ',
+      mainChapter: '나눗셈',
+      subChapter: '해결하는 수학',
+    },
+    children: [],
+  },
+  {
+    path: `EM-056-03`,
+    element: lazyLoad(() => import('../../samples/A01/EM-056-03')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '6.',
+      mainChapter: '분수와 소수',
+      subChapter: '1. 전체를 똑같이 나누어요',
+    },
+  },
+  {
+    path: `EM-068-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-068-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3. ',
+      mainChapter: '나눗셈',
+      subChapter: '2. (두 자리 수)÷(한 자리 수)를 계산해요(2)',
+    },
+    children: [],
+  },
+  {
+    path: `EM-068-02`,
+    element: lazyLoad(() => import('../../samples/A01/EM-068-02')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '3. (두 자리 수)÷(한 자리 수)를 계산해요(3)',
+    },
+    children: [],
+  },
+  {
+    path: `EM-068-03`,
+    element: lazyLoad(() => import('../../samples/A01/EM-068-03')),
+    params: {
+      ...layouts[EMathLayout.QUATERNARY],
+      chapterNum: '3. ',
+      mainChapter: '나눗셈',
+      subChapter: '문제로 마무리',
+    },
+  },
+  {
+    path: `EM-070-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-070-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '4. (두자리 수)÷(한자리 수)를 계산해요(4)',
+    },
+    children: [],
+  },
+  {
+    path: `EM-070-02`,
+    element: lazyLoad(() => import('../../samples/A01/EM-070-02')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '7. 계산이 맞는지 확인해요.',
+    },
+    children: [],
+  },
+  {
+    path: `EM-072-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-072-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '(세자리 수)÷(한자리 수)를 계산해요(2)',
+    },
+    children: [],
+  },
+  {
+    path: `EM-073-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-073-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '7. 계산이 맞는지 확인해요.',
+    },
+    children: [],
+  },
+  {
+    path: `EM-077-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-077-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '6.',
+      mainChapter: '분수와 소수',
+      subChapter: '2. 분수를 알아봐요',
+    },
+  },
+  {
+    path: `EM-079-02`,
+    element: lazyLoad(() => import('../../samples/A01/EM-079-02')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '5.',
+      mainChapter: '길이와 시간',
+      subChapter: '3. 길이를 어림해요',
+    },
+    children: [],
+  },
+  {
+    path: `EM-121-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-121-01')),
+    params: {
+      ...layouts[EMathLayout.QUATERNARY],
+      chapterNum: '3. ',
+      mainChapter: '나눗셈',
+      subChapter: '문제로 마무리',
+    },
+    children: [],
+  },
+  {
+    path: `EM-401-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-401-01')),
+    params: {
+      ...layouts[EMathLayout.INTRO],
+      // subChapter: '',
+    },
+    children: [],
+  },
+  {
+    path: `EM-402-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-402-01')),
+    params: {
+      ...layouts[EMathLayout.INTRO],
+      // subChapter: '',
+    },
+    children: [],
+  },
+  {
+    path: `EM-405-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-405-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '1. 각의 크기를 비교해요',
+    },
+    children: [],
+  },
+  {
+    path: `EMA-407-01`,
+    element: lazyLoad(() => import('../../samples/A01/EMA-407-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '1. 각의 크기를 비교해요',
+    },
+  },
+  {
+    path: `EM-408-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-408-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '4. 각도를 어림해요',
+    },
+  },
+  {
+    path: `EM-408-02`,
+    element: lazyLoad(() => import('../../samples/A01/EM-408-02')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '2. 각의 크기를 재어요',
+    },
+  },
+  {
+    path: `EM-409-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-409-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '2. 각의 크기를 재어요',
+    },
+    children: [],
+  },
+  {
+    path: `EM-410-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-410-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '2. 각의 크기를 재어요',
+    },
+    children: [],
+  },
+  {
+    path: `EM-411-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-411-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '2. 각의 크기를 재어요',
+    },
+    children: [],
+  },
+  {
+    path: `EM-411-02`,
+    element: lazyLoad(() => import('../../samples/A01/EM-411-02')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '2. 각의 크기를 재어요',
+    },
+    children: [],
+  },
+  {
+    path: `EM-412-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-412-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '3. 예각과 둔각을 알아봐요',
+    },
+    children: [],
+  },
+  {
+    path: `EM-412-02`,
+    element: lazyLoad(() => import('../../samples/A01/EM-412-02')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '3. 예각과 둔각을 알아봐요',
+    },
+    children: [],
+  },
+  {
+    path: `EM-413-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-413-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2. ',
+      mainChapter: '각도',
+      subChapter: '4. 각도를 어림해요',
+    },
+    children: [],
+  },
+  {
+    path: `EM-414-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-414-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '4. 각도를 어림해요',
+    },
+    children: [],
+  },
+  {
+    path: `EM-415-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-415-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '5. 각도의 합과 차를 구해요',
+    },
+  },
+  {
+    path: `EM-416-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-416-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '5. 각도의 합과 차를 구해요',
+    },
+  },
+  {
+    path: `EM-417-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-417-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '6. 삼각형의 세 각의 크기의 합을 알아봐요',
+    },
+  },
+  {
+    path: `EM-036-04`,
+    element: lazyLoad(() => import('../../samples/A01/EM-036-04')),
+    params: {
+      ...layouts[EMathLayout.TERTIARY],
+      chapterNum: '3.',
+      mainChapter: '나눗셈',
+      subChapter: '해결하는 수학',
+    },
+    children: [],
+  },
+  {
+    path: `EMA-406-01`,
+    element: lazyLoad(() => import('../../samples/A01/EMA-406-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2. ',
+      mainChapter: '각도',
+      subChapter: '1. 각의 크기를 비교해요',
+    },
+    children: [],
+  },
+  {
+    path: `EM-417-02`,
+    element: lazyLoad(() => import('../../samples/A01/EM-417-02')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '7. 사각형의 네 각의 크기의 합을 알아봐요',
+    },
+  },
+  {
+    path: `EM-418-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-418-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '6. 삼각형의 세 각의 크기의 합을 알아봐요',
+    },
+  },
+  {
+    path: `EM-420-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-420-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '7. 사각형의 네 각의 크기의 합을 알아봐요.',
+    },
+    children: [],
+  },
+  {
+    path: `EM-421-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-421-01')),
+    params: {
+      ...layouts[EMathLayout.TERTIARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+    },
+    children: [],
+  },
+  {
+    path: `EM-421-02`,
+    element: lazyLoad(() => import('../../samples/A01/EM-421-02')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '4. 각도를 어림해요',
+    },
+    children: [],
+  },
+  {
+    path: `EM-421-03`,
+    element: lazyLoad(() => import('../../samples/A01/EM-421-03')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+    },
+    children: [],
+  },
+  {
+    path: `EM-422-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-422-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '문제로 마무리',
+    },
+    children: [],
+  },
+  {
+    path: `EM-423-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-423-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '문제로 마무리',
+    },
+  },
+  {
+    path: `EM-424-01`,
+    element: lazyLoad(() => import('../../samples/A01/EM-424-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '4. 각도를 어림해요',
+    },
+    children: [],
+  },
+  {
+    path: `EM-408-03`,
+    element: lazyLoad(() => import('../../samples/A01/EM-408-03')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '2.',
+      mainChapter: '각도',
+      subChapter: '3. 예각과 둔각을 알아봐요',
+    },
+  },
+  {
+    path: `EMA31-017-01`,
+    element: lazyLoad(() => import('../../samples/A01/EMA31-017-01')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '5.',
+      mainChapter: '길이와 시간',
+      subChapter: '4.초를 알아봐요',
+    },
+    children: [],
+  },
+  {
+    path: `EMA31-017-02`,
+    element: lazyLoad(() => import('../../samples/A01/EMA31-017-02')),
+    params: {
+      ...layouts[EMathLayout.QUINARY],
+      chapterNum: '5.',
+      mainChapter: '길이와 시간',
+      subChapter: '4.초를 알아봐요',
+    },
+    children: [],
+  },
+];

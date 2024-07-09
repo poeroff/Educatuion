@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=1280,height=720" name="viewport" />
+    <title></title>
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/jquery-ui.min.js"></script>
+    <script src="../../../js/jquery.ui.touch-punch.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../css/Games/common.game.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/Games/T03/game.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/Games/L02/math.css" />
+  </head>
+  <body>
+    <div id="wrap">
+      <!-- <button type="button" class="icon-close" onclick="window.close()">닫기</button> -->
+      <div class="game-wrp page03">
+        <button type="button" class="icon-home" data-role="reset">첫 화면</button>
+        <!-- 배경 -->
+        <img src="../../../../src/assets/Games/T03/img/page03/bg.png" alt="" class="bg" />
+        <div class="bg-obj">
+          <i class="bg-obj01"></i>
+          <i class="bg-obj02"></i>
+          <i class="bg-obj03"></i>
+          <i class="bg-obj04"></i>
+          <i class="bg-obj05"></i>
+          <i class="bg-obj06"></i>
+          <i class="bg-obj07"></i>
+          <i class="bg-obj08"></i>
+          <i class="bg-obj09"></i>
+        </div>
+        <!-- // 배경 -->
+
+        <!-- 인트로 -->
+        <div class="game-stage" id="intro">
+          <img src="../../../../src/assets/Games/T03/img/page03/intro-title.png" alt="아기 고양이를 도와줘" class="intro-title" />
+          <img
+            src="../../../../src/assets/Games/T03/img/page03/intro-subtitle.png"
+            alt="아기 고양이가 추위에 떨고 있어요. 고양이가 따뜻해 질 수 있도록 도와주세요!"
+            class="intro-subtitle"
+          />
+          <div class="intro-ai">
+            <img src="../../../../src/assets/Games/T03/img/page03/intro-ai01.png" alt="" class="intro-ai01" />
+            <img src="../../../../src/assets/Games/T03/img/page03/intro-ai02.png" alt="" class="intro-ai02" />
+          </div>
+          <button type="button" class="btn btn-icon btn-start" data-role="start">시&nbsp;&nbsp;작</button>
+          <!-- <button type="button" class="btn" data-role="guide">놀이 방법</button> -->
+        </div>
+        <!-- // 인트로 -->
+
+        <!-- 활동 -->
+        <div class="game-stage" id="act">
+          <div class="guide">
+            <span class="guide-obj"></span>
+            <span class="guide-line"></span>
+            <div class="guide-move">
+              <div class="circle"><i></i></div>
+              <i class="hand"></i>
+            </div>
+            <span class="guide-balloon">움직여 보세요!</span>
+          </div>
+          <div class="bx">
+            <h3>추위에 떨고 있는 아기 고양이에게 무엇이 필요할까요?</h3>
+            <p><span class="text-yellow">집게</span>를 이동하여 물건을 고른 후, <span class="text-red">단추</span>를 누르세요.</p>
+          </div>
+          <div class="interaction">
+            <div class="drag-item">
+              <span class="claw"></span>
+              <span class="hook left"></span>
+              <span class="hook right"></span>
+              <span class="ring"></span>
+            </div>
+            <div class="drop-area">
+              <div class="drop-box">
+                <div class="drop-item">
+                  <div class="drop-img">
+                    <img src="../../../../src/assets/Games/T03/img/page03/drag-item01.png" alt="" />
+                    <span class="sr-only">부채</span>
+                  </div>
+                </div>
+              </div>
+              <div class="drop-box">
+                <div class="drop-item">
+                  <div class="drop-img">
+                    <img src="../../../../src/assets/Games/T03/img/page03/drag-item02.png" alt="" />
+                    <span class="sr-only">자동차</span>
+                  </div>
+                </div>
+              </div>
+              <div class="drop-box" data-answer>
+                <div class="drop-item">
+                  <div class="drop-img">
+                    <img src="../../../../src/assets/Games/T03/img/page03/drag-item03.png" alt="" />
+                    <span class="sr-only">담요</span>
+                  </div>
+                </div>
+              </div>
+              <div class="drop-box">
+                <div class="drop-item">
+                  <div class="drop-img">
+                    <img src="../../../../src/assets/Games/T03/img/page03/drag-item04.png" alt="" />
+                    <span class="sr-only">화분</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn-buzzer">
+            <i class="icon-buzzer">버저</i>
+            <i class="icon-buzzer-click">클릭!</i>
+          </button>
+        </div>
+        <!-- // 활동 -->
+
+        <!-- 문제 -->
+        <div class="game-stage" id="round">
+          <div class="bx">
+            <div class="bx-inner">
+              <h3 class="round-title">문제</h3>
+              <div id="controler" class="controler"></div>
+            </div>
+          </div>
+          <div class="overlay">
+            <div class="result-ai correct">
+              <img src="../../../../src/assets/Games/Common/img/ai03-correct.png" />
+              <p>잘했어요!</p>
+            </div>
+            <div class="result-ai wrong">
+              <img src="../../../../src/assets/Games/Common/img/ai03-wrong.png" />
+              <p>다시 생각해 <br />보세요.</p>
+            </div>
+            <div class="result-desc">
+              <button type="button" class="icon-close">닫기</button>
+              <div>해설</div>
+            </div>
+          </div>
+        </div>
+        <!-- // 문제 -->
+
+        <!-- 성공 -->
+        <div class="game-stage" id="ending">
+          <div class="bx">
+            <h3>담요를 얻었어요!</h3>
+            <p>아기 고양이가 따뜻하게 지낼 수 있게 되었어요. <br />고마워요!</p>
+          </div>
+          <div class="end-ai">
+            <img src="../../../../src/assets/Games/T03/img/page03/end-ai01.png" alt="" class="end-ai01" />
+            <img src="../../../../src/assets/Games/T03/img/page03/end-ai02.png" alt="" class="end-ai02" />
+            <img src="../../../../src/assets/Games/T03/img/page03/end-ai03.png" alt="" class="end-ai03" />
+            <img src="../../../../src/assets/Games/T03/img/page03/end-ai04.png" alt="" class="end-ai04" />
+            <img src="../../../../src/assets/Games/T03/img/page03/end-ai05.png" alt="" class="end-ai05" />
+          </div>
+          <button type="button" class="btn btn-icon btn-reset" data-role="reset">처음부터 다시 하기</button>
+        </div>
+        <!-- // 성공 -->
+      </div>
+    </div>
+
+    <script src="../../../js/Games/common.game.js"></script>
+    <script src="../../../js/Games/L02/game.data.js"></script>
+    <script src="../../../js/Games/T03/game.js"></script>
+    <script>
+      gameInit('03', data04_c_c07_13, 2); // 게임 타입, 데이터 변수명, *사회면 social * 수학/과학은 차시.단원.주제
+    </script>
+  </body>
+</html>

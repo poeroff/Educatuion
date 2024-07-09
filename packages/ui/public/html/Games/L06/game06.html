@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=1280,height=720" name="viewport" />
+    <title></title>
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/jquery-ui.min.js"></script>
+    <script src="../../../js/jquery.ui.touch-punch.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../css/Games/common.game.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/Games/T04/game.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/Games/L06/math.css" />
+  </head>
+  <body>
+    <div id="wrap">
+      <!-- <button type="button" class="icon-close" onclick="window.close()">닫기</button> -->
+      <div class="game-wrp page02">
+        <button type="button" class="icon-home" data-role="reset">첫 화면</button>
+        <!-- 배경 -->
+        <img src="../../../../src/assets/Games/T04/img/common/bg.jpg" alt="" class="bg" />
+        <div class="bg-obj">
+          <img src="../../../../src/assets/Games/T04/img/common/bg-obj01.png" alt="" />
+          <img src="../../../../src/assets/Games/T04/img/common/bg-obj02.png" alt="" />
+        </div>
+        <!-- // 배경 -->
+
+        <!-- 인트로 -->
+        <div class="game-stage" id="intro">
+          <img src="../../../../src/assets/Games/T04/img/common/intro-ai01.png" alt="" class="intro-ai-1" />
+          <img src="../../../../src/assets/Games/T04/img/common/intro-ai02.png" alt="" class="intro-ai-2" />
+
+          <img src="../../../../src/assets/Games/T04/img/page02/intro-title.png" alt="나는야 낚시왕" class="intro-title" />
+          <img src="../../../../src/assets/Games/T04/img/page02/intro-subtitle.png" alt="참돔 낚시에 도전해 볼까요?" class="intro-subtitle" />
+          <button type="button" class="btn btn-icon btn-start" data-role="start">시&nbsp;&nbsp;작</button>
+        </div>
+        <!-- // 인트로 -->
+
+        <!-- 문제 -->
+        <div class="game-stage" id="round">
+          <div class="round-obj">
+            <img src="../../../../src/assets/Games/T04/img/common/bg-obj03.png" alt="" />
+          </div>
+          <div class="bx">
+            <div class="bx-inner">
+              <h3 class="round-title">문제</h3>
+              <div id="controler" class="controler"></div>
+            </div>
+          </div>
+          <div class="overlay">
+            <div class="result-ai correct">
+              <img src="../../../../src/assets/Games/T04/img/common/ai02-correct.png" />
+              <p>잘했어요!</p>
+            </div>
+            <div class="result-ai wrong">
+              <img src="../../../../src/assets/Games/T04/img/common/ai02-wrong.png" />
+              <p>다시 생각해 <br />보세요.</p>
+            </div>
+            <div class="result-desc">
+              <button type="button" class="icon-close">닫기</button>
+              <div>해설</div>
+            </div>
+          </div>
+        </div>
+        <!-- // 문제 -->
+
+        <!-- 성공 -->
+        <div class="game-stage" id="ending">
+          <div class="ending-1 active">
+            <div class="end-ai">
+              <div class="end-ai02"></div>
+              <img src="../../../../src/assets/Games/T04/img/common/end-ai03.png" alt="" class="end-ai03" />
+              <img src="../../../../src/assets/Games/T04/img/common/end-ai01.png" alt="" class="end-ai01" />
+            </div>
+          </div>
+          <div class="ending-2">
+            <img src="../../../../src/assets/Games/T04/img/common/intro-ai02.png" alt="" class="wave" />
+            <div class="end-ai">
+              <img src="../../../../src/assets/Games/T04/img/common/end-ai01-2.png" alt="" class="end-ai01" />
+              <div class="fish"></div>
+            </div>
+            <div class="bx">
+              <h3>참돔 낚시 성공!</h3>
+            </div>
+          </div>
+          <div class="ending-3">
+            <div class="end-ai">
+              <div class="char"></div>
+              <div class="conpetti">
+                <img src="../../../../src/assets/Games/T04/img/common/conpetti-01.png" alt="" class="conpetti-01" />
+                <img src="../../../../src/assets/Games/T04/img/common/conpetti-02.png" alt="" class="conpetti-02" />
+                <img src="../../../../src/assets/Games/T04/img/common/conpetti-03.png" alt="" class="conpetti-03" />
+                <img src="../../../../src/assets/Games/T04/img/common/conpetti-04.png" alt="" class="conpetti-04" />
+                <img src="../../../../src/assets/Games/T04/img/common/conpetti-05.png" alt="" class="conpetti-05" />
+                <img src="../../../../src/assets/Games/T04/img/common/conpetti-06.png" alt="" class="conpetti-06" />
+              </div>
+            </div>
+            <button type="button" class="btn btn-icon btn-reset" data-role="reset">처음부터 다시 하기</button>
+          </div>
+        </div>
+        <!-- // 성공 -->
+      </div>
+    </div>
+
+    <script src="../../../js/Games/common.game.js"></script>
+    <script src="../../../js/Games/L06/game.data.js"></script>
+    <script src="../../../js/Games/T04/game.js"></script>
+    <script>
+      gameInit('04', data07_c_c08_19, 1); // 게임 타입, 데이터 변수명, *사회면 social * 수학/과학은 차시.단원.주제
+    </script>
+  </body>
+</html>

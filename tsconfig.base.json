@@ -1,0 +1,36 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@ee40/*": ["apps/ee40/src/*"],
+      "@he10/*": ["apps/he10/src/*"],
+      "@he20/*": ["apps/he20/src/*"],
+      "@maidt-cntn/api": ["packages/api/index.ts"],
+      "@maidt-cntn/assets/*": ["packages/ui/src/assets/*"],
+      "@maidt-cntn/hooks": ["packages/ui/src/hooks/index.ts"],
+      "@maidt-cntn/images/*": ["packages/ui/src/assets/images/*"],
+      "@maidt-cntn/math/pages/*": ["packages/ui/src/components/math/Pages/*"],
+      "@maidt-cntn/pages/*": ["packages/ui/src/components/en/Pages/*"],
+      "@maidt-cntn/router": ["packages/ui/src/router/index.ts"],
+      "@maidt-cntn/ui": ["packages/ui/src/index.ts"],
+      "@maidt-cntn/ui/en": ["packages/ui/src/components/en/index.ts"],
+      "@maidt-cntn/ui/math": ["packages/ui/src/components/math/index.ts"],
+      "@maidt-cntn/util/*": ["packages/util/*"],
+      "@maidt-cntn/stores/*": ["packages/stores/*"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

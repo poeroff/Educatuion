@@ -1,0 +1,32 @@
+{
+  "name": "hm11",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/hm11/src",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project hm11 --web",
+  "targets": {
+    "build": {
+      "configurations": {
+        "dev": {
+          "mode": "dev"
+        },
+        "on-local": {
+          "mode": "on-local"
+        },
+        "stg": {
+          "mode": "stg"
+        },
+        "prd": {
+          "mode": "prd"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@maidt-cntn/ui": "workspace:*",
+    "@maidt-cntn/router": "workspace:*",
+    "@maidt-cntn/assets": "workspace:*",
+    "@maidt-cntn/images": "workspace:*"
+  }
+}

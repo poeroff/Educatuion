@@ -1,0 +1,31 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": ["node", "@nx/react/typings/cssmodule.d.ts", "@nx/react/typings/image.d.ts", "vite/client"],
+    "paths": {
+      "@maidt-cntn/assets/*": ["packages/ui/src/assets/*"],
+      "@maidt-cntn/images/*": ["packages/ui/src/assets/images/*"],
+      "@maidt-cntn/ui": ["packages/ui/src/index.ts"],
+      "@maidt-cntn/ui/math": ["packages/ui/src/components/math/index.ts"],
+      "@maidt-cntn/ui/en": ["packages/ui/src/components/en/index.ts"],
+      "@maidt-cntn/router": ["packages/ui/src/router/index.ts"],
+      "@maidt-cntn/api": ["packages/api/index.ts"],
+      "@maidt-cntn/hooks": ["packages/ui/src/hooks/index.ts"],
+      "@/*": ["apps/hm11/src/*"],
+      "@maidt-cntn/util/*": ["packages/util/*"],
+      "@maidt-cntn/stores/*": ["packages/stores/*"]
+    }
+  },
+  "exclude": [
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts",
+    "src/**/*.spec.tsx",
+    "src/**/*.test.tsx",
+    "src/**/*.spec.js",
+    "src/**/*.test.js",
+    "src/**/*.spec.jsx",
+    "src/**/*.test.jsx"
+  ],
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+}

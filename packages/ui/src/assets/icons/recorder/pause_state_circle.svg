@@ -1,0 +1,18 @@
+ <svg
+                                    width="180"
+                                    height="160"
+                                    viewBox="0 0 180 160"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <circle cx="89.9956" cy="79.6675" r="65.855" stroke="#FCC6CC" strokeWidth="2" />
+                                    <rect
+                                        x="36.1406"
+                                        y="25.5312"
+                                        width="107.714"
+                                        height="107.71"
+                                        rx="53.855"
+                                        stroke="#FE5663"
+                                        strokeWidth="2"
+                                    />
+                                </svg>

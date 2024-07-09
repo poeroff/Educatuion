@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=1280,height=720" name="viewport" />
+    <title></title>
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/jquery-ui.min.js"></script>
+    <script src="../../../js/jquery.ui.touch-punch.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../css/Games/common.game.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/Games/T02/game.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/Games/L01/math.css" />
+</head>
+<body>
+
+<div id="wrap">
+    <!-- <button type="button" class="icon-close" onclick="window.close()">닫기</button> -->
+    <div class="game-wrp page01">
+        <button type="button" class="icon-home" data-role="reset">첫 화면</button>
+        <img src="../../../../src/assets/Games/T02/img/common/bg.png" alt="" class="bg">
+        <div class="bg-obj">
+            <img src="../../../../src/assets/Games/T02/img/common/bg-obj.svg" alt="" class="bg-obj01">
+            <img src="../../../../src/assets/Games/T02/img/common/bg-obj.svg" alt="" class="bg-obj02" width="43">
+            <img src="../../../../src/assets/Games/T02/img/common/bg-obj.svg" alt="" class="bg-obj03">
+            <img src="../../../../src/assets/Games/T02/img/common/bg-obj.svg" alt="" class="bg-obj04" width="43">
+        </div>
+
+        <!-- 인트로 -->
+        <div class="game-stage" id="intro">
+            <img src="../../../../src/assets/Games/T02/img/page01/intro-title.png" alt="새콤달콤 딸기로 후식 만들기" class="intro-title">
+            <img src="../../../../src/assets/Games/T02/img/page01/intro-subtitle.png" alt="맛있는 딸기우유를 만들어 볼까요?" class="intro-subtitle">
+            <div class="intro-ai">
+                <img src="../../../../src/assets/Games/T02/img/common/ai01.png" alt="" class="ai01">
+                <img src="../../../../src/assets/Games/T02/img/common/ai02.png" alt="" class="ai02">
+                <img src="../../../../src/assets/Games/T02/img/common/ai01.svg" alt="" class="ai03">
+                <img src="../../../../src/assets/Games/T02/img/common/ai02.svg" alt="" class="ai04">
+                <img src="../../../../src/assets/Games/T02/img/common/ai03.png" alt="" class="ai05">
+                <img src="../../../../src/assets/Games/T02/img/common/ai04.png" alt="" class="ai06">
+                <img src="../../../../src/assets/Games/T02/img/common/ai05.png" alt="" class="ai07">
+                <img src="../../../../src/assets/Games/T02/img/page01/intro-ai01.png" alt="" width="188" class="intro-ai01">
+            </div>
+            <button type="button" class="btn btn-icon btn-start" data-role="start">시&nbsp;&nbsp;작</button>
+            <!-- <button type="button" class="btn" data-role="guide">놀이 방법</button> -->
+        </div>
+        <!-- // 인트로 -->
+
+        <!-- 문제 -->
+        <div class="game-stage" id="round">
+            <img src="../../../../src/assets/Games/T02/img/common/round-bg.png" alt="">
+            <div class="bx">
+                <div class="bx-inner">
+                    <h3 class="round-title">문제</h3>
+                </div>
+            </div>
+            <div id="floor"></div>
+            <div id="controler" class="controler"></div>
+            <div class="basket-container">
+                <div id="basket">
+                    <div class="basket-inner"></div>
+                    <sbpan class="ai-miss"><i></i></span>
+                </div>
+            </div>
+            <div class="guide">
+                <span class="guide-obj"></span>
+                <span class="guide-line"></span>
+                <span class="guide-balloon">그릇을 <span class="text-green">움직여</span> <br>딸기를 받아 보세요!</span>
+            </div>
+            <div class="overlay">
+                <div class="result-ai correct">
+                    <img src="../../../../src/assets/Games/Common/img/ai01-correct.png">
+                    <p>잘했어요!</p>
+                </div>
+                <div class="result-ai wrong">
+                    <img src="../../../../src/assets/Games/Common/img/ai01-wrong.png">
+                    <p>다시 생각해 <br>보세요.</p>
+                </div>
+                <div class="result-desc">
+                    <button type="button" class="icon-close">닫기</button>
+                    <div>해설</div>
+                </div>
+            </div>
+        </div>
+        <!-- // 문제 -->
+
+        <!-- 활동 -->
+        <div class="game-stage" id="act">
+            <img src="../../../../src/assets/Games/T02/img/common/act-bg.png" alt="">
+            <div class="bx">
+                <h3>딸기를 얻었어요!</h3>
+                <p>우유에 딸기를 넣어 보세요.</p>
+            </div>
+            <div class="interaction">
+                <div class="drag-area">
+                    <div class="drag-box">
+                        <div>
+                            <div class="drag-item"><span class="sr-only">딸기</span></div>
+                        </div>
+                        <div>
+                            <div class="drag-item"><span class="sr-only">딸기</span></div>
+                        </div>
+                    </div>
+                    <img src="../../../../src/assets/Games/T02/img/page01/drag-box.png" alt="">
+                </div>
+                <div class="drop-box" data-drop="0">
+                    <img src="../../../../src/assets/Games/T02/img/page01/ai-fill01.png" alt="">
+                    <img src="../../../../src/assets/Games/T02/img/page01/ai-fill02.png" alt="">
+                    <img src="../../../../src/assets/Games/T02/img/page01/ai-fill03.png" alt="">
+                </div>
+            </div>
+            <div class="guide">
+                <span class="guide-obj"></span>
+                <span class="guide-line"></span>
+                <div class="guide-move">
+                    <div class="circle"><i></i></div>
+                    <i class="hand"></i>
+                </div>
+                <span class="guide-balloon">움직여 보세요!</span>
+            </div>
+        </div>
+        <!-- // 활동 -->
+
+        <!-- 성공 -->
+        <div class="game-stage" id="ending">
+            <img src="../../../../src/assets/Games/T02/img/common/end-bg.png" alt="" class="bg">
+            <div class="bg-obj">
+                <img src="../../../../src/assets/Games/T02/img/common/bg-obj.svg" alt="" class="bg-obj01">
+                <img src="../../../../src/assets/Games/T02/img/common/bg-obj.svg" alt="" class="bg-obj02" width="43">
+                <img src="../../../../src/assets/Games/T02/img/common/bg-obj.svg" alt="" class="bg-obj03">
+                <img src="../../../../src/assets/Games/T02/img/common/bg-obj.svg" alt="" class="bg-obj04" width="43">
+            </div>
+            <div class="bx">
+                <h3>딸기우유 완성!</h3>
+            </div>
+            <div class="end-ai">
+                <img src="../../../../src/assets/Games/T02/img/common/ai01.png" alt="" class="ai01">
+                <img src="../../../../src/assets/Games/T02/img/common/ai02.png" alt="" class="ai02">
+                <img src="../../../../src/assets/Games/T02/img/common/ai01.svg" alt="" class="ai03">
+                <img src="../../../../src/assets/Games/T02/img/common/ai02.svg" alt="" class="ai04">
+                <img src="../../../../src/assets/Games/T02/img/common/ai03.png" alt="" class="ai05">
+                <img src="../../../../src/assets/Games/T02/img/common/ai04.png" alt="" class="ai06">
+                <img src="../../../../src/assets/Games/T02/img/common/ai05.png" alt="" class="ai07">
+                <img src="../../../../src/assets/Games/T02/img/page01/end-ai01.png" alt="" class="end-ai01">
+            </div>
+            <button type="button" class="btn btn-icon btn-reset" data-role="reset">처음부터 다시 하기</button>
+        </div>
+        <!-- // 성공 -->
+    </div>
+</div>
+
+<script src="../../../js/Games/common.game.js"></script>
+<script src="../../../js/Games/L01/game.data.js"></script>
+<script src="../../../js/Games/T02/game.js"></script>
+<script>
+    gameInit('02', data08_c_c06_16, 1); // 게임 타입, 데이터 변수명, *사회면 social * 수학/과학은 차시.단원.주제
+</script>
+</body>
+</html>

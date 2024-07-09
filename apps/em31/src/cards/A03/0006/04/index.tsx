@@ -1,0 +1,16 @@
+import { pageAtom } from '@/stores/page';
+import { Page } from '@maidt-cntn/ui';
+import { useRecoilState } from 'recoil';
+import P01 from './01';
+
+function A03000604() {
+  const [{ selectedPage }, setPage] = useRecoilState(pageAtom);
+
+  return (
+    <Page selectedPage={selectedPage} setPage={setPage}>
+      <P01 />
+    </Page>
+  );
+}
+
+export default A03000604;

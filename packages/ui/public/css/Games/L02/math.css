@@ -1,0 +1,17 @@
+.overlay-open .result-desc p{text-align:left;}
+.overlay-open .result-desc .math-table{color:#fff;margin:0;}
+.overlay-open .result-desc .math-table tr.line td{background:#fff;}
+.overlay-open .result-desc .slash{background:none;}
+.overlay-open .result-desc .slash::after{background-color:#fff;}
+.answer-type-choice.flex-row li:nth-child(1n+3){margin-top:0;margin-left:24px;}
+.answer-type-choice .math-table{font-size:55px;}
+.answer-type-choice .math-table.middle{font-size:48px;}
+.answer-type-choice .math-table.small{font-size:42px;}
+.answer-type-select label>div{padding:12px 20px;font-size:55px;justify-content:center; text-align: center;}
+.answer-type-choice.flex-row:not(.ratio) label>div{padding:36px 12px;justify-content:center;font-size:55px;}
+.answer-type-choice.flex-row:not(.ratio) label>div .small{font-size:42px;}
+.answer-type-choice label>div:before{display:none;}
+.bx h3.round-title{font-size:55px;width:100%;}
+.bx h3.round-title .text-center{text-align:center;width:100%;display:block;}
+.bx h3.round-title .middle{font-size:48px;}
+.bx h3.round-title .small{font-size:42px;}

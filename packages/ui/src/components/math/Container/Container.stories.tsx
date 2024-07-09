@@ -1,0 +1,112 @@
+import { Meta, StoryObj } from '@storybook/react';
+import Container from './Container';
+import { Box } from '@maidt-cntn/ui';
+
+const meta = {
+  title: 'Math/Container',
+  component: Container,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+} satisfies Meta<typeof Container>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  render: args => (
+    <Box width='100px' height='80px'>
+      <Container {...args} />
+    </Box>
+  ),
+  args: {
+    headerInfo: { headerPattern: 'text', headerText: 'Header' },
+  },
+};
+
+export const WithPreview: Story = {
+  render: args => (
+    <Box width='300px' height='100px'>
+      <Container {...args} />
+    </Box>
+  ),
+  args: {
+    headerInfo: { headerPattern: 'icon', iconType: 'mathPreview' },
+  },
+};
+
+export const WithReview: Story = {
+  render: args => (
+    <Box width='300px' height='100px'>
+      <Container {...args} />
+    </Box>
+  ),
+  args: {
+    headerInfo: { headerPattern: 'icon', iconType: 'mathReview' },
+  },
+};
+
+export const WithAim: Story = {
+  render: args => (
+    <Box width='300px' height='100px'>
+      <Container {...args} />
+    </Box>
+  ),
+  args: {
+    headerInfo: { headerPattern: 'icon', iconType: 'mathAim' },
+  },
+};
+
+export const WithQuestion: Story = {
+  render: args => (
+    <Box width='300px' height='100px'>
+      <Container {...args} />
+    </Box>
+  ),
+  args: {
+    headerInfo: { headerPattern: 'icon', headerText: '대답해보아요', iconType: 'selfCheck' },
+    questionInfo: { size: 'small', text: '밥은 먹었나요?' },
+  },
+};
+
+export const WithSubmit: Story = {
+  render: args => (
+    <Box height='100px'>
+      <Container {...args} />
+    </Box>
+  ),
+  args: {
+    headerInfo: { headerPattern: 'icon', headerText: '대답해보아요', iconType: 'selfCheck' },
+    submitLabel: '제출하기',
+    onSubmit: () => {
+      alert('제출완료');
+    },
+  },
+};
+
+export const ContainerWithQuestion: Story = {
+  render: args => (
+    <Box height='100px'>
+      <Container {...args} />
+    </Box>
+  ),
+  args: {
+    headerInfo: { headerPattern: 'icon', headerText: '대답해보아요', iconType: 'selfCheck' },
+    questionInfo: { size: 'small', text: '밥은 먹었나요?' },
+  },
+};
+
+export const WithChildrenContents: Story = {
+  render: args => (
+    <Box width='500px' height='200px'>
+      <Container {...args} />
+    </Box>
+  ),
+  args: {
+    headerInfo: { headerPattern: 'text', headerText: 'Header' },
+    useExtend: true,
+    children: <Box background='blue'>듣기</Box>,
+  },
+};

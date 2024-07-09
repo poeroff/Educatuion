@@ -1,0 +1,63 @@
+import { atom } from 'recoil';
+
+export const B01000650_store = atom({
+  key: 'B01000650',
+  default: {
+    p01: {
+      answer1: '',
+      answer2: '',
+      answer3: '',
+      solution1: '4',
+      solution2: '5',
+      solution3: '2',
+      isCorrect: false,
+      isSubmitted: false,
+    },
+    p02: {
+      answer1: '',
+      answer2: '',
+      answer3: '',
+      solution1: '2',
+      solution2: '8',
+      solution3: '2',
+      isCorrect: false,
+      isSubmitted: false,
+    },
+    p03: {
+      answer1: '',
+      solution1: '293',
+      solution1_1: '3',
+      solution1_2: '9',
+      solution1_3: '2',
+      isCorrect: false,
+      isSubmitted: false,
+    },
+    p04: {
+      answer1: '',
+      solution1: '286',
+      solution1_1: '6',
+      solution1_2: '8',
+      solution1_3: '2',
+      isCorrect: false,
+      isSubmitted: false,
+    },
+    p05: {
+      answer1: '',
+      solution1: '192',
+      solution1_1: '2',
+      solution1_2: '9',
+      solution1_3: '1',
+      isCorrect: false,
+      isSubmitted: false,
+    },
+    p06: {
+      answer1: '',
+      solution1: '246',
+      solution1_1: '6',
+      solution1_2: '4',
+      solution1_3: '2',
+      isCorrect: false,
+      isSubmitted: false,
+    },
+  },
+});

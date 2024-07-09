@@ -1,0 +1,470 @@
+default:
+  image: qzym3az8.private-ncr.gov-ntruss.com/gitlab-runner-image-node20:1.0
+
+variables:
+  SERVICE_NAME: "cntn" # not change
+  # SYSTEM_NAME: "$ENV-cntn"
+  BRANCH: $CI_COMMIT_REF_NAME
+  DOMAIN: "cntn"
+  ROOT_DOMAIN: "maidt.net"
+  GITPJT_GROUP: "developer-contents"
+
+include:
+  - project: "common/maidt-gitlab-script"
+    ref: v1.0
+    file: "/template/.before-script-template.yml"
+  - project: "common/maidt-gitlab-script"
+    ref: v1.0
+    file: "/template/.workflow-script-template.yml"
+  - project: "common/maidt-gitlab-script"
+    ref: v1.0
+    file: "/template/.job-template.yml"
+  - project: "common/maidt-gitlab-script"
+    ref: v1.0
+    file: "/template/.script.yml"
+
+
+stages:
+  # - code-quality-test
+  - app-build
+  - docker-build
+  - nks-deploy
+
+nx-app-build:
+  stage: app-build
+  needs: []
+  # extends: .vite-build-template
+  environment:
+    name: $ENV
+  script:
+    - today=$(date +%m/%d/%Y)
+    # - versionJsFile=src/version.js
+    # - echo "export const appLastUpdated = \"${today}\";" > $versionJsFile
+    # - echo "export const version = \"${BRANCH}\";" >> $versionJsFile
+    # - echo ${versionJsFile}
+    - rm -rf dist
+    # - yarn cache clean && yarn install
+    # - yarn run build:${ENV}
+    - npm cache clean --force && npm install
+    - npm install -g nx
+    - nx run-many -t build --configuration=dev
+    - >-
+      if [[ ${LOCAL_PUBLISH_DIR} != "dist" ]]; then
+        cp -R ${LOCAL_PUBLISH_DIR} dist
+      fi
+    - echo ${LOCAL_PUBLISH_DIR}
+
+    # Save appName and release-version as part of the build output
+    - mkdir -p cicd/output
+    - echo ${appName} > cicd/output/app-name.txt
+    - echo ${CI_PIPELINE_ID} > cicd/output/release-version.txt
+    - ls cicd
+    - ls dist
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 2 day
+  rules:
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" && $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - packages/**/*
+    - if: $CI_COMMIT_REF_NAME == "develop"
+      changes:
+        - packages/**/*
+
+pjt-app-build:
+  stage: app-build
+  needs: []
+  # extends: .vite-build-template
+  environment:
+    name: $ENV
+  script:
+    - today=$(date +%m/%d/%Y)
+    # - versionJsFile=src/version.js
+    # - echo "export const appLastUpdated = \"${today}\";" > $versionJsFile
+    # - echo "export const version = \"${BRANCH}\";" >> $versionJsFile
+    # - echo ${versionJsFile}
+    - rm -rf dist
+    # - yarn cache clean && yarn install
+    # - yarn run build:${ENV}
+    # - nx reset
+    - npm cache clean --force && npm install
+    - npm run ${SYSTEM_NAME}:build:dev
+    - >-
+      if [[ ${LOCAL_PUBLISH_DIR} != "dist" ]]; then
+        cp -R ${LOCAL_PUBLISH_DIR} dist
+      fi
+    - echo ${LOCAL_PUBLISH_DIR}
+
+    # Save appName and release-version as part of the build output
+    - mkdir -p cicd/output
+    - echo ${appName} > cicd/output/app-name.txt
+    - echo ${CI_PIPELINE_ID} > cicd/output/release-version.txt
+    - ls cicd
+    - ls dist
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 2 day
+  parallel:
+    matrix:
+      - SYSTEM_NAME: [
+            # em10,
+            em31,
+            he10,
+            he20,
+            mm10,
+            me10,
+            hm11,
+            hm12,
+            ee40,
+            em41,
+            em32,
+            em42,
+            ee30,
+          ] # 수동 입력 필요
+  rules:
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" && $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - packages/**/*
+      when: never
+    - if: $CI_COMMIT_REF_NAME == "develop"
+      changes:
+        - packages/**/*
+      when: never
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" && $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - apps/${SYSTEM_NAME}/**/*
+    - if: $CI_COMMIT_REF_NAME == "develop"
+      changes:
+        - apps/${SYSTEM_NAME}/**/*
+    
+  # except:
+  #   changes:
+  #     - packages/ui/**/*
+
+nx-docker-build:
+  stage: docker-build
+  needs:
+    - job: "nx-app-build"
+      optional: false
+  # extends: .docker-build-template
+  environment:
+    name: $ENV
+  image:
+    name: qzym3az8.private-ncr.gov-ntruss.com/initial-kaniko:latest
+  script:
+    - mkdir -p /kaniko/.docker
+    - echo $IS_FEATURE
+    - echo $ENV
+    - echo $CI_JOB_NAME
+    - echo $NCLOUD_API_GW
+    - ls dist
+# needs to work : change destination for individual test environmemts  
+    - >-
+      if [ $IS_FEATURE == "true" ] && [ $ENV == "dev" ]; then
+        echo "{\"auths\":{\"${NCR_URL}\":{\"username\":\"${NCLOUD_ACCESS_KEY}\",\"password\":\"${NCLOUD_SECRET_KEY}\"}}}" > /kaniko/.docker/config.json
+        /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/Dockerfile_feature" --destination "${NCR_URL}/${SYSTEM_NAME}:${CI_PIPELINE_IID}"
+      elif [ $ENV == "dev" ]; then
+        echo "{\"auths\":{\"${NCR_URL}\":{\"username\":\"${NCLOUD_ACCESS_KEY}\",\"password\":\"${NCLOUD_SECRET_KEY}\"}}}" > /kaniko/.docker/config.json
+        /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/apps/${SYSTEM_NAME}/Dockerfile" --build-arg "DEV_NCLOUD_ACCESS_KEY=${NCLOUD_ACCESS_KEY}" --build-arg "DEV_NCLOUD_SECRET_KEY=${NCLOUD_SECRET_KEY}" --build-arg "DEV_NCLOUD_API_GW=${NCLOUD_API_GW}" --destination "${NCR_URL}/${SYSTEM_NAME}:${CI_PIPELINE_IID}"
+      fi
+  parallel:
+    matrix:
+      - SYSTEM_NAME: [
+            # em10,
+            em31,
+            he10,
+            he20,
+            mm10,
+            me10,
+            hm11,
+            hm12,
+            ee40,
+            em41,
+            em32,
+            em42,
+            ee30,
+          ] # 수동 입력 
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "develop"
+      changes:
+        - packages/**/*
+
+pjt-docker-build:
+  stage: docker-build
+  needs:
+    - job: 'pjt-app-build'
+      optional: true
+  # extends: .docker-build-template
+  environment:
+    name: $ENV
+  image:
+    name: qzym3az8.private-ncr.gov-ntruss.com/initial-kaniko:latest  
+  script:
+    - mkdir -p /kaniko/.docker
+    - echo $IS_FEATURE
+    - echo $ENV
+    - echo $CI_JOB_NAME
+    - echo $NCLOUD_API_GW
+    - ls dist/apps
+# needs to work : change destination for individual test environmemts  
+    - >-
+      if [ $IS_FEATURE == "true" ] && [ $ENV == "dev" ]; then
+        echo test1
+        echo "{\"auths\":{\"${NCR_URL}\":{\"username\":\"${NCLOUD_ACCESS_KEY}\",\"password\":\"${NCLOUD_SECRET_KEY}\"}}}" > /kaniko/.docker/config.json
+        /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/Dockerfile_feature" --destination "${NCR_URL}/${SYSTEM_NAME}:${CI_PIPELINE_IID}"
+      elif [ $ENV == "dev" ]; then
+        echo test2
+        echo "{\"auths\":{\"${NCR_URL}\":{\"username\":\"${NCLOUD_ACCESS_KEY}\",\"password\":\"${NCLOUD_SECRET_KEY}\"}}}" > /kaniko/.docker/config.json
+        /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/apps/${SYSTEM_NAME}/Dockerfile" --build-arg "DEV_NCLOUD_ACCESS_KEY=${NCLOUD_ACCESS_KEY}" --build-arg "DEV_NCLOUD_SECRET_KEY=${NCLOUD_SECRET_KEY}" --build-arg "DEV_NCLOUD_API_GW=${NCLOUD_API_GW}" --destination "${NCR_URL}/${SYSTEM_NAME}:${CI_PIPELINE_IID}"
+      fi
+  parallel:
+    matrix:
+      - SYSTEM_NAME: [
+            # em10,
+            em31,
+            he10,
+            he20,
+            mm10,
+            me10,
+            hm11,
+            hm12,
+            ee40,
+            em41,
+            em32,
+            em42,
+            ee30,
+          ] # 수동 입력 필요
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "develop"
+      changes:
+        - packages/**/*
+      when: never
+    - if: $CI_COMMIT_REF_NAME == "develop"
+      changes:
+        - apps/${SYSTEM_NAME}/**/*
+
+pjt-nks-deploy:
+  resource_group: $CI_JOB_NAME-nks-deploy
+  stage: nks-deploy
+  tags:
+    - shared
+  environment:
+    name: $ENV
+  variables:
+    CICD_ENV: $ENV
+    HELM_REPO: "maidt-${SERVICE_NAME}-helm"
+    VALUEFILE: "values.yaml"
+  image:
+    name: qzym3az8.private-ncr.gov-ntruss.com/gitlab-runner-image-argocli:1.0
+  before_script:
+    - git config --global user.name "${GITLAB_USER_NAME}"
+    - git config --global user.email "${GITLAB_USER_EMAIL}"
+    - git config --global http.sslverify "false"
+    - !reference [.get-branch, before_script]
+  script:
+    - export IMAGE=${NCR_URL}/${SYSTEM_NAME}:${CI_PIPELINE_IID}
+    - export HELM_BRANCH="develop"
+    - echo "${HELM_REPO}"
+    - echo "${HELM_BRANCH}"
+    - git clone -b ${HELM_BRANCH} --single-branch http://gitlab-ci-token:${ACCESS_TOKEN}@10.0.71.111/${GITPJT_GROUP}/${HELM_REPO}.git
+    - cd ${HELM_REPO}/${SYSTEM_NAME}
+    - git pull
+    - >-
+      if [ $IS_FEATURE == "true" ]; then
+          export SWAGGER_DOMAIN="http://"${FULL_DOMAIN}
+          export FULL_DOMAIN=${FULL_DOMAIN}
+          export MGMT_DOMAIN=${MGMT_DOMAIN}
+
+          yq e --inplace '(.image.name = env(IMAGE)) | (.envs[0].value = env(SCHEMA)) |
+          (.ingress.hosts[0].host= env(FULL_DOMAIN)) | (.envs[1].value=env(SWAGGER_DOMAIN)) |
+          (.priingress.hosts[0].host= env(MGMT_DOMAIN))' \
+          $VALUEFILE
+
+      else
+          yq e --inplace '(.image.name = env(IMAGE))' $VALUEFILE
+      fi
+    - git add .
+    - git commit -m "Auto update at `date +'%Y-%m-%d %H:%M:%S'` ${CI_PIPELINE_IID}" || true
+    - git push http://gitlab-ci-token:${ACCESS_TOKEN}@10.0.71.111/${GITPJT_GROUP}/${HELM_REPO}.git ${HELM_BRANCH} || true
+    - >-
+      if [ $ENV == "dev" -o $IS_FEATURE == "true" ]; then
+          export HELM_BRANCH="develop"
+      elif [ $ENV == "stg" ]; then 
+          export HELM_BRANCH="release"
+      else
+          export HELM_BRANCH="master"
+      fi
+    - export ARGO_URL="10.0.145.17:32167"         # IP is k8s node IP . Port is arogocd service node port
+    - export no=$(argocd app list --auth-token ${ARGOCD_TOKEN} --server ${ARGO_URL} --grpc-web --plaintext | grep "${SYSTEM_NAME} " | wc -l)
+    - echo $no
+    - >-
+      if [ $IS_FEATURE == "true" ]; then 
+        CICD_ENV=feature
+        VALUEFILE="values-${BRANCH}.yaml"
+      fi
+    - >-
+
+    - >-
+      if [ $no -eq 0 ]; then
+        argocd app create ${SYSTEM_NAME} \
+        --auth-token ${ARGOCD_TOKEN} \
+        --server ${ARGO_URL} \
+        --repo http://10.0.71.111/${GITPJT_GROUP}/${HELM_REPO}.git --path . \
+        --values ${SYSTEM_NAME}/${VALUEFILE} \
+        --dest-name ${NKS_CLUSTER} \
+        --dest-namespace ${ENV}-maidt \
+        --project default \
+        --sync-option CreateNamespace=true \
+        --grpc-web \
+        --plaintext \
+        --revision ${HELM_BRANCH}
+      fi
+    - >-
+      if [ $ENV == "dev" -o $IS_FEATURE == "true" ]; then
+          export HELM_BRANCH="develop"
+      elif [ $ENV == "stg" ]; then
+          export HELM_BRANCH="release"
+      else
+          export HELM_BRANCH="master"
+      fi
+    - export ARGO_URL="10.0.145.17:32167"         # IP is k8s node IP . Port is arogocd service node port
+    - argocd app sync $SYSTEM_NAME --force --auth-token $ARGOCD_TOKEN --server $ARGO_URL --plaintext
+    - argocd app wait $SYSTEM_NAME --timeout 600 --auth-token $ARGOCD_TOKEN --server $ARGO_URL --plaintext
+    - echo "https://${FULL_DOMAIN}";
+  parallel:
+    matrix:
+      - SYSTEM_NAME: [
+            # em10,
+            em31,
+            he10,
+            he20,
+            mm10,
+            me10,
+            hm11,
+            hm12,
+            ee40,
+            em41,
+            em32,
+            em42,
+            ee30,
+          ] # 수동 입력 필요
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "develop"
+      changes:
+        - packages/**/*
+      when: never
+    - if: $CI_COMMIT_REF_NAME == "develop"
+      changes:
+        - apps/${SYSTEM_NAME}/**/*
+
+nx-nks-deploy:
+  resource_group: $CI_JOB_NAME-nks-deploy
+  stage: nks-deploy
+  tags:
+    - shared
+  environment:
+    name: $ENV
+  variables:
+    CICD_ENV: $ENV
+    HELM_REPO: "maidt-${SERVICE_NAME}-helm"
+    VALUEFILE: "values.yaml"
+  image:
+    name: qzym3az8.private-ncr.gov-ntruss.com/gitlab-runner-image-argocli:1.0
+  before_script:
+    - git config --global user.name "${GITLAB_USER_NAME}"
+    - git config --global user.email "${GITLAB_USER_EMAIL}"
+    - git config --global http.sslverify "false"
+    - !reference [.get-branch, before_script]
+  script:
+    - export IMAGE=${NCR_URL}/${SYSTEM_NAME}:${CI_PIPELINE_IID}
+    - export HELM_BRANCH="develop"
+    - echo "${HELM_REPO}"
+    - echo "${HELM_BRANCH}"
+    - git clone -b ${HELM_BRANCH} --single-branch http://gitlab-ci-token:${ACCESS_TOKEN}@10.0.71.111/${GITPJT_GROUP}/${HELM_REPO}.git
+    - cd ${HELM_REPO}/${SYSTEM_NAME}
+    - git pull
+    - >-
+      if [ $IS_FEATURE == "true" ]; then
+          export SWAGGER_DOMAIN="http://"${FULL_DOMAIN}
+          export FULL_DOMAIN=${FULL_DOMAIN}
+          export MGMT_DOMAIN=${MGMT_DOMAIN}
+
+          yq e --inplace '(.image.name = env(IMAGE)) | (.envs[0].value = env(SCHEMA)) |
+          (.ingress.hosts[0].host= env(FULL_DOMAIN)) | (.envs[1].value=env(SWAGGER_DOMAIN)) |
+          (.priingress.hosts[0].host= env(MGMT_DOMAIN))' \
+          $VALUEFILE
+
+      else
+          yq e --inplace '(.image.name = env(IMAGE))' $VALUEFILE
+      fi
+    - git add .
+    - git commit -m "Auto update at `date +'%Y-%m-%d %H:%M:%S'` ${CI_PIPELINE_IID}" || true
+    - git push http://gitlab-ci-token:${ACCESS_TOKEN}@10.0.71.111/${GITPJT_GROUP}/${HELM_REPO}.git ${HELM_BRANCH} || true
+    - >-
+      if [ $ENV == "dev" -o $IS_FEATURE == "true" ]; then
+          export HELM_BRANCH="develop"
+      elif [ $ENV == "stg" ]; then 
+          export HELM_BRANCH="release"
+      else
+          export HELM_BRANCH="master"
+      fi
+    - export ARGO_URL="10.0.145.17:32167"         # IP is k8s node IP . Port is arogocd service node port
+    - export no=$(argocd app list --auth-token ${ARGOCD_TOKEN} --server ${ARGO_URL} --grpc-web --plaintext | grep "${SYSTEM_NAME} " | wc -l)
+    - echo $no
+    - >-
+      if [ $IS_FEATURE == "true" ]; then 
+        CICD_ENV=feature
+        VALUEFILE="values-${BRANCH}.yaml"
+      fi
+    - >-
+
+    - >-
+      if [ $no -eq 0 ]; then
+        argocd app create ${SYSTEM_NAME} \
+        --auth-token ${ARGOCD_TOKEN} \
+        --server ${ARGO_URL} \
+        --repo http://10.0.71.111/${GITPJT_GROUP}/${HELM_REPO}.git --path . \
+        --values ${SYSTEM_NAME}/${VALUEFILE} \
+        --dest-name ${NKS_CLUSTER} \
+        --dest-namespace ${ENV}-maidt \
+        --project default \
+        --sync-option CreateNamespace=true \
+        --grpc-web \
+        --plaintext \
+        --revision ${HELM_BRANCH}
+      fi
+    - >-
+      if [ $ENV == "dev" -o $IS_FEATURE == "true" ]; then
+          export HELM_BRANCH="develop"
+      elif [ $ENV == "stg" ]; then
+          export HELM_BRANCH="release"
+      else
+          export HELM_BRANCH="master"
+      fi
+    - export ARGO_URL="10.0.145.17:32167"         # IP is k8s node IP . Port is arogocd service node port
+    - argocd app sync $SYSTEM_NAME --force --auth-token $ARGOCD_TOKEN --server $ARGO_URL --plaintext
+    - argocd app wait $SYSTEM_NAME --timeout 600 --auth-token $ARGOCD_TOKEN --server $ARGO_URL --plaintext
+    - echo "https://${FULL_DOMAIN}";
+  parallel:
+    matrix:
+      - SYSTEM_NAME: [
+            # em10,
+            em31,
+            he10,
+            he20,
+            mm10,
+            me10,
+            hm11,
+            hm12,
+            ee40,
+            em41,
+            em32,
+            em42,
+            ee30,
+          ] # 수동 입력 필요
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "develop"
+      changes:
+        - packages/**/*

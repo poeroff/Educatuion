@@ -1,0 +1,495 @@
+@charset "utf-8";
+
+.icon-home {
+  background-color: #fe7091;
+  box-shadow: 2px 2px #db2852;
+}
+.icon-close {
+  background-color: #fe7091;
+}
+.btn-start {
+  background: #4555e9;
+  border-color: #828df5;
+  box-shadow: 0px 8px #2e3ed7 !important;
+}
+.btn-reset {
+  background: #ff7c1d;
+  border-color: #ffa463;
+  box-shadow: 0px 8px #e45200 !important;
+}
+.game-wrp > .bg,
+.game-body > .bg,
+#ending > .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../../../../src/assets/Games/T01/img/common/bg.jpg) no-repeat top right -144px / auto 100%;
+}
+#ending > .bg {
+  background-image: url(../../../../src/assets/Games/T01/img/common/end-bg.jpg);
+  transform: none;
+}
+.game-wrp.page03 > .bg,
+[data-page='3'] > .bg,
+.game-wrp.page03 #ending > .bg,
+[data-page='3'] #ending > .bg {
+  background-position: top right 0;
+}
+.end-ai {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* 인트로 */
+#intro .intro-title {
+  top: 70px;
+  width: 572px;
+  opacity: 0;
+}
+.page03 .intro-title {
+  top: 60px !important;
+}
+#intro .intro-subtitle {
+  top: 370px;
+  height: 44px;
+  opacity: 0;
+}
+#intro.show .intro-title,
+#intro.show .intro-subtitle {
+  opacity: 1;
+  transition-duration: 1s;
+}
+
+.char {
+  top: 320px;
+  left: auto !important;
+  right: 76px;
+  width: 212px;
+  height: 282px;
+  background-size: 848px 1410px;
+  background-image: url(../../../../src/assets/Games/T01/img/page01/ai.png);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  transform: none !important;
+}
+
+/* 라운드 */
+#round .round-obj {
+  bottom: 0;
+  left: 35%;
+}
+#round .bx-inner {
+  border-color: #e3e6ff;
+  box-shadow: 0 10px #4553d9;
+}
+.bx h3 {
+  color: #4555e9;
+}
+#life {
+  background: #c6ecff;
+  box-shadow: 8px 8px #6594f0;
+}
+#life i {
+  background-image: url(../../../../src/assets/Games/T01/img/common/icon-star.png);
+  background-size: 100% auto;
+}
+#life i.off {
+  background-image: url(../../../../src/assets/Games/T01/img/common/icon-star-off.png);
+}
+
+/* 엔딩 */
+[class*='ending-obj'] {
+  position: absolute;
+}
+#ending.success .bg {
+  animation: bg-ani-success 10s linear 0.5s forwards;
+}
+#ending.fail .bg {
+  animation: bg-ani-fail 10s linear 0.5s forwards;
+}
+
+@keyframes bg-ani-success {
+  35%,
+  50% {
+    background-position: top right -788px;
+  }
+  100% {
+    background-position: top right -1977px;
+  }
+}
+
+@keyframes bg-ani-fail {
+  35%,
+  100% {
+    background-position: top right -788px;
+  }
+}
+
+#ending.show [class*='ending-obj'] {
+  transform: translateX(620px);
+  opacity: 0;
+  transition: transform 3.5s linear 0.5s, opacity 0.5s 4s;
+}
+#ending .char {
+  animation: none;
+}
+.page01 #ending.success .char,
+[data-page='1'] #ending.success .char {
+  transform: translateX(-157px) !important;
+  transition: transform 3.5s linear 0.5s;
+}
+.page01 #ending.fail .char,
+[data-page='1'] #ending.fail .char {
+  transform: translateX(-216px) !important;
+  transition: transform 3.5s linear 0.5s;
+}
+
+.page02 #ending.success .char,
+[data-page='2'] #ending.success .char {
+  transform: translateX(47px) !important;
+  transition: transform 3.5s linear 0.5s;
+}
+.page02 #ending.fail .char,
+[data-page='2'] #ending.fail .char {
+  transform: translateX(-35px) !important;
+  transition: transform 3.5s linear 0.5s;
+}
+
+.page03 #ending.success .char,
+[data-page='3'] #ending.success .char {
+  transform: translateX(47px) !important;
+  transition: transform 3.5s linear 0.5s;
+}
+.page03 #ending.fail .char,
+[data-page='3'] #ending.fail .char {
+  transform: translateX(-35px) !important;
+  transition: transform 3.5s linear 0.5s;
+}
+
+#ending .btn-reset {
+  opacity: 0;
+}
+/*.finish #ending .btn-reset{animation-delay: 5s}*/
+
+.conpetti {
+  width: 100%;
+  height: 100%;
+}
+.conpetti img {
+  position: absolute;
+  top: -50%;
+  left: 0;
+}
+#ending.show .conpetti img {
+  animation: conpetti 3s linear 10s infinite;
+}
+#ending.show .conpetti img:nth-child(3) {
+  animation-delay: 11s;
+}
+#ending.show .conpetti img:nth-child(2),
+#ending.show .conpetti img:nth-child(4) {
+  animation-delay: 11.5s;
+}
+
+/* page01 */
+.page01 .result-ai.correct p,
+[data-page='1'] .result-ai.correct p {
+  bottom: 203px;
+  left: 184px;
+}
+.page01 .result-ai.wrong p,
+[data-page='1'] .result-ai.wrong p {
+  bottom: 182px;
+  left: 175px;
+}
+.page01 .retry .result-ai.wrong p,
+[data-page='1'] .retry .result-ai.wrong p {
+  bottom: 199px;
+  left: 193px;
+}
+.page01 .ending-obj01 {
+  width: 51px;
+  height: 145px;
+  top: 366px;
+  left: 114px;
+}
+.page01 .ending-obj02 {
+  width: 51px;
+  height: 145px;
+  top: 455px;
+  left: 185px;
+}
+.page01 .intro-char {
+  animation: char-ani01-3 1.5s infinite steps(4);
+}
+.page01 #ending .char,
+[data-page='1'] #ending .char {
+  background-position-y: -282px;
+  animation: char-ani01-3 2s infinite steps(4);
+}
+.page01 #ending .char.moving,
+[data-page='1'] #ending .char.moving {
+  background-position-y: -564px;
+  animation: char-ani01-2 2s infinite steps(3);
+}
+.page01 #ending .char.change,
+[data-page='1'] #ending .char.change {
+  transform: translateX(-880px) !important;
+  transition: transform 3s linear 0.5s;
+  background-position-y: 0;
+  animation: char-ani01-3 1s infinite steps(4);
+}
+
+.page01 #ending .char.motion-fail,
+[data-page='1'] #ending .char.motion-fail {
+  background-position-y: -846px;
+  animation: char-ani01-1 1s infinite steps(2);
+}
+.page01 #ending .char.motion-success,
+[data-page='1'] #ending .char.motion-success {
+  background-position-y: -1128px;
+  animation: char-ani01-1 2s infinite steps(2);
+}
+.page01 #ending.fail .char,
+[data-page='1'] #ending.fail .char {
+  top: 240px;
+}
+
+/* page02 */
+.page02 .result-ai.correct p,
+[data-page='2'] .result-ai.correct p {
+  bottom: 206px;
+  left: 197px;
+}
+.page02 .result-ai.wrong p,
+[data-page='2'] .result-ai.wrong p {
+  bottom: 184px;
+  left: 187px;
+}
+.page02 .retry .result-ai.wrong p,
+[data-page='2'] .retry .result-ai.wrong p {
+  bottom: 203px;
+  left: 202px;
+}
+.page02 .ending-obj01 {
+  width: 133px;
+  height: 150px;
+  top: 365px;
+  left: 91px;
+  transform: translateX(0);
+}
+.page02 .ending-obj02 {
+  width: 208px;
+  height: 119px;
+  top: 480px;
+  left: 156px;
+  transform: translateX(0);
+}
+.page02 .char {
+  top: 303px;
+  width: 330px;
+  height: 287px;
+  background-image: url(../../../../src/assets/Games/T01/img/page02/ai.png);
+  background-size: 990px 1148px;
+  animation: char-ani02-2 1.5s infinite steps(3);
+  transform: translateX(110px) !important;
+}
+.page02 #ending .char,
+[data-page='2'] #ending .char {
+  top: 296px;
+  animation: char-ani02-2 1.5s infinite steps(3);
+}
+.page02 #ending .char.moving,
+.page02 #ending .char.change,
+[data-page='2'] #ending .char.moving,
+[data-page='2'] #ending .char.change {
+  background-position-y: -287px;
+}
+.page02 #ending .char.motion-fail,
+[data-page='2'] #ending .char.motion-fail {
+  background-position-y: -574px;
+  animation: none;
+}
+.page02 #ending .char.motion-success,
+[data-page='2'] #ending .char.motion-success {
+  background-position-y: -861px;
+  animation: char-ani02-1 1.5s infinite steps(2) !important;
+}
+.page02 #ending.fail .char,
+[data-page='2'] #ending.fail .char {
+  top: 223px;
+}
+.page02 #ending .wind-effect,
+[data-page='2'] #ending .wind-effect {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  display: block;
+  width: 141px;
+  height: 124px;
+  background: url(../../../../src/assets/Games/T01/img/page02/wind.png) no-repeat center / 100%;
+  transform-origin: bottom left;
+  animation: wind 1s linear infinite alternate;
+  opacity: 0;
+}
+.page02 #ending.success .char.moving:not(.motion-success) .wind-effect,
+.page02 #ending.success .char.change:not(.motion-success) .wind-effect,
+[data-page='2'] #ending.success .char.moving:not(.motion-success) .wind-effect,
+[data-page='2'] #ending.success .char.change:not(.motion-success) .wind-effect {
+  opacity: 1;
+}
+.page02 #ending .char.change,
+[data-page='2'] #ending .char.change {
+  transform: translateX(-800px) !important;
+  transition: transform 3s linear 0.5s;
+  animation: char-ani02-2 1s infinite steps(3);
+}
+.page02 #ending.show [class*='ending-obj'],
+[data-page='2'] #ending.show [class*='ending-obj'] {
+  transform: translateX(640px);
+}
+
+/* page03 */
+.page03 .result-ai.correct p,
+[data-page='3'] .result-ai.correct p {
+  bottom: 195px;
+  left: 195px;
+  transform: rotate(9deg);
+}
+.page03 .result-ai.wrong p,
+[data-page='3'] .result-ai.wrong p {
+  bottom: 178px;
+  left: 178px;
+  transform: rotate(8deg);
+}
+.page03 .retry .result-ai.wrong p,
+[data-page='3'] .retry .result-ai.wrong p {
+  bottom: 197px;
+  left: 196px;
+}
+.page03 .ending-obj01 {
+  width: 110px;
+  height: 97px;
+  top: 416px;
+  left: 55px;
+  transform: translateX(0);
+}
+.page03 .ending-obj02 {
+  width: 190px;
+  height: 118px;
+  top: 472px;
+  left: 105px;
+  transform: translateX(0);
+}
+.page03 .char {
+  top: 404px;
+  width: 386px;
+  height: 189px;
+  background-image: url(../../../../src/assets/Games/T01/img/page03/ai.png);
+  background-size: 772px 756px;
+  transform: translateX(84px) !important;
+}
+.page03 #ending .char,
+[data-page='3'] #ending .char {
+  animation: char-ani03 1.5s infinite steps(2);
+}
+.page03 #ending .char.moving,
+.page03 #ending .char.change,
+[data-page='3'] #ending .char.moving,
+[data-page='3'] #ending .char.change {
+  background-position-y: -189px;
+}
+.page03 #ending .char.motion-fail,
+[data-page='3'] #ending .char.motion-fail {
+  background-position-y: -378px;
+  animation: none;
+}
+.page03 #ending .char.motion-success,
+[data-page='3'] #ending .char.motion-success {
+  background-position-y: -567px;
+}
+.page03 #ending.fail .char,
+[data-page='3'] #ending.fail .char {
+  top: 338px;
+}
+.page03 #ending .char.change,
+[data-page='3'] #ending .char.change {
+  transform: translateX(-800px) !important;
+  transition: transform 3s linear 0.5s;
+  animation: char-ani03 1s infinite steps(2);
+}
+.page03 #ending.show [class*='ending-obj'],
+[data-page='3'] #ending.show [class*='ending-obj'] {
+  transform: translateX(800px);
+}
+
+/* 사회 */
+.social #round .bx {
+  top: 90px;
+}
+
+/* page01 */
+@keyframes char-ani01-1 {
+  100% {
+    background-position-x: -424px;
+  }
+}
+@keyframes char-ani01-2 {
+  100% {
+    background-position-x: -638px;
+  }
+}
+@keyframes char-ani01-3 {
+  100% {
+    background-position-x: -848px;
+  }
+}
+
+/* page02 */
+@keyframes char-ani02-1 {
+  100% {
+    background-position-x: -660px;
+  }
+}
+@keyframes char-ani02-2 {
+  100% {
+    background-position-x: -990px;
+  }
+}
+@keyframes wind {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+/* page02 */
+@keyframes char-ani03 {
+  100% {
+    background-position-x: -772px;
+  }
+}
+@keyframes car-ani02 {
+  /*2*/
+  100% {
+    background-position: -812px;
+  }
+}
+
+@keyframes conpetti {
+  0% {
+    transform: translateY(0%);
+  }
+  75% {
+    transform: translateY(580px);
+  }
+  100% {
+    transform: translateY(650px);
+  }
+}
