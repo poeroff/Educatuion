@@ -60,7 +60,7 @@ export type PageProps = {
   pageData: IListData[];
 };
 
-const Component = ({ headerInfo, questionInfo, pageData }: PageProps) => {
+const EE4L04C01A06aP03 = ({ headerInfo, questionInfo, pageData }: PageProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
@@ -106,4 +106,4 @@ const Component = ({ headerInfo, questionInfo, pageData }: PageProps) => {
     </Container>
   );
 };
-export default Component;
+export default EE4L04C01A06aP03;

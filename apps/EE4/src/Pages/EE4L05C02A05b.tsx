@@ -51,7 +51,7 @@ interface IEEL01C02A05P01 {
   imageList: Image[];
 }
 
-const EEL01C02A05P01 = ({ headerInfo, questionInfo, audioInfo, data, mainKey, getDefaultData, getCorrectData, imageList }: IEEL01C02A05P01) => {
+const EE4L05C02A05b = ({ headerInfo, questionInfo, audioInfo, data, mainKey, getDefaultData, getCorrectData, imageList }: IEEL01C02A05P01) => {
   const { getValueInputData, changeInputData, isSubmittedInput, submitPageData } = useCurrentPageData({
     initData: getDefaultData(mainKey),
     collectDatas: getCorrectData(mainKey),
@@ -117,7 +117,8 @@ const EEL01C02A05P01 = ({ headerInfo, questionInfo, audioInfo, data, mainKey, ge
                         width: '342px',
                         height: value?.type === 'A' ? '124px' : '70px',
                         borderRadius: '8px',
-                        padding: '8px 12px 8px 12px',
+                        padding: '8px 8px 8px 8px',
+                        whiteSpace: 'nowrap',
                       }}
                       weight='500'
                     >
@@ -143,4 +144,4 @@ const EEL01C02A05P01 = ({ headerInfo, questionInfo, audioInfo, data, mainKey, ge
   );
 };
 
-export default EEL01C02A05P01;
+export default EE4L05C02A05b;

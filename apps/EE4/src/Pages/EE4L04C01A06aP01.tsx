@@ -23,7 +23,7 @@ import {
 
 // UI en
 import { Container } from '@maidt-cntn/ui/en';
-import { useState } from 'react';
+import { JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useState } from 'react';
 
 // API
 import { useCurrentPageData } from '@/hooks/useCurrentPageData';
@@ -78,27 +78,6 @@ const EE4L04C01A06aP02 = ({
   pageData = [], // PageData
 }: PageProps) => {
   const [isOpen, setIsOpen] = useState(false); // 답안 보기
-  const [data, setData] = useState<Array<IListenAndAnswer>>([
-    {
-      type: 'A',
-      color: '#E2F2FF',
-      content: (
-        <>
-          Good afternoon.
-          <br />
-          How are you?
-        </>
-      ),
-      isRecoding: false,
-    },
-    {
-      type: 'B',
-      color: '#FFF0CC',
-      content: <>I’m good.</>,
-
-      isRecoding: false,
-    },
-  ]);
 
   // bx pageData.ts
   const { getValueInputData, changeInputData, isSubmittedInput, gradeSubmitPageData } = useCurrentPageData({
@@ -107,7 +86,7 @@ const EE4L04C01A06aP02 = ({
   });
 
   // bx pageData.ts handle event
-  const handleChangeInputData = (mainKey: number, subKey: string, value: number) => {
+  const handleChangeInputData = (mainKey: number, subKey: string, value: string) => {
     changeInputData(mainKey, subKey, value);
   };
 
@@ -115,21 +94,14 @@ const EE4L04C01A06aP02 = ({
   const inputData = getValueInputData(mainKey as number, subKey as string) || null; // radio data
   const isComplete: boolean = isSubmittedInput(mainKey as number, subKey as string); // 체점하기 submit 여부
   const isCorrect = gradeData.find(data => data.mainKey === mainKey)?.isCorrect; // 체점 후 정답인지 아닌지 체크
-  const correctData = getCorrectData(pageNumber as number)[0].inputDatas[0][0].value; // 정답
+  const correctData = getCorrectData(pageNumber as number)[0].inputDatas[0].value; // 정답
 
-  // record handler
-  const recordonHandler = (index: number) => {
-    setData(prevDataList => {
-      const updatedDataList = [...prevDataList];
-      updatedDataList[index].isRecoding = true;
-      return updatedDataList;
-    });
-  };
+  console.log(getCorrectData(pageNumber as number)[0].inputDatas[0]);
 
   // radio handler
-  const onHandler = (index: number) => {
-    handleChangeInputData(mainKey as number, subKey as string, index);
-  };
+  // const onHandler = (index: number) => {
+  //   handleChangeInputData(mainKey as number, subKey as string, index);
+  // };
 
   // 체점하기
   const onSubmit = () => {
@@ -137,7 +109,6 @@ const EE4L04C01A06aP02 = ({
       gradeSubmitPageData();
       return;
     }
-
     setIsOpen(!isOpen);
   };
 
@@ -175,7 +146,7 @@ const EE4L04C01A06aP02 = ({
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}
-                onClick={() => onHandler(index + 2)}
+                // onClick={() => onHandler(index + 2)}
               >
                 <Box width='174px' height='180px' hAlign='center' border='none' margin='none'>
                   <div style={{ marginBottom: '50%' }}>
@@ -199,20 +170,20 @@ const EE4L04C01A06aP02 = ({
                   width: '100px',
                   height: '100px',
                   margin: '10px',
-
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}
-                onClick={() => onHandler(index + 2)}
+                // onClick={() => onHandler(index + 1)}
               >
                 <Box width='174px' height='180px' hAlign='center' border='none' margin='none'>
                   <Input
-                    value={getValueInputData(0, `NUMBER-${index + 1}`) as string}
-                    disabled={isSubmittedInput(0, `NUMBER-${index + 1}`)}
-                    onChange={e => onChangeInputs(0, `NUMBER-${index + 1}`, Number(e.target.value))}
-                    placeholder='내용을 넣어주세요.'
-                    width='100px'
+                    width='104px'
+                    value={getValueInputData(1, `TEXT-${index + 1}`) as string}
+                    onChange={e => {
+                      handleChangeInputData(1, `TEXT-${index + 1}`, e.target.value);
+                    }}
+                    disabled={isSubmittedInput(1, `TEXT-${index + 1}`)}
                   />
                 </Box>
               </div>
@@ -224,7 +195,21 @@ const EE4L04C01A06aP02 = ({
           <Box background='lightGray' borderRadius='12px' marginTop='48px'>
             <Tag fontSize='22px' height='auto' label='답안' type={ETagLine.GREEN} width='auto' />
             <Box margin='25px 0 20px'>
-              <Typography>{correctData}</Typography>
+              {getCorrectData(pageNumber as number)[0].inputDatas[0].map(
+                (correct: {
+                  value:
+                    | string
+                    | number
+                    | boolean
+                    | ReactElement<any, string | JSXElementConstructor<any>>
+                    | Iterable<ReactNode>
+                    | ReactPortal
+                    | null
+                    | undefined;
+                }) => (
+                  <Typography>{correct.value}</Typography>
+                ),
+              )}
             </Box>
           </Box>
         </BottomSheet>

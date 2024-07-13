@@ -41,21 +41,6 @@ export type PageProps = {
   subKey?: string;
 };
 
-export const listData = [
-  {
-    src: '/L01/C01/A06/EE4-L01-C01-A06-P01-02.jpg',
-    alt: '활짝 웃고 있는 표정',
-  },
-  {
-    src: '/L01/C01/A06/EE4-L01-C01-A06-P01-03.jpg',
-    alt: '웃고 있는 표정',
-  },
-  {
-    src: '/L01/C01/A06/EE4-L01-C01-A06-P01-04.jpg',
-    alt: '기분이 좋지 않은 표정',
-  },
-];
-
 export function A07b() {
   const { page, setPage } = usePageData();
 

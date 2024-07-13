@@ -391,15 +391,7 @@ const EE4L0401A06bP01 = ({
                   >
                     <div>
                       <Box width='px' height='200px' hAlign='center' border='none'>
-                        {value && (
-                          <img
-                            src='https://th.bing.com/th/id/OIP.Viwu79Fn0e0gDYVn1k2p4wHaEK?w=315&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7'
-                            width='164px'
-                            height='250px'
-                            alt={value.alt}
-                            title={value.alt}
-                          />
-                        )}
+                        {value && <img src={value.src} width='164px' height='200px' alt={value.alt} title={value.alt} />}
                       </Box>
                     </div>
                   </Radio>

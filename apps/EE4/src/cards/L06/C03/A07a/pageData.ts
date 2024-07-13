@@ -53,21 +53,21 @@ export const getCorrectData = (pageNumber: number) => {
       return [
         {
           mainKey: 1,
-          inputDatas: [[{ subKey: 'TEXT-01', value: 'teacher' }]],
+          inputDatas: [[{ subKey: 'TEXT-01', value: "I'm cleaning" }]],
         },
       ];
     case 2:
       return [
         {
           mainKey: 2,
-          inputDatas: [[{ subKey: 'TEXT-01', value: 'grandma' }]],
+          inputDatas: [[{ subKey: 'TEXT-01', value: "I'm cooking" }]],
         },
       ];
     case 3:
       return [
         {
           mainKey: 3,
-          inputDatas: [[{ subKey: 'TEXT-01', value: 'friend' }]],
+          inputDatas: [[{ subKey: 'TEXT-01', value: "I'm reading a book" }]],
         },
       ];
 

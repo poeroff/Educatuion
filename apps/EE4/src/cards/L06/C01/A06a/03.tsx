@@ -1,4 +1,4 @@
-import EEL01C01A06P04 from '@/Pages/EEL01C01A06P04';
+import EE4L06C01A06aP03 from '@/Pages/EE4L06C01A06aP03';
 import { P04PageProps } from '../../C02/A05a';
 
 const listData = [
@@ -43,7 +43,7 @@ const pageInfo: P04PageProps = {
     headerPattern: 'text',
   },
   questionInfo: {
-    text: '앞에서 들은 대화를 다시 한번 들어 봅시다.',
+    text: '공부한 대화를 다시 한번 들어 봅시다',
   },
   list: listData,
 };
@@ -51,7 +51,7 @@ const pageInfo: P04PageProps = {
 const P03 = () => {
   const { headerInfo, questionInfo, list } = pageInfo;
 
-  return <EEL01C01A06P04 headerInfo={headerInfo} questionInfo={questionInfo} pageData={list} />;
+  return <EE4L06C01A06aP03 headerInfo={headerInfo} questionInfo={questionInfo} pageData={list} />;
 };
 
 export default P03;

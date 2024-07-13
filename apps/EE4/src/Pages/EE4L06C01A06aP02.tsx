@@ -109,13 +109,14 @@ const EE4L06C01A06aP02 = ({
   ]);
 
   // bx pageData.ts
-  const { getValueInputData, changeInputData, isSubmittedInput, gradeSubmitPageData } = useCurrentPageData({
+  const { getValueInputData, changeInputData, isSubmittedInput, submitPageData } = useCurrentPageData({
     initData: getDefaultData(pageNumber as number),
     collectDatas: getCorrectData(pageNumber as number),
   });
 
   // bx pageData.ts handle event
   const handleChangeInputData = (mainKey: number, subKey: string, value: number) => {
+    console.log(subKey);
     changeInputData(mainKey, subKey, value);
   };
 
@@ -136,13 +137,13 @@ const EE4L06C01A06aP02 = ({
 
   // radio handler
   const onHandler = (index: number) => {
-    handleChangeInputData(mainKey as number, subKey as string, index);
+    handleChangeInputData(mainKey as number, `RECORDER-${index}`, index);
   };
 
   // 체점하기
   const onSubmit = () => {
     if (!isComplete) {
-      gradeSubmitPageData();
+      submitPageData();
       return;
     }
 
@@ -152,13 +153,9 @@ const EE4L06C01A06aP02 = ({
   return (
     <Container
       headerInfo={headerInfo}
-      questionInfo={{
-        ...questionInfo,
-        mark: isComplete ? (isCorrect === undefined ? 'none' : isCorrect ? 'correct' : 'star') : 'none',
-        markSize: 'middle',
-      }}
+      questionInfo={questionInfo}
       submitDisabled={inputData === null}
-      submitLabel={isComplete ? (isOpen ? '답안 닫기' : '답안 보기') : '채점하기'}
+      submitLabel={'완료하기'}
       submitBtnColor={inputData != null ? (isOpen ? EStyleButtonTypes.DEFAULT : EStyleButtonTypes.YELLOW) : EStyleButtonTypes.SECONDARY}
       onSubmit={onSubmit}
       useExtend
@@ -172,14 +169,7 @@ const EE4L06C01A06aP02 = ({
               align='horizontal'
               data={pageData.slice(0, 4)}
               row={({ value, index = 0 }) => (
-                <Radio
-                  type='square'
-                  name='result1'
-                  isError={isComplete ? !isCorrect : false}
-                  disabled={isComplete}
-                  value={index + 1 === inputData}
-                  onClick={() => onHandler(index + 1)}
-                >
+                <Box width={200}>
                   <div style={{ display: 'block', marginTop: '30%' }}>
                     <Typography size={EStyleFontSizes['LARGE']} color='#996500' weight={800}>
                       {index}
@@ -190,9 +180,9 @@ const EE4L06C01A06aP02 = ({
                     </Box>
                   </div>
                   <Box hAlign='flex-start' gap={6} marginLeft='40px' marginTop={20}>
-                    <Recorder recorderIndex={index} onSubmit={() => onHandler(index + 1)} />
+                    <Recorder recorderIndex={index} onSubmit={() => onHandler(index)} />
                   </Box>
-                </Radio>
+                </Box>
               )}
             />
           </Box>

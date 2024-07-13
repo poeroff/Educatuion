@@ -136,7 +136,7 @@ const EE4L04C01A06aP02 = ({
 
   // radio handler
   const onHandler = (index: number) => {
-    handleChangeInputData(mainKey as number, subKey as string, index);
+    handleChangeInputData(mainKey as number, `RECORDER-${index}`, index);
   };
 
   // 체점하기
@@ -148,7 +148,6 @@ const EE4L04C01A06aP02 = ({
 
     setIsOpen(!isOpen);
   };
-  console.log(pageData);
 
   return (
     <Container
@@ -171,28 +170,21 @@ const EE4L04C01A06aP02 = ({
             {/* 상단 3개 항목 */}
             <List<IListData>
               align='horizontal'
-              data={pageData.slice(0, 3)}
+              data={pageData.slice(0, 5)}
               row={({ value, index = 0 }) => (
-                <Radio
-                  type='square'
-                  name='result1'
-                  isError={isComplete ? !isCorrect : false}
-                  disabled={isComplete}
-                  value={index + 1 === inputData}
-                  onClick={() => onHandler(index + 1)}
-                >
+                <Box width='250px'>
                   <div style={{ display: 'flex' }}>
                     <Typography size={EStyleFontSizes['LARGE']} color='#996500' weight={800}>
                       {index}
                     </Typography>
-                    <Box width='174px' height='300px' hAlign='center' border='none'>
+                    <Box width='174px' height='174px' hAlign='center' border='none'>
                       {value && <Image src={value?.src as string} width='130px' height='130px' alt={value.alt} title={value.alt} />}
                     </Box>
                   </div>
                   <Box hAlign='flex-start' gap={6} marginLeft='80px'>
-                    <Recorder recorderIndex={index} onSubmit={() => onHandler(index + 1)} />
+                    <Recorder recorderIndex={index} onSubmit={() => onHandler(index)} />
                   </Box>
-                </Radio>
+                </Box>
               )}
             />
           </Box>

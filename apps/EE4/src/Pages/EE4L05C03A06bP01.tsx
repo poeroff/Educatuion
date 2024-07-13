@@ -36,12 +36,12 @@ export interface IEEL01C03A07P01 {
     mainKey: number;
     inputDatas: {
       subKey: string;
-      value: string | null;
+      value: string | null | number;
     }[][];
   }[];
 }
 
-const EEL01C03A07P01 = ({ headerInfo, questionInfo, data, pageInfo, getCorrectData, getDefaultData }: IEEL01C03A07P01) => {
+const EE4L05C03A06bP01 = ({ headerInfo, questionInfo, data, pageInfo, getCorrectData, getDefaultData }: IEEL01C03A07P01) => {
   const { getValueInputData, changeInputData, isSubmittedInput, submitPageData } = useCurrentPageData({
     initData: getDefaultData(pageInfo.pageNum),
     collectDatas: getCorrectData(pageInfo.pageNum),
@@ -134,4 +134,4 @@ const EEL01C03A07P01 = ({ headerInfo, questionInfo, data, pageInfo, getCorrectDa
   );
 };
 
-export default EEL01C03A07P01;
+export default EE4L05C03A06bP01;

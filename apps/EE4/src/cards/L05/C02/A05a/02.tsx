@@ -1,4 +1,4 @@
-import EE4L04C02A05b, { IListenAndAnswer } from '@/Pages/EE4L04C02A05b';
+import EE4L05C02A05aP02, { IListenAndAnswer } from '@/Pages/EE4L05C02A05aP02';
 import { getCorrectData, getDefaultData } from './pageData';
 
 const P02 = () => {
@@ -12,7 +12,7 @@ const P02 = () => {
   ];
 
   return (
-    <EE4L04C02A05b
+    <EE4L05C02A05aP02
       headerInfo={{
         headerText: 'Think and Talk',
         headerPattern: 'text',

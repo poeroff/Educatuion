@@ -22,6 +22,7 @@ import { useEffect, useState } from 'react';
 import { useCurrentPageData } from '@/hooks/useCurrentPageData';
 import { initDataType } from '@maidt-cntn/api';
 import picture from '../cards/L06/C03/A07a/assets/images/EE4-L06-C03-A07a-P01.png';
+import GradeCheck from '@/components/gradeCheck';
 export interface IImageProps {
   src: string;
   alt: string;
@@ -136,7 +137,7 @@ const EE4L06C03A07aP01 = ({
             </TextView>
             <Box marginBottom={40} marginTop={20} display='flex'>
               <Typography color='#996500' weight={800}>
-                1
+                1 <GradeCheck mainKey={1}></GradeCheck>
               </Typography>
 
               <Textarea

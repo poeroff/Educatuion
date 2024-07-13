@@ -29,7 +29,7 @@ import { useCurrentPageData } from '@/hooks/useCurrentPageData';
 import { useRecoilValue } from 'recoil';
 import { currentPageGradeData } from '@/stores';
 import { initDataType } from '@maidt-cntn/api';
-import { RadioBox } from './EEL01C02A02P03';
+import { RadioBox } from '@/assets/styles';
 
 export type IListData = {
   src?: string;
@@ -169,8 +169,8 @@ const EE4L06C03A07bP02 = ({
                       name='result1'
                       isError={isComplete ? !isCorrect : false}
                       disabled={isComplete}
-                      value={index + 1 === inputData}
-                      onClick={() => onHandler(index + 1)}
+                      value={index === inputData}
+                      onClick={() => onHandler(index)}
                     >
                       <div>
                         <Box width='px' height='200px' hAlign='center' border='none' marginRight={50}>

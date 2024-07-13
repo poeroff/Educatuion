@@ -8,47 +8,7 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         inputData: [
           {
             mainKey: 1,
-            inputData: [{ subKey: 'RECORDER-0', type: 'RECORDER', value: null, isAnswer: false }],
-          },
-        ],
-      };
-    case 2:
-      return {
-        pageType: 'SUBMIT',
-        inputData: [
-          {
-            mainKey: 2,
-            inputData: [{ subKey: 'RECORDER-0', type: 'RECORDER', value: null, isAnswer: false }],
-          },
-        ],
-      };
-    case 3:
-      return {
-        pageType: 'SUBMIT',
-        inputData: [
-          {
-            mainKey: 3,
-            inputData: [{ subKey: 'RECORDER-0', type: 'RECORDER', value: null, isAnswer: false }],
-          },
-        ],
-      };
-    case 4:
-      return {
-        pageType: 'SUBMIT',
-        inputData: [
-          {
-            mainKey: 4,
-            inputData: [{ subKey: 'RECORDER-0', type: 'RECORDER', value: null, isAnswer: false }],
-          },
-        ],
-      };
-    case 5:
-      return {
-        pageType: 'SUBMIT',
-        inputData: [
-          {
-            mainKey: 5,
-            inputData: [{ subKey: 'RECORDER-0', type: 'RECORDER', value: null, isAnswer: false }],
+            inputData: [{ subKey: 'RECORDER-1', type: 'RECORDER', value: null, isAnswer: false }],
           },
         ],
       };
@@ -63,35 +23,7 @@ export const getCorrectData = (pageNumber: number) => {
       return [
         {
           mainKey: 1,
-          inputDatas: [[{ subKey: 'RECORDER-0', value: null }]],
-        },
-      ];
-    case 2:
-      return [
-        {
-          mainKey: 2,
-          inputDatas: [[{ subKey: 'RECORDER-0', value: null }]],
-        },
-      ];
-    case 3:
-      return [
-        {
-          mainKey: 3,
-          inputDatas: [[{ subKey: 'RECORDER-0', value: null }]],
-        },
-      ];
-    case 4:
-      return [
-        {
-          mainKey: 4,
-          inputDatas: [[{ subKey: 'RECORDER-0', value: null }]],
-        },
-      ];
-    case 5:
-      return [
-        {
-          mainKey: 5,
-          inputDatas: [[{ subKey: 'RECORDER-0', value: null }]],
+          inputDatas: [[{ subKey: 'RECORDER-1', value: null }]],
         },
       ];
     default:

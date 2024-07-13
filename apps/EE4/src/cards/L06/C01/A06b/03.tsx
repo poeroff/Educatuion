@@ -1,6 +1,6 @@
 import { IQuestionProps, TMainHeaderInfoTypes, IAudioPlayerProps } from '@maidt-cntn/ui';
 import { getCorrectData, getDefaultData, getSolutionData } from './pageData';
-import EEL01C01A08P01 from '@/Pages/EEL01C01A08P01';
+
 import EE4L06C01A06b from '@/Pages/EE4L06C01A06b';
 
 interface Props {
@@ -33,7 +33,7 @@ const P03 = () => {
       image={CONST.image}
       data={CONST.data}
       label={CONST.label}
-      mainKey={1}
+      mainKey={3}
       subKey={'P01'}
       getDefaultData={getDefaultData}
       getCorrectData={getCorrectData}

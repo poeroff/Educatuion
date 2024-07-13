@@ -91,6 +91,7 @@ const EE4L04C03A07a = ({
 
   const [showIs, setShowIs] = useState(false);
   const isComplete: boolean = isSubmittedInput(pageInfo.mainKey, pageInfo.subKey);
+
   const correctAnswer = getCorrectData(pageInfo.pageNum)[0].inputDatas[0][0].value;
 
   const currentAnswer = getValueInputData(pageInfo.mainKey, pageInfo.subKey);
@@ -168,7 +169,7 @@ const EE4L04C03A07a = ({
           </Box>
         </Box>
         {showIs && (
-          <Box marginTop='25px' background='gray' padding='28px' useRound>
+          <Box marginTop='205px' background='gray' padding='28px' useRound>
             <Box margin='25px 0'>
               <Tag fontSize='22px' height='auto' label='답안' type={ETagLine.GREEN} width='auto' />
               <Box margin='25px 0 50px'>

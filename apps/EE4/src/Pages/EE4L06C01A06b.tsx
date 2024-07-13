@@ -91,9 +91,10 @@ const EE4L06C01A06b = ({
   const onSumbit = () => {
     if (!CONST.isComplete) {
       gradeSubmitPageData();
-    } else {
-      setIsOpen(!isOpen);
     }
+    // else {
+    //   setIsOpen(!isOpen);
+    // }
   };
 
   return (
@@ -102,7 +103,8 @@ const EE4L06C01A06b = ({
       headerInfo={CONST.headerInfo}
       questionInfo={CONST.questionInfo}
       submitDisabled={getValueInputData(mainKey, subKey) === 0}
-      submitLabel={CONST.isComplete ? (isOpen ? '답안 닫기' : '답안 보기') : '채점하기'}
+      // submitLabel={CONST.isComplete ? (isOpen ? '답안 닫기' : '답안 보기') : '채점하기'}
+      submitLabel={'채점하기'}
       submitBtnColor={CONST.isComplete ? (isOpen ? EStyleButtonTypes.GRAY : EStyleButtonTypes.YELLOW) : EStyleButtonTypes.SECONDARY}
       audioInfo={audioInfo}
       onSubmit={onSumbit}

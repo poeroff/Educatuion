@@ -12,7 +12,7 @@ const router: IRouteObject[] = [
         path: `L04-C01-A06a`,
         element: lazyLoad(() => import('../../../cards/L04/C01/A06a')),
         params: {
-          ...layouts[ELayout.SECONDARY],
+          ...layouts[ELayout.L04C01],
         },
         children: [],
       },
@@ -20,7 +20,7 @@ const router: IRouteObject[] = [
         path: `L04-C01-A06b`,
         element: lazyLoad(() => import('../../../cards/L04/C01/A06b')),
         params: {
-          ...layouts[ELayout.SECONDARY],
+          ...layouts[ELayout.L04C01],
         },
         children: [],
       },

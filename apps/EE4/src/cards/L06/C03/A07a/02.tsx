@@ -2,7 +2,7 @@ import { TMainHeaderInfoTypes, IQuestionProps } from '@maidt-cntn/ui';
 import { getCorrectData, getDefaultData } from './pageData';
 
 import { IImageProps, IPageInfo, IData } from '@/Pages/EEL03C04A06P01';
-import EE4L04C03A07a from '@/Pages/EE4L04C03A07a';
+
 import EE4L06C03A07aP02 from '@/Pages/EE4L06C03A07aP02';
 
 const P02 = () => {
@@ -25,8 +25,8 @@ const P02 = () => {
   };
 
   const pageInfo: IPageInfo = {
-    pageNum: 1,
-    mainKey: 1,
+    pageNum: 2,
+    mainKey: 2,
     subKey: 'TEXT-01',
   };
 

@@ -1,8 +1,4 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { useEffect, useState } from 'react';
-import { useRecoilCallback, useRecoilState, useRecoilValue, useRecoilValueLoadable, useResetRecoilState, useSetRecoilState } from 'recoil';
-import { getPageId, postUserLog } from '@maidt-cntn/api';
-import { pageDataAtom, pageAtom, studentAtom } from '@/stores';
 import { IAudioPlayerProps, IQuestionProps, Page, TMainHeaderInfoTypes } from '@maidt-cntn/ui';
 import usePageData from '@/hooks/usePageData';
 import P01 from './01';

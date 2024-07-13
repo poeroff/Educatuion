@@ -25,7 +25,7 @@ const pageInfo: P04PageProps = {
     headerPattern: 'text',
   },
   questionInfo: {
-    text: '앞에서 들은 대화를 다시 한번 들어 봅시다.',
+    text: '앞에서 들은 문장을 다시 한번 들어 봅시다.',
   },
   list: listData,
 };

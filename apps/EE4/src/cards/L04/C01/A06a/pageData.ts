@@ -7,13 +7,13 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         pageType: 'GRADE',
         inputData: [
           {
-            mainKey: 0,
+            mainKey: 1,
             inputData: [
-              { subKey: 'TEXT-01', type: 'NUMBER', value: null, isAnswer: true },
-              { subKey: 'TEXT-02', type: 'NUMBER', value: null, isAnswer: true },
-              { subKey: 'TEXT-03', type: 'NUMBER', value: null, isAnswer: true },
-              { subKey: 'TEXT-04', type: 'NUMBER', value: null, isAnswer: true },
-              { subKey: 'TEXT-05', type: 'NUMBER', value: null, isAnswer: true },
+              { subKey: 'TEXT-1', type: 'TEXT', value: '', isAnswer: true },
+              { subKey: 'TEXT-2', type: 'TEXT', value: '', isAnswer: true },
+              { subKey: 'TEXT-3', type: 'TEXT', value: '', isAnswer: true },
+              { subKey: 'TEXT-4', type: 'TEXT', value: '', isAnswer: true },
+              { subKey: 'TEXT-5', type: 'TEXT', value: '', isAnswer: true },
             ],
           },
         ],
@@ -23,8 +23,14 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         pageType: 'GRADE',
         inputData: [
           {
-            mainKey: 0,
-            inputData: [{ subKey: 'NUMBER-02', type: 'NUMBER', value: null, isAnswer: true }],
+            mainKey: 2,
+            inputData: [
+              { subKey: 'RECORDER-1', type: 'RECORDER', value: null, isAnswer: false },
+              { subKey: 'RECORDER-2', type: 'RECORDER', value: null, isAnswer: false },
+              { subKey: 'RECORDER-3', type: 'RECORDER', value: null, isAnswer: false },
+              { subKey: 'RECORDER-4', type: 'RECORDER', value: null, isAnswer: false },
+              { subKey: 'RECORDER-5', type: 'RECORDER', value: null, isAnswer: false },
+            ],
           },
         ],
       };
@@ -48,14 +54,14 @@ export const getCorrectData = (pageNumber: number) => {
     case 1:
       return [
         {
-          mainKey: 0,
+          mainKey: 1,
           inputDatas: [
             [
-              { subKey: 'TEXT-01', value: '4' },
-              { subKey: 'TEXT-02', value: '5' },
-              { subKey: 'TEXT-03', value: '1' },
-              { subKey: 'TEXT-04', value: '2' },
-              { subKey: 'TEXT-05', value: '3' },
+              { subKey: 'TEXT-1', value: '4' },
+              { subKey: 'TEXT-2', value: '5' },
+              { subKey: 'TEXT-3', value: '1' },
+              { subKey: 'TEXT-4', value: '2' },
+              { subKey: 'TEXT-5', value: '3' },
             ],
           ],
         },
@@ -63,8 +69,16 @@ export const getCorrectData = (pageNumber: number) => {
     case 2:
       return [
         {
-          mainKey: 0,
-          inputDatas: [[{ subKey: 'NUMBER-02', value: 2 }]],
+          mainKey: 2,
+          inputDatas: [
+            [
+              { subKey: 'RECORDER-1', value: 'Don’t run, please.' },
+              { subKey: 'RECORDER-2', value: 'Don’t talk, please.' },
+              { subKey: 'RECORDER-3', value: 'Don’t eat, please.' },
+              { subKey: 'RECORDER-4', value: 'Don’t enter, please.' },
+              { subKey: 'RECORDER-5', value: 'Don’t push, please.' },
+            ],
+          ],
         },
       ];
     case 3:

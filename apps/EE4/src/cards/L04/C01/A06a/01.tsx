@@ -14,7 +14,7 @@ const pageInfo: PageProps = {
     headerPattern: 'text',
   },
   questionInfo: {
-    text: '잘 듣고, 금지하는 말과 어울리는 그림을 골라 봅시다',
+    text: '잘 듣고, 들은 순서대로 알맞은 그림 카드의 번호를 적어 봅시다',
   },
   audioInfo: {
     audioSrc: '/L04/C01/A06a/EE4-L04-C01-A06a-P01.mp3',
@@ -23,31 +23,31 @@ const pageInfo: PageProps = {
   headImage: '/L01/C01/A06/EE4-L01-C01-A06-P02.jpg',
   list: [
     {
-      src: '/L04/C01/A06a/EE4-L04-C01-A06a-P01-01.jpg',
+      src: '/L04/C01/A06a/EE4-L04-C01-A06a-P01-01.png',
       alt: '음식을 먹는 것을 금지하는 표지판',
     },
     {
-      src: '/L04/C01/A06a/EE4-L04-C01-A06a-P01-02.jpg',
+      src: '/L04/C01/A06a/EE4-L04-C01-A06a-P01-02.png',
       alt: '사람이 어느 장소에 들어가는 것을 금지하는 표지판',
     },
     {
-      src: '/L04/C01/A06a/EE4-L04-C01-A06a-P01-03.jpg',
+      src: '/L04/C01/A06a/EE4-L04-C01-A06a-P01-03.png',
       alt: '사람이 벽을 미는 것을 금지하는 표지판',
     },
 
     {
-      src: '/L04/C01/A06a/EE4-L04-C01-A06a-P01-04.jpg',
+      src: '/L04/C01/A06a/EE4-L04-C01-A06a-P01-04.png',
       alt: '사람이 달리는 것을 금지하는 표지판',
     },
 
     {
-      src: '/L04/C01/A06a/EE4-L04-C01-A06a-P01-05.jpg',
+      src: '/L04/C01/A06a/EE4-L04-C01-A06a-P01-05.png',
       alt: '사람이 말하는 것을 금지하는 표지판',
     },
   ],
   pageNumber: 1,
-  mainKey: 0,
-  subKey: 'TEXT-01',
+  mainKey: 1,
+  subKey: 'TEXT-1',
 };
 
 const P01 = () => {

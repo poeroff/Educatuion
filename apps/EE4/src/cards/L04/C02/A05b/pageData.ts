@@ -42,16 +42,6 @@ export const getDefaultData = (pageNumber: number): initDataType => {
           },
         ],
       };
-    case 5:
-      return {
-        pageType: 'SUBMIT',
-        inputData: [
-          {
-            mainKey: 5,
-            inputData: [{ subKey: 'RECORDER-0', type: 'RECORDER', value: null, isAnswer: false }],
-          },
-        ],
-      };
     default:
       return {};
   }
@@ -87,13 +77,7 @@ export const getCorrectData = (pageNumber: number) => {
           inputDatas: [[{ subKey: 'RECORDER-0', value: null }]],
         },
       ];
-    case 5:
-      return [
-        {
-          mainKey: 5,
-          inputDatas: [[{ subKey: 'RECORDER-0', value: null }]],
-        },
-      ];
+
     default:
       return [];
   }

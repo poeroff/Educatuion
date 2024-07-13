@@ -19,7 +19,7 @@ const P02 = () => {
         {
           src: '/L04/C03/A07b/EE4-L04-C03-A07b-P02-01.jpg',
           alt: '계단을 위험하게 뛰어 내려가는 여자아이의 모습과 금지 표시',
-          value: ' EE4-L04-C03-A07b-P02-01.jpg',
+          value: 'EE4-L04-C03-A07b-P02-01.jpg',
         },
         {
           src: '/L04/C03/A07b/EE4-L04-C03-A07b-P02-02.jpg',
@@ -27,7 +27,7 @@ const P02 = () => {
           value: 'EE4-L04-C03-A07b-P02-02.jpg',
         },
       ]}
-      mainKey={4}
+      mainKey={2}
       getDefaultData={getDefaultData}
       getCorrectData={getCorrectData}
       getSolutionData={getSolutionData}

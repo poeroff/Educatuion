@@ -26,8 +26,8 @@ const pageInfo: PageProps = {
     },
   ],
   pageNumber: 1,
-  mainKey: 0,
-  subKey: 'NUMBER-01',
+  mainKey: 1,
+  subKey: 'NUMBER-1',
 };
 
 const P01 = () => {

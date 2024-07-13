@@ -1,10 +1,7 @@
 import { TMainHeaderInfoTypes, IQuestionProps } from '@maidt-cntn/ui';
 import { getCorrectData, getDefaultData } from './pageData';
 
-import { IPageInfo } from '@/Pages/EEL03C04A06P01';
-import EE4L05C01A06aP01, { IListenAndAnswer } from '@/Pages/EE4L05C01A06aP01';
-import EE4L06C03A07bP01 from '@/Pages/EE4L06C03A07bP01';
-import { PageProps } from '.';
+import EE4L06C03A07bP01, { IListenAndAnswer, IPageInfo } from '@/Pages/EE4L06C03A07bP01';
 
 const P01 = () => {
   const headerInfo: TMainHeaderInfoTypes = {
@@ -18,7 +15,7 @@ const P01 = () => {
   const pageInfo: IPageInfo = {
     pageNum: 1,
     mainKey: 1,
-    subKey: 'RECORDER-0',
+    subKey: ['RECORDER-01', 'RECORDER-02', 'RECORDER-03'],
   };
 
   const data: IListenAndAnswer[] = [

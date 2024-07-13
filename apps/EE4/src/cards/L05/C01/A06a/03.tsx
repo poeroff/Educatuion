@@ -1,5 +1,5 @@
 import { getCorrectData, getDefaultData } from './pageData';
-import EE4L04C01A06aP02 from '@/Pages/EE4L04C01A06aP02';
+import EE4L05C01A06aP03 from '@/Pages/EE4L05C01A06aP03';
 import { PageProps } from '.';
 
 const pageInfo: PageProps = {
@@ -35,7 +35,7 @@ const P03 = () => {
   const { headerInfo, questionInfo, headImage, list, pageNumber, mainKey, subKey } = pageInfo;
 
   return (
-    <EE4L04C01A06aP02
+    <EE4L05C01A06aP03
       headerInfo={headerInfo}
       questionInfo={questionInfo}
       getCorrectData={getCorrectData}

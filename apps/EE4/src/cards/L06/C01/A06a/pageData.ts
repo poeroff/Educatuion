@@ -2,26 +2,22 @@ import { initDataType } from '@maidt-cntn/api';
 
 export const getDefaultData = (pageNumber: number): initDataType => {
   switch (pageNumber) {
-    case 1:
-      return {
-        pageType: 'GRADE',
-        inputData: [
-          {
-            mainKey: 1,
-            inputData: [{ subKey: 'P01', type: 'NUMBER', value: 0, isAnswer: true }],
-          },
-        ],
-      };
-    case 3:
+    case 2:
       return {
         pageType: 'SUBMIT',
         inputData: [
           {
-            mainKey: 3,
-            inputData: [{ subKey: 'RECORDER-1', type: 'BOOLEAN', value: '', isAnswer: true }],
+            mainKey: 2,
+            inputData: [
+              { subKey: 'RECORDER-1', type: 'RECORDER', value: null, isAnswer: false },
+              { subKey: 'RECORDER-2', type: 'RECORDER', value: null, isAnswer: false },
+              { subKey: 'RECORDER-3', type: 'RECORDER', value: null, isAnswer: false },
+              { subKey: 'RECORDER-4', type: 'RECORDER', value: null, isAnswer: false },
+            ],
           },
         ],
       };
+
     case 4:
       return {
         pageType: 'GRADE',
@@ -32,6 +28,7 @@ export const getDefaultData = (pageNumber: number): initDataType => {
               { subKey: 'IMAGE-1', type: 'IMAGE', value: null, isAnswer: true },
               { subKey: 'IMAGE-2', type: 'IMAGE', value: null, isAnswer: true },
               { subKey: 'IMAGE-3', type: 'IMAGE', value: null, isAnswer: true },
+              { subKey: 'IMAGE-4', type: 'IMAGE', value: null, isAnswer: true },
             ],
           },
         ],
@@ -43,29 +40,31 @@ export const getDefaultData = (pageNumber: number): initDataType => {
 
 export const getCorrectData = (pageNumber: number) => {
   switch (pageNumber) {
-    case 1:
+    case 2:
       return [
         {
-          mainKey: 1,
-          inputDatas: [[{ subKey: 'P01', value: 2 }]],
+          mainKey: 2,
+          inputDatas: [
+            [
+              { subKey: 'RECORDER-1', value: "I'm cooking" },
+              { subKey: 'RECORDER-2', value: "I'm listening to music." },
+              { subKey: 'RECORDER-3', value: "I'm reading a book" },
+              { subKey: 'RECORDER-4', value: "I'm drawing a picture" },
+            ],
+          ],
         },
       ];
-    case 3:
-      return [
-        {
-          mainKey: 3,
-          inputDatas: [[{ subKey: 'RECORDER-1', value: true }]],
-        },
-      ];
+
     case 4:
       return [
         {
           mainKey: 4,
           inputDatas: [
             [
-              { subKey: 'IMAGE-1', value: '/L01/C01/A04/EE4-L01-C01-A04-P04-02.png' },
-              { subKey: 'IMAGE-2', value: '/L01/C01/A04/EE4-L01-C01-A04-P04-01.png' },
-              { subKey: 'IMAGE-3', value: '/L01/C01/A04/EE4-L01-C01-A04-P04-03.png' },
+              { subKey: 'IMAGE-1', value: '/L06/C01/A06a/EE4-L06-C01-A06a-P01-01.jpg' },
+              { subKey: 'IMAGE-2', value: '/L06/C01/A06a/EE4-L06-C01-A06a-P01-04.jpg' },
+              { subKey: 'IMAGE-3', value: '/L06/C01/A06a/EE4-L06-C01-A06a-P01-03.jpg' },
+              { subKey: 'IMAGE-4', value: '/L06/C01/A06a/EE4-L06-C01-A06a-P01-02.jpg' },
             ],
           ],
         },

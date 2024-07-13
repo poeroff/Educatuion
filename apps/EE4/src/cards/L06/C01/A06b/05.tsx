@@ -1,5 +1,5 @@
-import EEL01C01A06P04 from '@/Pages/EEL01C01A06P04';
 import { P04PageProps } from '../../C02/A05a';
+import EE4L06C01A06bP05 from '@/Pages/EE4L06C01A06bP05';
 
 const listData = [
   {
@@ -51,7 +51,7 @@ const pageInfo: P04PageProps = {
 const P05 = () => {
   const { headerInfo, questionInfo, list } = pageInfo;
 
-  return <EEL01C01A06P04 headerInfo={headerInfo} questionInfo={questionInfo} pageData={list} />;
+  return <EE4L06C01A06bP05 headerInfo={headerInfo} questionInfo={questionInfo} pageData={list} />;
 };
 
 export default P05;

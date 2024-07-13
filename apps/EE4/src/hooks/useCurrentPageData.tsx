@@ -171,6 +171,7 @@ export const useCurrentPageData = ({ initData, collectDatas }: { initData?: init
       const gradedList: gradeType[] = [];
 
       const handleData = (data: userSubmissionType) => {
+        console.log(data);
         const correctItem = collectDatas?.find(item => item.mainKey === data.mainKey);
 
         if (!correctItem) return data;

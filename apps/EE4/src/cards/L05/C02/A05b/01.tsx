@@ -1,4 +1,4 @@
-import EEL01C02A05P01, { IListenAndAnswer } from '@/Pages/EEL01C02A05P01';
+import EEL01C02A05P01, { IListenAndAnswer } from '@/Pages/EE4L05C02A05b';
 import { getCorrectData, getDefaultData } from './pageData';
 
 const P01 = () => {

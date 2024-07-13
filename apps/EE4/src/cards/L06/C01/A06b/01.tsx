@@ -1,7 +1,7 @@
 import { IQuestionProps, TMainHeaderInfoTypes, IAudioPlayerProps } from '@maidt-cntn/ui';
 import { getCorrectData, getDefaultData, getSolutionData } from './pageData';
 
-import EE4L06C01A06b from '@/Pages/EE4L06C01A06b';
+import EE4L06C01A06b from '@/Pages//EE4L06C01A06b';
 
 interface Props {
   headerInfo: TMainHeaderInfoTypes;

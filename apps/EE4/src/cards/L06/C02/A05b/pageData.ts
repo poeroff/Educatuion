@@ -8,10 +8,7 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         inputData: [
           {
             mainKey: 1,
-            inputData: [
-              { subKey: 'RECORDER-1', type: 'RECORDER', value: false, isAnswer: false },
-              { subKey: 'RECORDER-2', type: 'RECORDER', value: false, isAnswer: false },
-            ],
+            inputData: [{ subKey: 'RECORDER-1', type: 'RECORDER', value: false, isAnswer: false }],
           },
         ],
       };
@@ -21,10 +18,7 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         inputData: [
           {
             mainKey: 2,
-            inputData: [
-              { subKey: 'RECORDER-1', type: 'RECORDER', value: false, isAnswer: false },
-              { subKey: 'RECORDER-2', type: 'RECORDER', value: false, isAnswer: false },
-            ],
+            inputData: [{ subKey: 'RECORDER-1', type: 'RECORDER', value: false, isAnswer: false }],
           },
         ],
       };
@@ -34,10 +28,7 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         inputData: [
           {
             mainKey: 3,
-            inputData: [
-              { subKey: 'RECORDER-1', type: 'RECORDER', value: false, isAnswer: false },
-              { subKey: 'RECORDER-2', type: 'RECORDER', value: false, isAnswer: false },
-            ],
+            inputData: [{ subKey: 'RECORDER-1', type: 'RECORDER', value: false, isAnswer: false }],
           },
         ],
       };
@@ -47,10 +38,7 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         inputData: [
           {
             mainKey: 4,
-            inputData: [
-              { subKey: 'RECORDER-1', type: 'RECORDER', value: false, isAnswer: false },
-              { subKey: 'RECORDER-2', type: 'RECORDER', value: false, isAnswer: false },
-            ],
+            inputData: [{ subKey: 'RECORDER-1', type: 'RECORDER', value: false, isAnswer: false }],
           },
         ],
       };
@@ -60,10 +48,7 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         inputData: [
           {
             mainKey: 5,
-            inputData: [
-              { subKey: 'RECORDER-1', type: 'RECORDER', value: false, isAnswer: false },
-              { subKey: 'RECORDER-2', type: 'RECORDER', value: false, isAnswer: false },
-            ],
+            inputData: [{ subKey: 'RECORDER-1', type: 'RECORDER', value: false, isAnswer: false }],
           },
         ],
       };
@@ -73,10 +58,7 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         inputData: [
           {
             mainKey: 6,
-            inputData: [
-              { subKey: 'RECORDER-1', type: 'RECORDER', value: false, isAnswer: false },
-              { subKey: 'RECORDER-2', type: 'RECORDER', value: false, isAnswer: false },
-            ],
+            inputData: [{ subKey: 'RECORDER-1', type: 'RECORDER', value: false, isAnswer: false }],
           },
         ],
       };
@@ -92,72 +74,42 @@ export const getCorrectData = (pageNumber: number) => {
       return [
         {
           mainKey: 1,
-          inputDatas: [
-            [
-              { subKey: 'RECORDER-1', value: true },
-              { subKey: 'RECORDER-2', value: true },
-            ],
-          ],
+          inputDatas: [[{ subKey: 'RECORDER-1', value: null }]],
         },
       ];
     case 2:
       return [
         {
           mainKey: 2,
-          inputDatas: [
-            [
-              { subKey: 'RECORDER-1', value: true },
-              { subKey: 'RECORDER-2', value: true },
-            ],
-          ],
+          inputDatas: [[{ subKey: 'RECORDER-1', value: null }]],
         },
       ];
     case 3:
       return [
         {
           mainKey: 3,
-          inputDatas: [
-            [
-              { subKey: 'RECORDER-1', value: true },
-              { subKey: 'RECORDER-2', value: true },
-            ],
-          ],
+          inputDatas: [[{ subKey: 'RECORDER-1', value: null }]],
         },
       ];
     case 4:
       return [
         {
           mainKey: 4,
-          inputDatas: [
-            [
-              { subKey: 'RECORDER-1', value: true },
-              { subKey: 'RECORDER-2', value: true },
-            ],
-          ],
+          inputDatas: [[{ subKey: 'RECORDER-1', value: null }]],
         },
       ];
     case 5:
       return [
         {
           mainKey: 5,
-          inputDatas: [
-            [
-              { subKey: 'RECORDER-1', value: true },
-              { subKey: 'RECORDER-2', value: true },
-            ],
-          ],
+          inputDatas: [[{ subKey: 'RECORDER-1', value: null }]],
         },
       ];
     case 6:
       return [
         {
           mainKey: 6,
-          inputDatas: [
-            [
-              { subKey: 'RECORDER-1', value: true },
-              { subKey: 'RECORDER-2', value: true },
-            ],
-          ],
+          inputDatas: [[{ subKey: 'RECORDER-1', value: null }]],
         },
       ];
 

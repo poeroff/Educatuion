@@ -4,11 +4,15 @@ export const getDefaultData = (pageNumber: number): initDataType => {
   switch (pageNumber) {
     case 1:
       return {
-        pageType: 'GRADE',
+        pageType: 'SUBMIT',
         inputData: [
           {
-            mainKey: 0,
-            inputData: [{ subKey: 'NUMBER-01', type: 'NUMBER', value: null, isAnswer: true }],
+            mainKey: 1,
+            inputData: [
+              { subKey: 'RECORDER-01', type: 'RECORDER', value: null, isAnswer: false },
+              { subKey: 'RECORDER-02', type: 'RECORDER', value: null, isAnswer: false },
+              { subKey: 'RECORDER-03', type: 'RECORDER', value: null, isAnswer: false },
+            ],
           },
         ],
       };
@@ -17,8 +21,8 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         pageType: 'GRADE',
         inputData: [
           {
-            mainKey: 0,
-            inputData: [{ subKey: 'NUMBER-02', type: 'NUMBER', value: null, isAnswer: true }],
+            mainKey: 2,
+            inputData: [{ subKey: 'NUMBER-1', type: 'NUMBER', value: null, isAnswer: true }],
           },
         ],
       };
@@ -27,8 +31,18 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         pageType: 'GRADE',
         inputData: [
           {
-            mainKey: 0,
-            inputData: [{ subKey: 'NUMBER-03', type: 'NUMBER', value: null, isAnswer: true }],
+            mainKey: 3,
+            inputData: [{ subKey: 'NUMBER-1', type: 'NUMBER', value: null, isAnswer: true }],
+          },
+        ],
+      };
+    case 4:
+      return {
+        pageType: 'GRADE',
+        inputData: [
+          {
+            mainKey: 4,
+            inputData: [{ subKey: 'NUMBER-1', type: 'NUMBER', value: null, isAnswer: true }],
           },
         ],
       };
@@ -43,21 +57,34 @@ export const getCorrectData = (pageNumber: number) => {
       return [
         {
           mainKey: 1,
-          inputDatas: [[{ subKey: 'TEXT-01', value: 'teacher' }]],
+          inputDatas: [
+            [
+              { subKey: 'RECORDER-01', value: null },
+              { subKey: 'RECORDER-02', value: null },
+              { subKey: 'RECORDER-03', value: null },
+            ],
+          ],
         },
       ];
     case 2:
       return [
         {
           mainKey: 2,
-          inputDatas: [[{ subKey: 'TEXT-01', value: 'grandma' }]],
+          inputDatas: [[{ subKey: 'NUMBER-1', value: 1 }]],
         },
       ];
     case 3:
       return [
         {
           mainKey: 3,
-          inputDatas: [[{ subKey: 'TEXT-01', value: 'friend' }]],
+          inputDatas: [[{ subKey: 'NUMBER-1', value: 1 }]],
+        },
+      ];
+    case 4:
+      return [
+        {
+          mainKey: 4,
+          inputDatas: [[{ subKey: 'NUMBER-1', value: 2 }]],
         },
       ];
 

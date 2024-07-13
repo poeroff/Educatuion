@@ -7,7 +7,7 @@ import { getCorrectData, getDefaultData } from './pageData';
 
 import EE4L06C03A07bP02 from '@/Pages/EE4L06C03A07bP02';
 
-import { PageProps, listData } from '.';
+import { PageProps } from '.';
 
 const pageInfo: PageProps = {
   headerInfo: {
@@ -30,8 +30,8 @@ const pageInfo: PageProps = {
     },
   ],
   pageNumber: 2,
-  mainKey: 0,
-  subKey: 'NUMBER-02',
+  mainKey: 2,
+  subKey: 'NUMBER-1',
 };
 
 const text = "I'm cleaning";

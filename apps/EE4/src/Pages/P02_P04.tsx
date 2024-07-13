@@ -1,20 +1,3 @@
-/*
-    1. URL: http://localhost:4270/#/ee40/L01-C01-A06
-    2. 페이지: EE4-L01-C01-A06-P01
-
-    3. PropsTypes
-        - headerInfo: TMainHeaderInfoTypes;
-        - questionInfo: IQuestionProps;
-        - audioInfo: IAudioPlayerProps;
-        - files: any;
-        - pageNumber: number;
-        - mainKey: number;
-        - subKey: string;
-        - list: { src: string; alt: string }[];
-        - correctData: number;
-*/
-
-// UI 공통
 import {
   Image,
   BoxWrap,
@@ -31,6 +14,10 @@ import {
   IQuestionProps,
   IAudioPlayerProps,
   List,
+  SimpleAudioPlayer,
+  Recorder,
+  EStyleFontSizes,
+  Drawing,
 } from '@maidt-cntn/ui';
 
 // UI en
@@ -42,9 +29,18 @@ import { useCurrentPageData } from '@/hooks/useCurrentPageData';
 import { useRecoilValue } from 'recoil';
 import { currentPageGradeData } from '@/stores';
 import { initDataType } from '@maidt-cntn/api';
-import { correctDataType } from '@/types/pageData';
+import { RadioBox } from '@/assets/styles';
 
 export type IListData = {
+  src?: string;
+  alt?: string;
+};
+
+type IListenAndAnswer = {
+  type: string;
+  color: string;
+  content: React.ReactNode;
+  isRecoding: boolean;
   src?: string;
   alt?: string;
 };
@@ -52,24 +48,22 @@ export type IListData = {
 export type PageProps = {
   headerInfo: TMainHeaderInfoTypes;
   questionInfo: IQuestionProps;
-  audioInfo?: IAudioPlayerProps;
-  headImage?: {
-    src: string;
-    alt: string;
-    title: string;
-  };
+
+  headImage?: string;
   getCorrectData: (index: number) => any;
   getDefaultData: (index: number) => initDataType;
   pageNumber?: number;
   mainKey?: number;
   subKey?: string;
   pageData?: IListData[] | undefined;
+  textObj: string;
 };
 
-const Component = ({
+const EE4L05C03A07bP02 = ({
+  textObj,
   headerInfo,
   questionInfo,
-  audioInfo,
+
   getCorrectData,
   getDefaultData,
   headImage,
@@ -79,6 +73,27 @@ const Component = ({
   pageData = [], // PageData
 }: PageProps) => {
   const [isOpen, setIsOpen] = useState(false); // 답안 보기
+  const [data, setData] = useState<Array<IListenAndAnswer>>([
+    {
+      type: 'A',
+      color: '#E2F2FF',
+      content: (
+        <>
+          Good afternoon.
+          <br />
+          How are you?
+        </>
+      ),
+      isRecoding: false,
+    },
+    {
+      type: 'B',
+      color: '#FFF0CC',
+      content: <>I’m good.</>,
+
+      isRecoding: false,
+    },
+  ]);
 
   // bx pageData.ts
   const { getValueInputData, changeInputData, isSubmittedInput, gradeSubmitPageData } = useCurrentPageData({
@@ -97,6 +112,15 @@ const Component = ({
   const isCorrect = gradeData.find(data => data.mainKey === mainKey)?.isCorrect; // 체점 후 정답인지 아닌지 체크
   const correctData = getCorrectData(pageNumber as number)[0].inputDatas[0][0].value; // 정답
 
+  // record handler
+  const recordonHandler = (index: number) => {
+    setData(prevDataList => {
+      const updatedDataList = [...prevDataList];
+      updatedDataList[index].isRecoding = true;
+      return updatedDataList;
+    });
+  };
+
   // radio handler
   const onHandler = (index: number) => {
     handleChangeInputData(mainKey as number, subKey as string, index);
@@ -114,7 +138,6 @@ const Component = ({
 
   return (
     <Container
-      bodyId='targetContainer'
       headerInfo={headerInfo}
       questionInfo={{
         ...questionInfo,
@@ -124,41 +147,63 @@ const Component = ({
       submitDisabled={inputData === null}
       submitLabel={isComplete ? (isOpen ? '답안 닫기' : '답안 보기') : '채점하기'}
       submitBtnColor={inputData != null ? (isOpen ? EStyleButtonTypes.DEFAULT : EStyleButtonTypes.YELLOW) : EStyleButtonTypes.SECONDARY}
-      audioInfo={audioInfo}
       onSubmit={onSubmit}
       useExtend
     >
-      <Box useFull>
+      <Box>
         <BoxWrap>
-          <Box marginRight='30px'>
-            <PinchZoom>
-              <Box display='flex' justifyContent='center' width='306px' height='394px'>
-                {headImage && <Image src={headImage.src} width='auto' height='100%' alt={headImage.alt} title={headImage.title} />}
-              </Box>
-            </PinchZoom>
-          </Box>
-          <Box hAlign='center' vAlign='center'>
-            <List<IListData>
-              align='horizontal'
-              data={pageData}
-              row={({ value, index = 1 }) => (
-                <Radio
-                  type='square'
-                  name='result1'
-                  isError={isComplete ? !isCorrect : false}
-                  disabled={isComplete}
-                  value={index === inputData}
-                  onClick={() => onHandler(index)}
+          <Box>
+            <div style={{ display: 'flex' }}>
+              <List<IListData>
+                align='horizontal'
+                data={pageData.slice(0, 3)}
+                row={({ value, index = 0 }) => (
+                  <div>
+                    <div>
+                      <RadioBox key={index} type='square' align='horizontal' name='radio-box1'>
+                        <Label value={String(index)} size='middle' />
+                      </RadioBox>
+                    </div>
+                    <Radio
+                      type='square'
+                      name='result1'
+                      isError={isComplete ? !isCorrect : false}
+                      disabled={isComplete}
+                      value={index === inputData}
+                      onClick={() => onHandler(index)}
+                    >
+                      <div>
+                        <Box width='px' height='200px' hAlign='center' border='none' marginRight={50}>
+                          {value && <img src={value.src} width='204px' height='200px' alt={value.alt} title={value.alt} />}
+                        </Box>
+                      </div>
+                    </Radio>
+                  </div>
+                )}
+              />
+              <div style={{ marginTop: '5%' }}>
+                <Box
+                  background='#fff0cc'
+                  padding={'4px 12px 4px 12px'}
+                  height={'48px'}
+                  borderRadius={'8px'}
+                  fontSize={'28px'}
+                  display={'flex'}
+                  justifyContent={'center'}
+                  alignItems={'center'}
+                  fontWeight={500}
+                  color={'black'}
+                  textAlign={'center'}
                 >
-                  <Label value={index} />
-                  <Box width='174px' height='200px' hAlign='center' border='none'>
-                    {value && <Image src={value?.src as string} width='130px' height='130px' alt={value.alt} title={value.alt} />}
-                  </Box>
-                </Radio>
-              )}
-            />
+                  {textObj}
+                </Box>
+
+                <Drawing width={'400px'} height={'150px'} />
+              </div>
+            </div>
           </Box>
         </BoxWrap>
+
         <BottomSheet bottomSheetTargetId='targetContainer' height='40%' show={isOpen}>
           <Box background='lightGray' borderRadius='12px' marginTop='48px'>
             <Tag fontSize='22px' height='auto' label='답안' type={ETagLine.GREEN} width='auto' />
@@ -172,4 +217,4 @@ const Component = ({
   );
 };
 
-export default Component;
+export default EE4L05C03A07bP02;

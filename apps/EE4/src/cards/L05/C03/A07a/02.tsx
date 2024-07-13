@@ -2,15 +2,15 @@ import { TMainHeaderInfoTypes, IQuestionProps } from '@maidt-cntn/ui';
 import { getCorrectData, getDefaultData } from './pageData';
 
 import { IImageProps, IPageInfo, IData } from '@/Pages/EEL03C04A06P01';
-import EE4L04C03A07a from '@/Pages/EE4L04C03A07a';
+import EE4L05C03A07a from '@/Pages/EE4L04C03A07a';
 
 const P02 = () => {
   const headerInfo: TMainHeaderInfoTypes = {
-    headerText: 'Review 3',
+    headerText: 'World and Sentences',
   };
 
   const questionInfo: IQuestionProps = {
-    text: '사진과 일치하는 낱말을 <보기> 에서 골라 쓰고 말해 봅시다.',
+    text: '그림을 보고, 알맞은 문장을 <보기>에서 골라 쓰고 말해 봅시다.',
   };
 
   const imageInfo: IImageProps = {
@@ -36,7 +36,7 @@ const P02 = () => {
   ];
 
   return (
-    <EE4L04C03A07a
+    <EE4L05C03A07a
       headerInfo={headerInfo}
       questionInfo={questionInfo}
       imageInfo={imageInfo}

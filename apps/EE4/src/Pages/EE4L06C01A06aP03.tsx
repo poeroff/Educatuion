@@ -1,114 +1,109 @@
-import { Container } from '@maidt-cntn/ui/en';
+/*
+    1. URL: http://localhost:4270/#/ee40/L01-C01-A06
+    2. 페이지: EE4-L01-C01-A06-P01
+
+    3. PropsTypes
+        - headerInfo: TMainHeaderInfoTypes;
+        - questionInfo: IQuestionProps;
+        - audioInfo: IAudioPlayerProps;
+        - files: any;
+        - pageNumber: number;
+        - mainKey: number;
+        - subKey: string;
+        - list: { src: string; alt: string }[];
+        - correctData: number;
+*/
+
+// UI 공통
 import {
+  Image,
   BoxWrap,
+  Box,
+  PinchZoom,
+  Radio,
+  Label,
+  EStyleButtonTypes,
+  Tag,
+  Typography,
+  BottomSheet,
+  ETagLine,
   TMainHeaderInfoTypes,
+  IQuestionProps,
+  IAudioPlayerProps,
+  List,
   ListHeader,
   ToggleButton,
-  IQuestionProps,
-  Box,
+  EStyleFontSizes,
   SimpleAudioPlayer,
-  List,
-  Scroll,
-  Label,
-  Typography,
 } from '@maidt-cntn/ui';
+
+// UI en
+import { Container } from '@maidt-cntn/ui/en';
 import { useState } from 'react';
-// import styled from '@emotion/styled';
-import styled from 'styled-components';
 
-export interface IListenAndAnswer {
-  key: number;
-  type: string;
-  question: string;
-  answer: string;
-  color: string;
-}
+// API
+import { useCurrentPageData } from '@/hooks/useCurrentPageData';
+import { useRecoilValue } from 'recoil';
+import { currentPageGradeData } from '@/stores';
+import { initDataType } from '@maidt-cntn/api';
 
-export interface EEL02C04A04P02 {
+export type IListData = {
+  isClick?: boolean;
+  audioSrc?: string;
+  data?: { question: string; answer: string; type: string; color: string }[];
+};
+
+export type PageProps = {
   headerInfo: TMainHeaderInfoTypes;
   questionInfo: IQuestionProps;
-  data: IListenAndAnswer[];
-  keyInfo: number[];
-  audioList: Array<{ audioSrc: string }>;
-}
+  audioInfo?: IAudioPlayerProps;
+  pageData: IListData[];
+};
 
-const EE4L06C01A06aP03 = ({ headerInfo, questionInfo, data, audioList, keyInfo }: EEL02C04A04P02) => {
+const EE4L06C01A06aP03 = ({ headerInfo, questionInfo, pageData }: PageProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <Container headerInfo={headerInfo} questionInfo={questionInfo} useExtend vAlign='flex-start'>
-      <Scroll>
-        <ListHeader>
-          <ToggleButton id='toggle' isChecked={isOpen} isTranslation onClick={() => setIsOpen(!isOpen)} />
-        </ListHeader>
-        <Box hAlign={'center'} width={'1000px'}>
-          <Box width={'720px'} gap={40} hAlign={'flex-start'} display='flex' flex-wrap='wrap' alignItems='flex-start'>
-            {keyInfo.map(idx => (
-              // <Scroll>
-              <Box key={idx} width={'320px'} gap={8}>
-                <Box width='264px' height='58px' gap={8} hAlign={'flex-start'}>
-                  <Typography style={{ fontSize: '36px', fontWeight: '800', lineHeight: '58px', color: '#996500' }}>{idx + 1}</Typography>
-                  <SimpleAudioPlayer audioSrc={audioList[idx as number].audioSrc} />
-                </Box>
-                <List<IListenAndAnswer>
-                  data={data.filter(dataItem => dataItem.key === idx)}
-                  row={({ value }) => (
-                    // <BoxWrap height={value?.question.includes('\n') || value?.answer.includes('\n') ? '184px' : '142px'}>
-                    <BoxWrap
-                      height={
-                        value?.question.includes('\n') && value?.answer.includes('\n')
-                          ? '184px'
-                          : value?.question.includes('\n') || value?.answer.includes('\n')
-                          ? '142px'
-                          : '100px'
-                      }
-                    >
-                      <Box marginRight={'16px'}>
-                        <Label value={value?.type || ''} type={'paint'} background={value?.color} />
-                      </Box>
-                      <Box>
-                        <Typography
-                          style={{
-                            fontSize: '28px',
-                            fontWeight: '500',
-                            lineHeight: '42px',
-                            color: 'var(--color-grey-900)',
-                          }}
-                          useGap={false}
-                        >
-                          {value?.question}
-                        </Typography>
-                        {isOpen && (
-                          <Box>
-                            <Typography style={{ fontSize: '28px', fontWeight: '500', lineHeight: '42px', color: '#2F38C7' }} useGap={false}>
-                              {value?.answer}
-                            </Typography>
-                          </Box>
-                        )}
-                      </Box>
-                    </BoxWrap>
-                  )}
-                />
+    <Container headerInfo={headerInfo} vAlign='top' submitBtnColor={EStyleButtonTypes.SECONDARY} questionInfo={questionInfo}>
+      <ListHeader>
+        <ToggleButton id='toggle' isChecked={isOpen} isTranslation onClick={() => setIsOpen(!isOpen)} />
+      </ListHeader>
+
+      <BoxWrap>
+        <List<IListData>
+          align='horizontal'
+          data={pageData}
+          gap={0}
+          row={({ value, index }) => (
+            <Box width='406px'>
+              <Box display='flex' alignItems='center'>
+                <Typography size={EStyleFontSizes['LARGE']} color='#996500' weight={800}>
+                  {index}
+                </Typography>
+                {value?.audioSrc && <SimpleAudioPlayer audioSrc={value?.audioSrc} />}
               </Box>
-              // </Scroll>
-            ))}
-          </Box>
-        </Box>
-      </Scroll>
+
+              {value?.data &&
+                value?.data.map((value, index) => {
+                  return (
+                    <Box key={index} height='120px' marginTop='10px' paddingLeft='10px'>
+                      <Label type='paint' value={value?.type} background={value?.color} />
+                      <Typography weight={600}>{value.question}</Typography>
+                      {isOpen && (
+                        <Box {...{ margin: '10px 0 0 38px' }}>
+                          <Typography weight={600} color='#2F38C7'>
+                            {value.answer}
+                          </Typography>
+                        </Box>
+                      )}
+                    </Box>
+                  );
+                })}
+            </Box>
+          )}
+        />
+      </BoxWrap>
     </Container>
   );
 };
-
 export default EE4L06C01A06aP03;
-
-// 스타일이 적용된 ListHeader 정의
-// export const StyledListHeader = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: end;
-//   padding: 4px 0;
-//   margin-right: 16px;
-//   font-size: 18px;
-//   font-weight: var(--font-weight-medium);
-//   line-height: 48px;
-// `;

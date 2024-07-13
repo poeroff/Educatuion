@@ -1,3 +1,20 @@
+/*
+    1. URL: http://localhost:4270/#/ee40/L01-C01-A06
+    2. 페이지: EE4-L01-C01-A06-P01
+
+    3. PropsTypes
+        - headerInfo: TMainHeaderInfoTypes;
+        - questionInfo: IQuestionProps;
+        - audioInfo: IAudioPlayerProps;
+        - files: any;
+        - pageNumber: number;
+        - mainKey: number;
+        - subKey: string;
+        - list: { src: string; alt: string }[];
+        - correctData: number;
+*/
+
+// UI 공통
 import {
   Image,
   BoxWrap,
@@ -17,7 +34,6 @@ import {
   SimpleAudioPlayer,
   Recorder,
   EStyleFontSizes,
-  Drawing,
 } from '@maidt-cntn/ui';
 
 // UI en
@@ -29,7 +45,6 @@ import { useCurrentPageData } from '@/hooks/useCurrentPageData';
 import { useRecoilValue } from 'recoil';
 import { currentPageGradeData } from '@/stores';
 import { initDataType } from '@maidt-cntn/api';
-import { RadioBox } from '../EEL01C02A02P03';
 
 export type IListData = {
   src?: string;
@@ -56,11 +71,9 @@ export type PageProps = {
   mainKey?: number;
   subKey?: string;
   pageData?: IListData[] | undefined;
-  textObj: string;
 };
 
-const EE4L05C03A07bP02 = ({
-  textObj,
+const EE4L05C01A06aP03 = ({
   headerInfo,
   questionInfo,
 
@@ -135,6 +148,7 @@ const EE4L05C03A07bP02 = ({
 
     setIsOpen(!isOpen);
   };
+  console.log(pageData);
 
   return (
     <Container
@@ -152,55 +166,35 @@ const EE4L05C03A07bP02 = ({
     >
       <Box>
         <BoxWrap>
-          <Box>
-            <div style={{ display: 'flex' }}>
-              <List<IListData>
-                align='horizontal'
-                data={pageData.slice(0, 3)}
-                row={({ value, index = 0 }) => (
-                  <div>
-                    <div>
-                      <RadioBox key={index} type='square' align='horizontal' name='radio-box1'>
-                        <Label value={String(index)} size='middle' />
-                      </RadioBox>
-                    </div>
-                    <Radio
-                      type='square'
-                      name='result1'
-                      isError={isComplete ? !isCorrect : false}
-                      disabled={isComplete}
-                      value={index + 1 === inputData}
-                      onClick={() => onHandler(index + 1)}
-                    >
-                      <div>
-                        <Box width='px' height='200px' hAlign='center' border='none' marginRight={50}>
-                          {value && <img src={value.src} width='204px' height='200px' alt={value.alt} title={value.alt} />}
-                        </Box>
-                      </div>
-                    </Radio>
-                  </div>
-                )}
-              />
-              <div style={{ marginTop: '5%' }}>
-                <Box
-                  background='#fff0cc'
-                  padding={'4px 12px 4px 12px'}
-                  height={'48px'}
-                  borderRadius={'8px'}
-                  fontSize={'28px'}
-                  display={'flex'}
-                  justifyContent={'center'}
-                  alignItems={'center'}
-                  fontWeight={500}
-                  color={'black'}
-                  textAlign={'center'}
+          <Box marginRight='85px'></Box>
+          <Box hAlign='center' vAlign='center' display='block'>
+            {/* 상단 3개 항목 */}
+            <List<IListData>
+              align='horizontal'
+              data={pageData.slice(0, 5)}
+              row={({ value, index = 0 }) => (
+                <Radio
+                  type='square'
+                  name='result1'
+                  isError={isComplete ? !isCorrect : false}
+                  disabled={isComplete}
+                  value={index + 1 === inputData}
+                  onClick={() => onHandler(index + 1)}
                 >
-                  {textObj}
-                </Box>
-
-                <Drawing width={'400px'} height={'150px'} />
-              </div>
-            </div>
+                  <div style={{ display: 'flex' }}>
+                    <Typography size={EStyleFontSizes['LARGE']} color='#996500' weight={800}>
+                      {index}
+                    </Typography>
+                    <Box width='174px' height='174px' hAlign='center' border='none'>
+                      {value && <Image src={value?.src as string} width='130px' height='130px' alt={value.alt} title={value.alt} />}
+                    </Box>
+                  </div>
+                  <Box hAlign='flex-start' gap={6} marginLeft='80px'>
+                    <Recorder recorderIndex={index} onSubmit={() => onHandler(index + 1)} />
+                  </Box>
+                </Radio>
+              )}
+            />
           </Box>
         </BoxWrap>
 
@@ -217,4 +211,4 @@ const EE4L05C03A07bP02 = ({
   );
 };
 
-export default EE4L05C03A07bP02;
+export default EE4L05C01A06aP03;

@@ -28,9 +28,9 @@ const pageInfo: PageProps = {
       alt: '로봇을 만들고 있는 여자아이',
     },
   ],
-  pageNumber: 1,
-  mainKey: 0,
-  subKey: 'NUMBER-02',
+  pageNumber: 2,
+  mainKey: 2,
+  subKey: 'RECORDER-1',
 };
 
 const P02 = () => {

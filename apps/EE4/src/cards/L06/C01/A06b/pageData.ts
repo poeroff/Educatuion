@@ -12,12 +12,42 @@ export const getDefaultData = (pageNumber: number): initDataType => {
           },
         ],
       };
+    case 2:
+      return {
+        pageType: 'GRADE',
+        inputData: [
+          {
+            mainKey: 2,
+            inputData: [{ subKey: 'P01', type: 'NUMBER', value: 0, isAnswer: true }],
+          },
+        ],
+      };
     case 3:
+      return {
+        pageType: 'GRADE',
+        inputData: [
+          {
+            mainKey: 3,
+            inputData: [{ subKey: 'P01', type: 'NUMBER', value: 0, isAnswer: true }],
+          },
+        ],
+      };
+    case 4:
+      return {
+        pageType: 'GRADE',
+        inputData: [
+          {
+            mainKey: 4,
+            inputData: [{ subKey: 'P01', type: 'NUMBER', value: 0, isAnswer: true }],
+          },
+        ],
+      };
+    case 5:
       return {
         pageType: 'SUBMIT',
         inputData: [
           {
-            mainKey: 3,
+            mainKey: 5,
             inputData: [{ subKey: 'RECORDER-1', type: 'BOOLEAN', value: '', isAnswer: true }],
           },
         ],
@@ -33,6 +63,13 @@ export const getCorrectData = (pageNumber: number) => {
       return [
         {
           mainKey: 1,
+          inputDatas: [[{ subKey: 'P01', value: 1 }]],
+        },
+      ];
+    case 2:
+      return [
+        {
+          mainKey: 2,
           inputDatas: [[{ subKey: 'P01', value: 2 }]],
         },
       ];
@@ -40,6 +77,21 @@ export const getCorrectData = (pageNumber: number) => {
       return [
         {
           mainKey: 3,
+          inputDatas: [[{ subKey: 'P01', value: 1 }]],
+        },
+      ];
+    case 4:
+      return [
+        {
+          mainKey: 4,
+          inputDatas: [[{ subKey: 'P01', value: 2 }]],
+        },
+      ];
+
+    case 5:
+      return [
+        {
+          mainKey: 5,
           inputDatas: [[{ subKey: 'RECORDER-1', value: '(예시 답안) This is my brother.' }]],
         },
       ];

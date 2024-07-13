@@ -6,9 +6,10 @@ const listData = [
     isClick: false,
     audioSrc: '/L05/C01/A06a/EE4-L05-C01-A06a-P04.mp3',
     data: [
-      { question: 'What are youn doing?', answer: '무엇을 하고있니?', type: 'G', color: '#E2F2FF' },
+      { question: "Let's play basketball", answer: '우리 농구를 하자', type: 'G', color: '#E2F2FF' },
       { question: "Sorry, I can't. Let's play baseball", answer: '미안해 나는 할 수 없어. 우리 배드민턴을 하자.', type: 'B', color: '#FFF0CC' },
       { question: "Sorry, I can't. Let's play baseball", answer: '미안해, 나는 할 수 없어. 우리 야구를 하자', type: 'G', color: '#E2F2FF' },
+      { question: 'Sure', answer: '좋아', type: 'B', color: '#FFF0CC' },
     ],
   },
 ];

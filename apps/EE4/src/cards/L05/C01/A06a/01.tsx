@@ -1,52 +1,44 @@
-import { TMainHeaderInfoTypes, IQuestionProps } from '@maidt-cntn/ui';
 import { getCorrectData, getDefaultData } from './pageData';
 
-import { IPageInfo } from '@/Pages/EEL03C04A06P01';
-import EE4L05C01A06aP01, { IListenAndAnswer } from '@/Pages/EE4L05C01A06aP01';
-import { PageProps } from '.';
+import EE4L05C01A06aP02 from '@/Pages/EE4L05C01A06aP02';
 
 const P01 = () => {
-  const headerInfo: TMainHeaderInfoTypes = {
-    headerText: 'Words and Sentences 3',
-  };
-
-  const questionInfo: IQuestionProps = {
-    text: '다음 문장을 듣고 따라 읽어 봅시다.',
-  };
-
-  const pageInfo: IPageInfo = {
-    pageNum: 1,
-    mainKey: 1,
-    subKey: 'RECORDER-0',
-  };
-
-  const data: IListenAndAnswer[] = [
-    {
-      content: "Dont't run, please",
-      audioSrc: '/L01/C03/A07b/EE4-L01-C03-A07b-P01.wav',
-    },
-    {
-      content: "Dont't push, please",
-      audioSrc: '/L01/C03/A07b/EE4-L01-C03-A07b-P02.wav',
-    },
-    {
-      content: "Dont't talk, please",
-      audioSrc: '/L01/C03/A07b/EE4-L01-C03-A07b-P03.wav',
-    },
-    {
-      content: "Dont't enter, please",
-      audioSrc: '/L01/C03/A07b/EE4-L01-C03-A07b-P01.wav',
-    },
-  ];
-
   return (
-    <EE4L05C01A06aP01
-      headerInfo={headerInfo}
-      questionInfo={questionInfo}
-      data={data}
-      pageInfo={pageInfo}
-      getCorrectData={getCorrectData}
-      getDefaultData={getDefaultData}
+    <EE4L05C01A06aP02
+      layout={{
+        headerInfo: {
+          headerText: 'Listen and Do',
+          headerPattern: 'text' as const,
+        },
+        questionInfo: {
+          text: '다시 한번 듣고, 함께 하자고 한 운동에는 O, 할 수 없다고 한 운동에는 X표시를 해봅시다',
+        },
+        audioInfo: { audioSrc: '/L05/C01/A06a/EE4-L05-C01-A06a-P02.mp3', captionSrc: '/L05/C01/A06a/ EE4-L05-C01-A06a-P02.srt' },
+      }}
+      imgArr={[
+        {
+          src: '/L05/C01/A06a/EE4-L05-C01-A06a-P02-01.jpg',
+          alt: '배드민턴을 하는 아이',
+          title: '배드민턴을 하는 아이',
+        },
+        {
+          src: '/L05/C01/A06a/EE4-L05-C01-A06a-P02-02.jpg',
+          alt: '야구 하는 아이들',
+          title: '야구 하는 아이들',
+        },
+        {
+          src: '/L05/C01/A06a/EE4-L05-C01-A06a-P02-03.jpg',
+          alt: '농구 하는 아이들',
+          title: '농구 하는 아이들',
+        },
+      ]}
+      pageData={{
+        pageNumber: 2,
+        mainKey: 2,
+        subKey: 'TEXT-01',
+        getDefaultData: getDefaultData,
+        getCorrectData: getCorrectData,
+      }}
     />
   );
 };

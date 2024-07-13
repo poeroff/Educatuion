@@ -8,7 +8,7 @@ const pageInfo: PageProps = {
     headerPattern: 'text',
   },
   questionInfo: {
-    text: '잘 듣고, 금지하는 말과 어울리는 그림을 골라 봅시다',
+    text: '그림을 보고, 그림에 알맞은 금지하는 말을 해 봅시다',
   },
 
   headImage: '/L01/C01/A06/EE4-L01-C01-A06-P02.jpg',
@@ -34,9 +34,9 @@ const pageInfo: PageProps = {
       alt: '사람이 벽을 미는 것을 금지하는 표지판',
     },
   ],
-  pageNumber: 1,
-  mainKey: 0,
-  subKey: 'NUMBER-01',
+  pageNumber: 2,
+  mainKey: 2,
+  subKey: 'RECORDER-1',
 };
 
 const P02 = () => {

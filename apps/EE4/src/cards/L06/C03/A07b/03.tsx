@@ -7,7 +7,7 @@ import { getCorrectData, getDefaultData } from './pageData';
 
 import EE4L06C03A07bP02 from '@/Pages/EE4L06C03A07bP02';
 
-import { PageProps, listData } from '.';
+import { PageProps } from '.';
 
 const pageInfo: PageProps = {
   headerInfo: {
@@ -31,9 +31,9 @@ const pageInfo: PageProps = {
       alt: '요리하는 외계인 친구',
     },
   ],
-  pageNumber: 2,
-  mainKey: 0,
-  subKey: 'NUMBER-02',
+  pageNumber: 3,
+  mainKey: 3,
+  subKey: 'NUMBER-1',
 };
 
 const text = "I'm reading a book";

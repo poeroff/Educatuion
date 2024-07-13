@@ -25,9 +25,9 @@ const pageInfo: PageProps = {
       alt: '복도에서 띄고 있는 남자아이',
     },
   ],
-  pageNumber: 2,
-  mainKey: 0,
-  subKey: 'NUMBER-02',
+  pageNumber: 3,
+  mainKey: 3,
+  subKey: 'NUMBER-1',
 };
 
 const P03 = () => {

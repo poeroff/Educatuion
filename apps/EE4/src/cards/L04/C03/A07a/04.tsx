@@ -23,9 +23,9 @@ const P04 = () => {
   };
 
   const pageInfo: IPageInfo = {
-    pageNum: 1,
-    mainKey: 1,
-    subKey: 'TEXT-01',
+    pageNum: 4,
+    mainKey: 4,
+    subKey: 'TEXT-1',
   };
 
   const data: IData[] = [
@@ -33,6 +33,7 @@ const P04 = () => {
     { text: "Don't run, please" },
     { text: "Don't talk, please" },
     { text: "Don't push, please" },
+    { text: "Don't enter, please" },
   ];
 
   return (
