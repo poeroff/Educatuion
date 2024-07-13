@@ -79,8 +79,8 @@ const EE4L04C03A07bP03 = ({
   });
 
   const INITIAL: Props['INITIAL'] = {
-    isValChk: Boolean(getValueInputData(mainKey, 'IMAGE-1') && getValueInputData(mainKey, 'IMAGE-2') && getValueInputData(mainKey, 'IMAGE-3')),
-    isComplete: isSubmittedInput(mainKey, 'IMAGE-1') && isSubmittedInput(mainKey, 'IMAGE-2') && isSubmittedInput(mainKey, 'IMAGE-3'),
+    isValChk: Boolean(getValueInputData(mainKey, 'IMAGE-1') && getValueInputData(mainKey, 'IMAGE-2')),
+    isComplete: isSubmittedInput(mainKey, 'IMAGE-1') && isSubmittedInput(mainKey, 'IMAGE-2'),
   };
 
   const gradeData = useRecoilValue(currentPageGradeData);
@@ -168,23 +168,28 @@ const EE4L04C03A07bP03 = ({
       bodyId='targetContainer'
     >
       <Box useFull>
-        <BoxWrap useFull justifyContent={'center'}>
-          <GridBox onDragEnd={() => handleDragEnd()} style={{ display: 'flex', flexDirection: 'row', marginLeft: '35%' }}>
-            <AudioBox style={{ display: 'flex', flexDirection: 'column' }}>
+        <BoxWrap useFull justifyContent={'center'} padding={'0px 40px'}>
+          <GridBox
+            onDragEnd={() => handleDragEnd()}
+            style={{
+              marginLeft: '50%',
+              display: 'grid',
+              gridTemplateColumns: '1fr 2fr',
+              gap: '20px',
+              alignItems: 'start',
+            }}
+          >
+            <AudioBox style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '500px' }}>
               {Array.from({ length: 2 }).map((_, idx) => {
                 const answerSrc = getValueInputData(mainKey, 'IMAGE-' + (idx + 1)) as string;
                 const matchedImage = imageList.find(img => img.src === answerSrc);
                 return (
                   <AudioWrap key={idx}>
-                    <AudioItem style={{ display: 'flex' }}>
+                    <AudioItem>
                       <AudioNumber>{idx + 1}</AudioNumber>
-                      <Box display={'inline-block'} padding={'10px'}></Box>
-                      <Typography
-                        style={{ fontSize: '36px', lineHeight: '54px', width: '342px', borderRadius: '8px', padding: '8px 12px 8px 12px' }}
-                        weight='500'
-                      >
-                        {idx === 0 ? "Don't push, please" : "Don't talk, please"}
-                      </Typography>
+                      <Box display={'inline-block'} padding={'10px'}>
+                        <Text>{idx === 0 ? "Don't enter, please." : "Don't run, please."}</Text>
+                      </Box>
                     </AudioItem>
                     <DropBox
                       ref={dragDestinationRef.current[idx]}
@@ -193,25 +198,25 @@ const EE4L04C03A07bP03 = ({
                         activeBox(idx);
                       }}
                       onDragLeave={() => inActiveBox(null)}
+                      style={{ width: '100%', height: '120px', border: '1px solid #ccc', borderRadius: '5px' }}
                     >
                       {dropImage[idx]?.src ? (
-                        <Image src={dropImage[idx].src} alt={dropImage[idx].alt} width='fit-content' height='104px' />
+                        <Image src={dropImage[idx].src} alt={dropImage[idx].alt} width='fit-content' height='100%' />
                       ) : INITIAL.isValChk ? (
-                        <Image src={answerSrc} alt={matchedImage?.alt} width='fit-content' height='104px' />
+                        <Image src={answerSrc} alt={matchedImage?.alt} width='fit-content' height='100%' />
                       ) : (
-                        <>이곳에 드래그해 주세요</>
+                        <>이곳에 드래그해 주세요.</>
                       )}
                     </DropBox>
                   </AudioWrap>
                 );
               })}
             </AudioBox>
-
             <ImageBox>
               {imageList.map((img, idx) => {
                 return (
-                  <ImageWrap key={idx}>
-                    <Box useShadow={true} useRound={true} background='white' width={`300px`} height={'188px'}>
+                  <ImageWrap key={idx} style={{ marginTop: '50%', marginRight: '80%', width: '100%' }}>
+                    <Box useShadow={true} useRound={true} background='white' width={`250px`} height={'188px'}>
                       <Box hAlign='center' vAlign='center' margin='auto'>
                         <div draggable onDragStart={() => handleDragStart(img, idx)}>
                           <Image key={img.alt} src={img.src} alt={img.alt} width='fit-content' height='104px' />
@@ -229,29 +234,10 @@ const EE4L04C03A07bP03 = ({
         </BoxWrap>
         {isOpen && (
           <BottomSheet bottomSheetTargetId='targetContainer' height='40%' show={isOpen}>
-            <Box background='lightGray' borderRadius='12px' marginTop='48px'>
+            <Box background='lightGray' borderRadius='12px' marginTop='45px'>
               <Box>
                 <Box>
                   <Tag type={ETagLine.GREEN} label={'답안'} />
-                </Box>
-                <Box marginTop='12px'>
-                  <List
-                    gap={20}
-                    data={getSolutionData(mainKey)[0].script}
-                    row={({ value, index }) => {
-                      const matchedImage = imageList.find(img => img.src === value?.text);
-                      return (
-                        <Box hAlign='flex-start'>
-                          <Typography>{`${index}.`}</Typography>
-                          <Image
-                            src={value?.text || ''}
-                            alt={matchedImage?.alt}
-                            style={{ width: 'fit-content', height: '104px', marginLeft: index === 1 ? '20px' : '' }}
-                          />
-                        </Box>
-                      );
-                    }}
-                  />
                 </Box>
               </Box>
             </Box>
@@ -287,7 +273,8 @@ const GridBox = styled.div`
 
 const AudioBox = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  width: 952px;
 `;
 
 const AudioWrap = styled.div`
@@ -319,13 +306,13 @@ const DropBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 290px;
+  width: 200px;
   height: 132px;
 `;
 
 const ImageBox = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   width: 952px;
 `;
 

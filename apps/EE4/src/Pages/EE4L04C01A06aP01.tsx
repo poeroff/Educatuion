@@ -19,6 +19,7 @@ import {
   EStyleFontSizes,
   Input,
   Textarea,
+  SvgIcon,
 } from '@maidt-cntn/ui';
 
 // UI en
@@ -162,12 +163,12 @@ const EE4L04C01A06aP02 = ({
         </BoxWrap>
         <BoxWrap>
           <Box width='2.25%'></Box>
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '15%' }}>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '5%' }}>
             {pageData.slice(0, 5).map((value, index) => (
               <div
                 key={index + 1}
                 style={{
-                  width: '100px',
+                  width: '150px',
                   height: '100px',
                   margin: '10px',
                   display: 'flex',
@@ -176,15 +177,24 @@ const EE4L04C01A06aP02 = ({
                 }}
                 // onClick={() => onHandler(index + 1)}
               >
-                <Box width='174px' height='180px' hAlign='center' border='none' margin='none'>
+                <Box width='300px' height='180px' hAlign='center' border='none' margin='none' marginTop={100}>
                   <Input
-                    width='104px'
+                    width='84px'
                     value={getValueInputData(1, `TEXT-${index + 1}`) as string}
                     onChange={e => {
                       handleChangeInputData(1, `TEXT-${index + 1}`, e.target.value);
                     }}
                     disabled={isSubmittedInput(1, `TEXT-${index + 1}`)}
                   />
+                  {index < 5 && (
+                    <div>
+                      <SvgIcon
+                        height='100px'
+                        src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQe0Wh492sknk-gXq4cuv8W8gBrHRNh_xxiw67kD1ylZV_KDzmq'
+                        width='80px'
+                      />
+                    </div>
+                  )}
                 </Box>
               </div>
             ))}

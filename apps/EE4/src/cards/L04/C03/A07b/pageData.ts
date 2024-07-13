@@ -24,21 +24,21 @@ export const getDefaultData = (pageNumber: number): initDataType => {
           {
             mainKey: 2,
             inputData: [
-              { subKey: 'TEXT-01', type: 'TEXT', value: null, isAnswer: true },
-              { subKey: 'TEXT-02', type: 'TEXT', value: null, isAnswer: true },
+              { subKey: 'IMAGE-1', type: 'IMAGE', value: null, isAnswer: true },
+              { subKey: 'IMAGE-2', type: 'IMAGE', value: null, isAnswer: true },
             ],
           },
         ],
       };
     case 3:
       return {
-        pageType: 'SUBMIT',
+        pageType: 'GRADE',
         inputData: [
           {
             mainKey: 3,
             inputData: [
-              { subKey: 'TEXT-01', type: 'TEXT', value: null, isAnswer: true },
-              { subKey: 'RECORDER-01', type: 'RECORDER', value: null, isAnswer: false },
+              { subKey: 'IMAGE-1', type: 'IMAGE', value: null, isAnswer: true },
+              { subKey: 'IMAGE-2', type: 'IMAGE', value: null, isAnswer: true },
             ],
           },
         ],
@@ -46,7 +46,7 @@ export const getDefaultData = (pageNumber: number): initDataType => {
 
     case 4:
       return {
-        pageType: 'SUBMIT',
+        pageType: 'SAVE',
         inputData: [
           {
             mainKey: 4,
@@ -72,10 +72,10 @@ export const getCorrectData = (pageNumber: number) => {
           mainKey: 1,
           inputDatas: [
             [
-              { subKey: 'RECORDER-01', value: null },
-              { subKey: 'RECORDER-02', value: null },
-              { subKey: 'RECORDER-03', value: null },
-              { subKey: 'RECORDER-04', value: null },
+              { subKey: 'RECORDER-01', value: '' },
+              { subKey: 'RECORDER-02', value: '' },
+              { subKey: 'RECORDER-03', value: '' },
+              { subKey: 'RECORDER-04', value: '' },
             ],
           ],
         },
@@ -86,8 +86,8 @@ export const getCorrectData = (pageNumber: number) => {
           mainKey: 2,
           inputDatas: [
             [
-              { subKey: 'TEXT-01', value: 'EE4-L04-C03-A07b-P02-02.jpg' },
-              { subKey: 'TEXT-02', value: 'EE4-L04-C03-A07b-P02-01.jpg' },
+              { subKey: 'IMAGE-1', value: '/L04/C03/A07a/EE4-L04-C03-A07b-P02-02.jpg' },
+              { subKey: 'IMAGE-2', value: '/L04/C03/A07a/EE4-L04-C03-A07b-P02-01.jpg' },
             ],
           ],
         },
@@ -96,14 +96,25 @@ export const getCorrectData = (pageNumber: number) => {
       return [
         {
           mainKey: 3,
-          inputDatas: [[{ subKey: 'TEXT-01', value: 'friend' }]],
+          inputDatas: [
+            [
+              { subKey: 'IMAGE-1', value: '/L04/C03/A07b/EE4-L04-C03-A07b-P03-02.jpg' },
+              { subKey: 'IMAGE-2', value: '/L04/C03/A07b/EE4-L04-C03-A07b-P03-01.jpg' },
+            ],
+          ],
         },
       ];
     case 4:
       return [
         {
           mainKey: 4,
-          inputDatas: [[{ subKey: 'TEXT-01', value: '' }]],
+          inputDatas: [
+            [
+              { subKey: 'TEXT-01', value: '' },
+              { subKey: 'TEXT-02', value: '' },
+              { subKey: 'TEXT-03', value: '' },
+            ],
+          ],
         },
       ];
 

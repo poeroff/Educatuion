@@ -79,8 +79,17 @@ const EE4L06C01A06aP01 = ({
   });
 
   const INITIAL: Props['INITIAL'] = {
-    isValChk: Boolean(getValueInputData(mainKey, 'IMAGE-1') && getValueInputData(mainKey, 'IMAGE-2') && getValueInputData(mainKey, 'IMAGE-3')),
-    isComplete: isSubmittedInput(mainKey, 'IMAGE-1') && isSubmittedInput(mainKey, 'IMAGE-2') && isSubmittedInput(mainKey, 'IMAGE-3'),
+    isValChk: Boolean(
+      getValueInputData(mainKey, 'IMAGE-1') &&
+        getValueInputData(mainKey, 'IMAGE-2') &&
+        getValueInputData(mainKey, 'IMAGE-3') &&
+        getValueInputData(mainKey, 'IMAGE-4'),
+    ),
+    isComplete:
+      isSubmittedInput(mainKey, 'IMAGE-1') &&
+      isSubmittedInput(mainKey, 'IMAGE-2') &&
+      isSubmittedInput(mainKey, 'IMAGE-3') &&
+      isSubmittedInput(mainKey, 'IMAGE-4'),
   };
 
   const gradeData = useRecoilValue(currentPageGradeData);

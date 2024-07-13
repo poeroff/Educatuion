@@ -19,7 +19,7 @@ const P04 = () => {
   const pageInfo: IPageInfo = {
     pageNum: 4,
     mainKey: 4,
-    subKey: 'TEXT-0',
+    subKey: 'TEXT-01',
   };
 
   const cards: Card[] = [

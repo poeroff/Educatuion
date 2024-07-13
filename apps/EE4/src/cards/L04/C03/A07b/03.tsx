@@ -19,15 +19,15 @@ const P03 = () => {
         {
           src: '/L04/C03/A07b/EE4-L04-C03-A07b-P03-01.jpg',
           alt: '영화관에서 떠들고 있는 아이들의 모습과 금지 표시',
-          value: 'EE4-L04-C03-A07b-P03-01.jpg',
+          value: '/L04/C03/A07b/EE4-L04-C03-A07b-P03-01.jpg',
         },
         {
           src: '/L04/C03/A07b/EE4-L04-C03-A07b-P03-02.jpg',
           alt: '지하철을 기다리던 아이의 어깨를 미는 아이의 모습과 금지 표시',
-          value: 'EE4-L04-C03-A07b-P03-02.jpg',
+          value: '/L04/C03/A07b/EE4-L04-C03-A07b-P03-02.jpg',
         },
       ]}
-      mainKey={4}
+      mainKey={3}
       getDefaultData={getDefaultData}
       getCorrectData={getCorrectData}
       getSolutionData={getSolutionData}

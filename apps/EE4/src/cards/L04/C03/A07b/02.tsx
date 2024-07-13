@@ -17,14 +17,14 @@ const P02 = () => {
       }}
       imageList={[
         {
-          src: '/L04/C03/A07b/EE4-L04-C03-A07b-P02-01.jpg',
+          src: '/L04/C03/A07a/EE4-L04-C03-A07b-P02-01.jpg',
           alt: '계단을 위험하게 뛰어 내려가는 여자아이의 모습과 금지 표시',
-          value: 'EE4-L04-C03-A07b-P02-01.jpg',
+          value: '/L04/C03/A07a/EE4-L04-C03-A07b-P02-01.jpg',
         },
         {
-          src: '/L04/C03/A07b/EE4-L04-C03-A07b-P02-02.jpg',
+          src: '/L04/C03/A07a/EE4-L04-C03-A07b-P02-02.jpg',
           alt: '맨홀 뚜껑이 열려 있는 공사장에 들어가려는 아이의 모습과 금지 표시',
-          value: 'EE4-L04-C03-A07b-P02-02.jpg',
+          value: '/L04/C03/A07a/EE4-L04-C03-A07b-P02-02.jpg',
         },
       ]}
       mainKey={2}
