@@ -105,12 +105,28 @@ export const getSolutionData = (pageNumber: number) => {
     case 1:
       return [
         {
-          script: [{ text: 'G: This is my brother.' }],
-          interpretation: [{ text: 'G: 이 사람은 나의 오빠예요' }],
+          script: [{ text: '' }],
+        },
+      ];
+    case 2:
+      return [
+        {
+          script: [{ text: '' }],
         },
       ];
     case 3:
-      return [{ answer: `이 사람은 나의 오빠예요. / 이 아이는 나의 남동생이에요.` }];
+      return [
+        {
+          script: [{ text: '' }],
+        },
+      ];
+    case 4:
+      return [
+        {
+          script: [{ text: '' }],
+        },
+      ];
+
     default:
       return [];
   }

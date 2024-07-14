@@ -241,15 +241,9 @@ const EE4L06C01A06aP01 = ({
                     gap={20}
                     data={getSolutionData(mainKey)[0].script}
                     row={({ value, index }) => {
-                      const matchedImage = imageList.find(img => img.src === value?.text);
                       return (
                         <Box hAlign='flex-start'>
-                          <Typography>{`${index}.`}</Typography>
-                          <Image
-                            src={value?.text || ''}
-                            alt={matchedImage?.alt}
-                            style={{ width: 'fit-content', height: '104px', marginLeft: index === 1 ? '20px' : '' }}
-                          />
+                          <Typography>{`${index}. ${value?.text}`}</Typography>
                         </Box>
                       );
                     }}

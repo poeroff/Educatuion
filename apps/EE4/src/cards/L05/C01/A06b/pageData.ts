@@ -8,7 +8,10 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         inputData: [
           {
             mainKey: 1,
-            inputData: [{ subKey: 'TEXT-01', type: 'TEXT', value: null, isAnswer: true }],
+            inputData: [
+              { subKey: 'TEXT-1', type: 'TEXT', value: null, isAnswer: true },
+              { subKey: 'TEXT-2', type: 'TEXT', value: null, isAnswer: true },
+            ],
           },
         ],
       };
@@ -18,20 +21,9 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         inputData: [
           {
             mainKey: 2,
-            inputData: [{ subKey: 'P02', type: 'NUMBER', value: 0, isAnswer: true }],
-          },
-        ],
-      };
-    case 3:
-      return {
-        pageType: 'SUBMIT',
-        inputData: [
-          {
-            mainKey: 3,
             inputData: [
-              { subKey: 'RECORDER-01', type: 'RECORDER', value: null, isAnswer: false },
-              { subKey: 'RECORDER-02', type: 'RECORDER', value: null, isAnswer: false },
-              { subKey: 'RECORDER-03', type: 'RECORDER', value: null, isAnswer: false },
+              { subKey: 'TEXT-1', type: 'TEXT', value: null, isAnswer: true },
+              { subKey: 'TEXT-2', type: 'TEXT', value: null, isAnswer: true },
             ],
           },
         ],
@@ -48,25 +40,22 @@ export const getCorrectData = (pageNumber: number) => {
       return [
         {
           mainKey: 1,
-          inputDatas: [[{ subKey: 'TEXT-01', value: '축구 하는 모습' }]],
+          inputDatas: [
+            [
+              { subKey: 'TEXT-1', value: '야구 하는 모습' },
+              { subKey: 'TEXT-2', value: 'Sure.' },
+            ],
+          ],
         },
       ];
     case 2:
       return [
         {
           mainKey: 2,
-          inputDatas: [[{ subKey: 'P02', value: 2 }]],
-        },
-      ];
-    case 3:
-      return [
-        {
-          mainKey: 3,
           inputDatas: [
             [
-              { subKey: 'RECORDER-01', value: "Let's play basketball" },
-              { subKey: 'RECORDER-02', value: "Let's play badminton" },
-              { subKey: 'RECORDER-03', value: "Let's play baseball" },
+              { subKey: 'TEXT-1', value: '배드민턴 하는 모습' },
+              { subKey: 'TEXT-2', value: 'Sorry, I can’t.' },
             ],
           ],
         },

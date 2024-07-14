@@ -136,7 +136,7 @@ const EE4L04C01A06aP02 = ({
 
   // radio handler
   const onHandler = (index: number) => {
-    handleChangeInputData(mainKey as number, `RECORDER-${index}`, index);
+    handleChangeInputData(mainKey as number, subKey as string, index);
   };
 
   // 체점하기

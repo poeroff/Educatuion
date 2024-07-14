@@ -18,7 +18,6 @@ const pageInfo: PageProps = {
     text: '문장을 읽고 알맞은 그림을 고른 후, 문장을 직접 써 봅시다',
   },
 
-  headImage: '/L01/C01/A06/EE4-L01-C01-A06-P02.jpg',
   list: [
     {
       src: '/L05/C03/A07b/EE4-L05-C03-A07b-P03-01.jpg',
@@ -36,7 +35,7 @@ const pageInfo: PageProps = {
 
 const text = "Let's play badmintion";
 const P03 = () => {
-  const { headerInfo, questionInfo, headImage, list, pageNumber, mainKey, subKey } = pageInfo;
+  const { headerInfo, questionInfo, list, pageNumber, mainKey, subKey } = pageInfo;
 
   return (
     <EE4L05C03A07bP02
@@ -45,7 +44,6 @@ const P03 = () => {
       questionInfo={questionInfo}
       getCorrectData={getCorrectData}
       getDefaultData={getDefaultData}
-      headImage={headImage}
       pageNumber={pageNumber}
       mainKey={mainKey}
       subKey={subKey}

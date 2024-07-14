@@ -59,16 +59,16 @@ const EE4L04C02A05b = ({ headerInfo, questionInfo, data, mainKey, getDefaultData
   });
 
   const INITIAL: Props['INITIAL'] = {
-    isValChk: Boolean(getValueInputData(mainKey, 'RECORDER-1') && getValueInputData(mainKey, 'RECORDER-2')),
-    isComplete: isSubmittedInput(mainKey, 'RECORDER-1') && isSubmittedInput(mainKey, 'RECORDER-2'),
+    isValChk: Boolean(getValueInputData(mainKey, 'RECORDER-0')),
+    isComplete: isSubmittedInput(mainKey, 'RECORDER-0'),
   };
 
   const getRecorderData = (index: number): IAudioData | null => {
-    return getValueInputData(mainKey, `RECORDER-${index}`);
+    return getValueInputData(mainKey, `RECORDER-0`);
   };
 
   const handleRecorderSubmit = (index: number, audioData: IAudioData) => {
-    changeInputData(mainKey, `RECORDER-${index}`, audioData);
+    changeInputData(mainKey, `RECORDER-0`, audioData);
   };
 
   const handleSubmit = () => {
@@ -91,84 +91,53 @@ const EE4L04C02A05b = ({ headerInfo, questionInfo, data, mainKey, getDefaultData
       <BoxWrap marginTop='30px'>
         <Box hAlign='center'>
           <Box hAlign='center' vAlign='center' width='360px' height='274px'>
-            <Image
-              src={imageList[0].src}
-              alt={imageList[0].alt}
-              title={imageList[0].title}
-              style={{ width: 'fit-content', height: '274px', borderRadius: '8px' }}
-            />
+            <PinchZoom>
+              <Image
+                src={imageList[0].src}
+                alt={imageList[0].alt}
+                title={imageList[0].title}
+                style={{ width: 'fit-content', height: '274px', borderRadius: '8px' }}
+              />
+            </PinchZoom>
           </Box>
         </Box>
-        <Box display='block' marginLeft={120}>
-          <Box display='flex' flexDirection='column' gap='30px' marginBottom='32px' width='100%'>
-            <Box display='flex' gap='30px' width='100%'>
-              {[1, 2].map(item => (
-                <Box display='flex'>
-                  <Radio type='circle'></Radio>
-                  <Box
-                    key={item}
-                    display='block'
-                    width='150px'
-                    background={item === 1 ? '#fff0cc' : '#fbe4d4'}
-                    padding={'4px 12px 4px 12px'}
-                    height={'48px'}
-                    borderRadius={'8px'}
-                    fontSize={'28px'}
-                    justifyContent={'center'}
-                    alignItems={'center'}
-                    whiteSpace='nowrap'
-                    fontWeight={500}
-                    color={'black'}
-                    textAlign={'center'}
-                  >
-                    {item === 1 ? '농구' : '야구'}
+        <Box hAlign='center' width='600px' height='218px'>
+          <List data={data} gap={24}>
+            {({ value, index }) => (
+              <Box hAlign='flex-start' gap={4}>
+                <Box hAlign='flex-start' gap={8}>
+                  <Box alignSelf='center'>
+                    <Label value={value?.type || ''} type={'paint'} background={value?.color} size={'middle'} />
+                  </Box>
+                  <Box marginTop={value?.type === 'A' ? '50px' : ''}>
+                    <Typography
+                      style={{
+                        fontSize: '36px',
+                        lineHeight: '54px',
+                        width: '342px',
+                        height: value?.type === 'A' ? '124px' : '70px',
+                        borderRadius: '8px',
+                        padding: '8px 12px 8px 12px',
+                      }}
+                      weight='500'
+                    >
+                      {value?.content}
+                    </Typography>
                   </Box>
                 </Box>
-              ))}
-            </Box>
 
-            <Box display='flex' gap='30px' width='100%'>
-              {[3, 4].map(item => (
-                <Box display='flex'>
-                  <Radio type='circle'></Radio>
-                  <Box
-                    key={item}
-                    display='block'
-                    width='150px'
-                    background={item === 3 ? '#fbe4d4' : '#fff0cc'}
-                    padding={'4px 12px 4px 12px'}
-                    height={'48px'}
-                    borderRadius={'8px'}
-                    fontSize={'28px'}
-                    justifyContent={'center'}
-                    alignItems={'center'}
-                    whiteSpace='nowrap'
-                    fontWeight={500}
-                    color={'black'}
-                    textAlign={'center'}
-                  >
-                    {item === 3 ? '배트민턴' : '축구'}
-                  </Box>
+                <Box hAlign='flex-start' gap={6} marginLeft='-20px'>
+                  <SimpleAudioPlayer audioSrc={value?.audioSrc || ''} />
+                  <Recorder
+                    recorderIndex={index as number}
+                    initialData={getRecorderData(index as number)}
+                    onSubmit={audioData => handleRecorderSubmit(index as number, audioData)}
+                    readOnly={INITIAL.isComplete}
+                  />
                 </Box>
-              ))}
-            </Box>
-          </Box>
-          <Box hAlign='center' width='600px' height='218px' marginLeft={174}>
-            <List data={data} gap={24}>
-              {({ value, index }) => (
-                <Box hAlign='flex-start' gap={4}>
-                  <Box hAlign='flex-start' gap={6} marginLeft='-20px'>
-                    <Recorder
-                      recorderIndex={index as number}
-                      initialData={getRecorderData(index as number)}
-                      onSubmit={audioData => handleRecorderSubmit(index as number, audioData)}
-                      readOnly={INITIAL.isComplete}
-                    />
-                  </Box>
-                </Box>
-              )}
-            </List>
-          </Box>
+              </Box>
+            )}
+          </List>
         </Box>
       </BoxWrap>
     </Container>

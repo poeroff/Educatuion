@@ -116,7 +116,6 @@ const EE4L06C01A06aP02 = ({
 
   // bx pageData.ts handle event
   const handleChangeInputData = (mainKey: number, subKey: string, value: number) => {
-    console.log(subKey);
     changeInputData(mainKey, subKey, value);
   };
 

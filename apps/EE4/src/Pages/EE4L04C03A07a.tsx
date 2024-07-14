@@ -22,6 +22,8 @@ import { useEffect, useState } from 'react';
 import { useCurrentPageData } from '@/hooks/useCurrentPageData';
 import { initDataType } from '@maidt-cntn/api';
 import styled from 'styled-components';
+import { useRecoilValue } from 'recoil';
+import { currentPageGradeData } from '@/stores';
 
 export interface IImageProps {
   src: string;
@@ -91,7 +93,8 @@ const EE4L04C03A07a = ({
 
   const [showIs, setShowIs] = useState(false);
   const isComplete: boolean = isSubmittedInput(pageInfo.mainKey, pageInfo.subKey);
-
+  const gradeData = useRecoilValue(currentPageGradeData);
+  const isCorrect = gradeData.find(data => data.mainKey === pageInfo.mainKey)?.isCorrect;
   const correctAnswer = getCorrectData(pageInfo.pageNum)[0].inputDatas[0][0].value;
 
   const currentAnswer = getValueInputData(pageInfo.mainKey, pageInfo.subKey);
@@ -100,13 +103,17 @@ const EE4L04C03A07a = ({
     return currentAnswer === null || (typeof currentAnswer === 'string' && currentAnswer.trim().length === 0);
   };
   const handleRecoderSubmit = () => {
-    changeInputData(pageInfo.mainKey, 'RECORDER-01', true);
+    changeInputData(pageInfo.mainKey, 'RECORDER-1', true);
   };
 
   return (
     <Container
       headerInfo={headerInfo}
-      questionInfo={questionInfo}
+      questionInfo={{
+        ...questionInfo,
+        mark: isComplete ? (isCorrect === undefined ? 'none' : isCorrect ? 'correct' : 'star') : 'none',
+        markSize: 'middle',
+      }}
       submitLabel={isComplete ? (showIs ? '답안 닫기' : '답안 보기') : '채점하기'}
       submitBtnColor={!validationCheck() ? (showIs ? EStyleButtonTypes.DEFAULT : EStyleButtonTypes.YELLOW) : EStyleButtonTypes.SECONDARY}
       submitDisabled={validationCheck()}

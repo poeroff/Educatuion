@@ -66,7 +66,7 @@ const EE4L05C03A07bP02 = ({
 
   getCorrectData,
   getDefaultData,
-  headImage,
+
   pageNumber, // pageData.ts case number
   mainKey, // pageData.ts mainKey
   subKey, // pageData.ts subKey ex) 'TEXT-01',

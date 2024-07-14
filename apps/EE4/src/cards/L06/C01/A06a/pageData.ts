@@ -87,9 +87,10 @@ export const getSolutionData = (pageNumber: number) => {
       return [
         {
           script: [
-            { text: '/L01/C01/A04/EE4-L01-C01-A04-P04-02.png' },
-            { text: '/L01/C01/A04/EE4-L01-C01-A04-P04-01.png' },
-            { text: '/L01/C01/A04/EE4-L01-C01-A04-P04-03.png' },
+            { text: '요리하고 있는 여자아이' },
+            { text: '음악을 듣고 있는 남자아이' },
+            { text: '책을 읽고 있는 여자아이' },
+            { text: '그림을 그리고 있는 남자아이' },
           ],
           interpretation: [{ text: '' }],
         },

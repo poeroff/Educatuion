@@ -7,8 +7,12 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         pageType: 'SUBMIT',
         inputData: [
           {
-            mainKey: 2,
-            inputData: [{ subKey: 'RECORDER-1', type: 'RECORDER', value: false, isAnswer: false }],
+            mainKey: 1,
+            inputData: [
+              { subKey: 'RECORDER-1', type: 'RECORDER', value: false, isAnswer: false },
+              { subKey: 'RECORDER-2', type: 'RECORDER', value: false, isAnswer: false },
+              { subKey: 'RECORDER-3', type: 'RECORDER', value: false, isAnswer: false },
+            ],
           },
         ],
       };
@@ -18,7 +22,11 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         inputData: [
           {
             mainKey: 2,
-            inputData: [{ subKey: 'RECORDER-1', type: 'RECORDER', value: false, isAnswer: false }],
+            inputData: [
+              { subKey: 'RECORDER-4', type: 'RECORDER', value: false, isAnswer: false },
+              { subKey: 'RECORDER-5', type: 'RECORDER', value: false, isAnswer: false },
+              { subKey: 'RECORDER-6', type: 'RECORDER', value: false, isAnswer: false },
+            ],
           },
         ],
       };
@@ -34,14 +42,26 @@ export const getCorrectData = (pageNumber: number) => {
       return [
         {
           mainKey: 1,
-          inputDatas: [[{ subKey: 'RECORDER-1', value: null }]],
+          inputDatas: [
+            [
+              { subKey: 'RECORDER-1', value: null },
+              { subKey: 'RECORDER-2', value: null },
+              { subKey: 'RECORDER-3', value: null },
+            ],
+          ],
         },
       ];
     case 2:
       return [
         {
           mainKey: 2,
-          inputDatas: [[{ subKey: 'RECORDER-1', value: null }]],
+          inputDatas: [
+            [
+              { subKey: 'RECORDER-4', value: null },
+              { subKey: 'RECORDER-5', value: null },
+              { subKey: 'RECORDER-6', value: null },
+            ],
+          ],
         },
       ];
 

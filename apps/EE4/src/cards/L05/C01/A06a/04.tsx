@@ -1,4 +1,4 @@
-import { P04PageProps } from '.';
+import { P04PageProps } from '../A06b';
 import EE4L05C01A06aP04 from '@/Pages/EE4L05C01A06aP04';
 
 const listData = [
