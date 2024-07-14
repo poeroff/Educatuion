@@ -18,7 +18,7 @@ const P01 = () => {
         headerPattern: 'text',
       }}
       questionInfo={{
-        text: '교실에서 지켜야 할 규칙을 나타내는 표진판을 그리고, 그 규칙을 말해 봅시다',
+        text: '교실에서 지켜야 할 규칙을 나타내는 표지판을 그리고, 그 규칙을 말해 봅시다',
       }}
       audioInfo={{
         audioSrc: '/L04/C02/A05a/EE4-L04-C02-A05-P01.mp3',

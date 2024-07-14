@@ -199,16 +199,22 @@ import {
   List,
   ChipButton,
   EChipButtonType,
+  Radio,
 } from '@maidt-cntn/ui';
 import { useState } from 'react';
 import useCurrentPageData from '@/hooks/useCurrentPageData';
 import { correctDataType, initDataType } from '@maidt-cntn/api';
+import { it } from 'node:test';
+import GradeCheck from '@/components/gradeCheck';
+import { useRecoilValue } from 'recoil';
+import { currentPageGradeData } from '@/stores';
 
 type Image = {
+  // src: string | string[] | undefined;
   src: string;
   alt: string;
-  value?: string;
-  title?: string;
+  value: string;
+  title: string;
 };
 
 type pageData = {
@@ -230,14 +236,14 @@ interface Props {
   pageData: pageData;
 }
 
-const EE4L05C01A06aP02 = ({ layout, imgArr, pageData }: Props) => {
+const EE4L05C01A06aP01 = ({ layout, imgArr, pageData }: Props) => {
   const CONST = { ...layout };
   const { mainKey, subKey, pageNumber, getDefaultData, getCorrectData } = pageData;
 
   const [isOpen, setIsOpen] = useState(false);
   const [images] = useState<Image[]>(imgArr);
 
-  const { getValueInputData, changeInputData, isSubmittedInput, submitPageData } = useCurrentPageData({
+  const { getValueInputData, changeInputData, isSubmittedInput, gradeSubmitPageData } = useCurrentPageData({
     initData: getDefaultData(pageNumber),
     collectDatas: getCorrectData(pageNumber),
   });
@@ -253,8 +259,9 @@ const EE4L05C01A06aP02 = ({ layout, imgArr, pageData }: Props) => {
     }
     return null;
   };
-
+  const gradeData = useRecoilValue(currentPageGradeData);
   const isComplete: boolean = isSubmittedInput(mainKey, subKey);
+  const isCorrect = gradeData.find(data => data.mainKey === mainKey)?.isCorrect;
   const correctAnswer = getCorrectAnswer(pageData.pageNumber, mainKey, subKey);
   const currentAnswer = getValueInputData(mainKey, subKey);
 
@@ -267,14 +274,31 @@ const EE4L05C01A06aP02 = ({ layout, imgArr, pageData }: Props) => {
       setIsOpen(!isOpen);
       return;
     }
-    submitPageData();
+    gradeSubmitPageData();
   };
+  //   <Container
+  //   headerInfo={headerInfo}
+  //   questionInfo={{
+  //     ...questionInfo,
+  //     mark: isComplete ? (isCorrect === undefined ? 'none' : isCorrect ? 'correct' : 'star') : 'none',
+  //     markSize: 'middle',
+  //   }}
+  //   submitDisabled={inputData === null}
+  //   submitLabel={isComplete ? (isOpen ? '답안 닫기' : '답안 보기') : '채점하기'}
+  //   submitBtnColor={inputData != null ? (isOpen ? EStyleButtonTypes.DEFAULT : EStyleButtonTypes.YELLOW) : EStyleButtonTypes.SECONDARY}
+  //   onSubmit={onSubmit}
+  //   useExtend
+  // >
 
   return (
     <Container
       bodyId='targetContainer'
       headerInfo={CONST.headerInfo}
-      questionInfo={CONST.questionInfo}
+      questionInfo={{
+        ...CONST.questionInfo,
+        mark: isComplete ? (isCorrect === undefined ? 'none' : isCorrect ? 'correct' : 'star') : 'none',
+        markSize: 'middle',
+      }}
       useExtend
       submitLabel={isComplete ? (isOpen ? '답안 닫기' : '답안 보기') : '채점하기'}
       submitBtnColor={!validationCheck() ? (isOpen ? EStyleButtonTypes.DEFAULT : EStyleButtonTypes.YELLOW) : EStyleButtonTypes.SECONDARY}
@@ -283,10 +307,11 @@ const EE4L05C01A06aP02 = ({ layout, imgArr, pageData }: Props) => {
       audioInfo={CONST.audioInfo}
     >
       <Box useFull>
-        <Box display='flex' gap='30px' marginBottom='32px' width='100%'>
-          {[1, 2, 3].map(item => (
-            <Box key={item} display='block' width='33%'>
-              <PinchZoom>
+        <Box display='flex' flexDirection='column' gap='30px' marginBottom='32px' width='100%'>
+          <Box display='flex' gap='30px' width='100%'>
+            {[1, 2].map(item => (
+              <Box key={item} display='block' width='calc(50% - 15px)'>
+                <Radio type='circle' onClick={() => handleChangeInputData(mainKey, subKey, images[item - 1].value)}></Radio>
                 <Image
                   src={images[item - 1].src}
                   alt={images[item - 1].alt}
@@ -295,27 +320,27 @@ const EE4L05C01A06aP02 = ({ layout, imgArr, pageData }: Props) => {
                   title={images[item - 1].title}
                   style={{ borderRadius: '8px' }}
                 />
-              </PinchZoom>
-              <Box vAlign='start' marginTop='10px' textAlign='center'>
-                <List
-                  data={['O', 'X']}
-                  align='horizontal'
-                  row={({ value, index = 1 }) => (
-                    <ChipButton
-                      key={index}
-                      type='radio'
-                      name={`radio-group-${item}`}
-                      status={index === 1 ? EChipButtonType.O : EChipButtonType.X}
-                      isActive={index === getValueInputData(mainKey, `${subKey}-${item}`)}
-                      size='44px'
-                      onClick={() => changeInputData(mainKey, `${subKey}-${item}`, index)}
-                    ></ChipButton>
-                  )}
+              </Box>
+            ))}
+          </Box>
+          <Box display='flex' gap='30px' width='100%'>
+            {[3, 4].map(item => (
+              <Box key={item} display='block' width='calc(50% - 15px)'>
+                <Radio type='circle' onClick={() => handleChangeInputData(mainKey, subKey, images[item - 1].value)}></Radio>
+
+                <Image
+                  src={images[item - 1].src}
+                  alt={images[item - 1].alt}
+                  height='360px'
+                  width='100%'
+                  title={images[item - 1].title}
+                  style={{ borderRadius: '8px' }}
                 />
               </Box>
-            </Box>
-          ))}
+            ))}
+          </Box>
         </Box>
+
         {isOpen && (
           <BottomSheet bottomSheetTargetId='targetContainer' height='40%' show={isOpen}>
             <Box marginBottom='25px' background='gray' padding='28px' useRound>
@@ -333,4 +358,4 @@ const EE4L05C01A06aP02 = ({ layout, imgArr, pageData }: Props) => {
   );
 };
 
-export default EE4L05C01A06aP02;
+export default EE4L05C01A06aP01;
