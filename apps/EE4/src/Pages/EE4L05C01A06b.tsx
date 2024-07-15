@@ -255,10 +255,9 @@ const EE4L05C01A06b = ({ layout, imgArr, pageData }: Props) => {
   const getCorrectAnswer = (pageNumber: number, mainKey: number, subKey: string) => {
     const data = getCorrectData(pageNumber).find(item => item.mainKey === mainKey);
     console.log(data);
-    if (data) {
-      const matchingItems = data.inputDatas?.flat().filter(item => item.subKey === 'TEXT-01' || item.subKey === 'TEXT-02') ?? [];
-
-      return matchingItems.map(item => item.value).join(', ');
+    if (data && data.inputDatas) {
+      const values = data.inputDatas.flat().map(item => item.value);
+      return values;
     }
     return null;
   };
@@ -266,6 +265,7 @@ const EE4L05C01A06b = ({ layout, imgArr, pageData }: Props) => {
   const isComplete: boolean = isSubmittedInput(mainKey, subKey);
   const isCorrect = gradeData.find(data => data.mainKey === mainKey)?.isCorrect;
   const correctAnswer = getCorrectAnswer(pageData.pageNumber, mainKey, subKey);
+  console.log(correctAnswer);
   const currentAnswer = getValueInputData(mainKey, subKey);
 
   const validationCheck = () => {
@@ -368,7 +368,9 @@ const EE4L05C01A06b = ({ layout, imgArr, pageData }: Props) => {
               <Box margin='25px 0'>
                 <Tag fontSize='22px' height='auto' label='예시 답안' type={ETagLine.GREEN} width='auto' />
                 <Box margin='25px 0 50px'>
-                  <Typography>{correctAnswer as string}</Typography>
+                  {(correctAnswer as string[])?.map(correct => (
+                    <Typography>{correct}</Typography>
+                  ))}
                 </Box>
               </Box>
             </Box>

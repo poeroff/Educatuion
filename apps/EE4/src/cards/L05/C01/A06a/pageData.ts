@@ -18,7 +18,11 @@ export const getDefaultData = (pageNumber: number): initDataType => {
         inputData: [
           {
             mainKey: 2,
-            inputData: [{ subKey: 'P02', type: 'NUMBER', value: 0, isAnswer: true }],
+            inputData: [
+              { subKey: 'TEXT-1', type: 'TEXT', value: null, isAnswer: true },
+              { subKey: 'TEXT-2', type: 'TEXT', value: null, isAnswer: true },
+              { subKey: 'TEXT-3', type: 'TEXT', value: null, isAnswer: true },
+            ],
           },
         ],
       };
@@ -55,7 +59,13 @@ export const getCorrectData = (pageNumber: number) => {
       return [
         {
           mainKey: 2,
-          inputDatas: [[{ subKey: 'P02', value: 2 }]],
+          inputDatas: [
+            [
+              { subKey: 'TEXT-1', value: 2 },
+              { subKey: 'TEXT-2', value: 1 },
+              { subKey: 'TEXT-3', value: 2 },
+            ],
+          ],
         },
       ];
     case 3:

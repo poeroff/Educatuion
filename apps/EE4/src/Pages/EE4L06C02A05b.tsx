@@ -56,7 +56,7 @@ const EE4L06C02A05b = ({ headerInfo, questionInfo, data, mainKey, getDefaultData
   const isSubmit = useRecoilValue(currentPageSubmittedData);
 
   const getRecorderData = (index: number): IAudioData | null => {
-    const data = getValueInputData(mainKey, `RECORDER-${index + 1}`);
+    const data = getValueInputData(mainKey, `RECORDER-1`);
     return data && data !== '' ? data : null;
   };
 
@@ -66,7 +66,7 @@ const EE4L06C02A05b = ({ headerInfo, questionInfo, data, mainKey, getDefaultData
   };
 
   const handleRecorderSubmit = (index: number, audioData: IAudioData) => {
-    changeInputData(mainKey, `RECORDER-${index + 1}`, audioData);
+    changeInputData(mainKey, `RECORDER-1`, audioData);
   };
 
   const handleSubmit = () => {

@@ -8,7 +8,7 @@ const pageInfo: PageProps = {
     headerPattern: 'text',
   },
   questionInfo: {
-    text: '잘 듣고, 금지하는 말과 어울리는 그림을 골라 봅시다',
+    text: '1.잘 듣고, 금지하는 말과 어울리는 그림을 골라 봅시다',
   },
   audioInfo: {
     audioSrc: '/L04/C01/A06b/EE4-L04-C01-A06b-P01.mp3',

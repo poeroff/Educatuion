@@ -64,11 +64,11 @@ const EE4L04C02A05aP01 = ({ headerInfo, questionInfo, audioInfo, data, mainKey, 
   };
 
   const getRecorderData = (index: number): IAudioData | null => {
-    return getValueInputData(mainKey, `RECORDER-${index}`);
+    return getValueInputData(mainKey, `RECORDER-1`);
   };
 
   const handleRecorderSubmit = (index: number, audioData: IAudioData) => {
-    changeInputData(mainKey, `RECORDER-${index}`, audioData);
+    changeInputData(mainKey, `RECORDER-1`, audioData);
   };
 
   const handleSubmit = () => {

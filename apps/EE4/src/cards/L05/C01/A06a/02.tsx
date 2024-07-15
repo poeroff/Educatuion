@@ -11,7 +11,7 @@ const P02 = () => {
           headerPattern: 'text' as const,
         },
         questionInfo: {
-          text: '다시 한번 듣고, 함께 하자고 한 운동에는 O, 할 수 없다고 한 운동에는 X표시를 해봅시다',
+          text: '2.다시 한번 듣고, 함께 하자고 한 운동에는 O, 할 수 없다고 한 운동에는 X표시를 해봅시다',
         },
         audioInfo: { audioSrc: '/L05/C01/A06a/EE4-L05-C01-A06a-P02.mp3', captionSrc: '/L05/C01/A06a/ EE4-L05-C01-A06a-P02.srt' },
       }}
@@ -35,7 +35,7 @@ const P02 = () => {
       pageData={{
         pageNumber: 2,
         mainKey: 2,
-        subKey: 'TEXT-01',
+        subKey: 'TEXT-1',
         getDefaultData: getDefaultData,
         getCorrectData: getCorrectData,
       }}

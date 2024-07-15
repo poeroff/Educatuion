@@ -14,7 +14,7 @@ interface Props {
 
 const CONST: Props = {
   headerInfo: { headerText: 'Mission 1_Quiz 1' },
-  questionInfo: { text: '잘 듣고, 그림과 내용이 일치하면 O, 일치하지 않으면 X 를 골라 봅시다.' },
+  questionInfo: { text: '1.잘 듣고, 그림과 내용이 일치하면 O, 일치하지 않으면 X 를 골라 봅시다.' },
   audioInfo: { audioSrc: '/L06/C01/A06b/EE4-L06-C01-A06b-P01.mp3', captionSrc: '/L06/C01/A06b/EE4-L06-C01-A06b-P01.srt' },
   data: [{ text: 'O' }, { text: 'X' }],
   image: {

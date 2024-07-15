@@ -116,15 +116,15 @@ const EE4L05C03A06bP01 = ({ headerInfo, questionInfo, data, pageInfo, getCorrect
             <Box width={'30%'} height={'80px'} hAlign='flex-end' gap='6px' paddingRight={'70px'}>
               <SimpleAudioPlayer
                 audioSrc={value?.audioSrc ?? ''}
-                onChangeStatus={isPlaying => handleChangeStatus(index, isPlaying)}
-                ref={ref => setRef(index, ref)}
+                onChangeStatus={isPlaying => handleChangeStatus(index + 1, isPlaying)}
+                ref={ref => setRef(index + 1, ref)}
               />
               <Recorder
-                recorderIndex={index - 1}
-                onSubmit={audioData => submitRecorder(index - 1, audioData)}
-                onRefresh={() => submitRecorder(index - 1, null)}
-                initialData={initialAudioData(index - 1)}
-                readOnly={isComplete(index - 1)}
+                recorderIndex={index + 1}
+                onSubmit={audioData => submitRecorder(index + 1, audioData)}
+                onRefresh={() => submitRecorder(index + 1, null)}
+                initialData={initialAudioData(index + 1)}
+                readOnly={isComplete(index + 1)}
               />
             </Box>
           </BoxWrap>

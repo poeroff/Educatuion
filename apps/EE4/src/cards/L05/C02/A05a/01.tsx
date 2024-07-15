@@ -1,5 +1,6 @@
 import { getCorrectData, getDefaultData } from './pageData';
-import EE4L04C02A05b, { IListenAndAnswer } from '@/Pages/EE4L04C02A05b';
+
+import EE4L05C02A05aP01, { IListenAndAnswer } from '@/Pages/EE4L05C02A05aP01';
 
 const P01 = () => {
   const data: IListenAndAnswer[] = [
@@ -12,7 +13,7 @@ const P01 = () => {
   ];
 
   return (
-    <EE4L04C02A05b
+    <EE4L05C02A05aP01
       headerInfo={{
         headerText: 'Think and Talk',
         headerPattern: 'text',

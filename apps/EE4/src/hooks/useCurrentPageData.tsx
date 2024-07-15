@@ -18,6 +18,7 @@ import {
   pageAtom,
   pageMetaAtom,
 } from '@/stores';
+import { SubmitButton } from 'packages/ui/src/components/atoms/Recorder/ResultStep.style';
 
 export const useCurrentPageData = ({ initData, collectDatas }: { initData?: initDataType; collectDatas?: correctDataType[] }) => {
   const [currentPageInputStates, setCurrentPageInputStates] = useRecoilState(currentPageInputData);

@@ -120,11 +120,11 @@ const EE4L06C03A07bP01 = ({ headerInfo, questionInfo, data, pageInfo, getCorrect
                 ref={ref => setRef(index, ref)}
               />
               <Recorder
-                recorderIndex={index - 1}
-                onSubmit={audioData => submitRecorder(index - 1, audioData)}
-                onRefresh={() => submitRecorder(index - 1, null)}
-                initialData={initialAudioData(index - 1)}
-                readOnly={isComplete(index - 1)}
+                recorderIndex={index + 1}
+                onSubmit={audioData => submitRecorder(index + 1, audioData)}
+                onRefresh={() => submitRecorder(index + 1, null)}
+                initialData={initialAudioData(index + 1)}
+                readOnly={isComplete(index + 1)}
               />
             </Box>
           </BoxWrap>

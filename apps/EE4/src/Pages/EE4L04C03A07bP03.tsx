@@ -186,9 +186,9 @@ const EE4L04C03A07bP03 = ({
                 return (
                   <AudioWrap key={idx}>
                     <AudioItem>
-                      <AudioNumber>{idx + 1}</AudioNumber>
+                      <AudioNumber>{idx + 3}</AudioNumber>
                       <Box display={'inline-block'} padding={'10px'}>
-                        <Text>{idx === 0 ? "Don't enter, please." : "Don't run, please."}</Text>
+                        <Text>{idx === 0 ? "Don't push, please." : "Don't talk, please."}</Text>
                       </Box>
                     </AudioItem>
                     <DropBox

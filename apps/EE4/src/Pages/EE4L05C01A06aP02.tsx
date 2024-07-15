@@ -203,6 +203,8 @@ import {
 import { useState } from 'react';
 import useCurrentPageData from '@/hooks/useCurrentPageData';
 import { correctDataType, initDataType } from '@maidt-cntn/api';
+import { useRecoilValue } from 'recoil';
+import { currentPageGradeData } from '@/stores';
 
 type Image = {
   src: string;
@@ -237,26 +239,33 @@ const EE4L05C01A06aP02 = ({ layout, imgArr, pageData }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [images] = useState<Image[]>(imgArr);
 
-  const { getValueInputData, changeInputData, isSubmittedInput, submitPageData } = useCurrentPageData({
+  const { getValueInputData, changeInputData, isSubmittedInput, gradeSubmitPageData } = useCurrentPageData({
     initData: getDefaultData(pageNumber),
     collectDatas: getCorrectData(pageNumber),
   });
 
-  const handleChangeInputData = (mainKey: number, subKey: string, value: string) => {
+  const handleChangeInputData = (mainKey: number, subKey: string, value: number) => {
     changeInputData(mainKey, subKey, value);
   };
 
   const getCorrectAnswer = (pageNumber: number, mainKey: number, subKey: string) => {
     const data = getCorrectData(pageNumber).find(item => item.mainKey === mainKey);
-    if (data) {
-      return data?.inputDatas?.flat().find(item => item.subKey === subKey)?.value;
+
+    if (data && data.inputDatas) {
+      // inputDatas를 평탄화하고 모든 value를 추출
+      const values = data.inputDatas.flat().map(item => item.value);
+
+      return values;
     }
     return null;
   };
 
   const isComplete: boolean = isSubmittedInput(mainKey, subKey);
   const correctAnswer = getCorrectAnswer(pageData.pageNumber, mainKey, subKey);
+  console.log(correctAnswer);
   const currentAnswer = getValueInputData(mainKey, subKey);
+  const gradeData = useRecoilValue(currentPageGradeData);
+  const isCorrect = gradeData.find(data => data.mainKey === mainKey)?.isCorrect;
 
   const validationCheck = () => {
     return currentAnswer === null || (typeof currentAnswer === 'string' && currentAnswer.trim().length === 0);
@@ -267,14 +276,18 @@ const EE4L05C01A06aP02 = ({ layout, imgArr, pageData }: Props) => {
       setIsOpen(!isOpen);
       return;
     }
-    submitPageData();
+    gradeSubmitPageData();
   };
 
   return (
     <Container
       bodyId='targetContainer'
       headerInfo={CONST.headerInfo}
-      questionInfo={CONST.questionInfo}
+      questionInfo={{
+        ...CONST.questionInfo,
+        mark: isComplete ? (isCorrect === undefined ? 'none' : isCorrect ? 'correct' : 'star') : 'none',
+        markSize: 'middle',
+      }}
       useExtend
       submitLabel={isComplete ? (isOpen ? '답안 닫기' : '답안 보기') : '채점하기'}
       submitBtnColor={!validationCheck() ? (isOpen ? EStyleButtonTypes.DEFAULT : EStyleButtonTypes.YELLOW) : EStyleButtonTypes.SECONDARY}
@@ -288,11 +301,11 @@ const EE4L05C01A06aP02 = ({ layout, imgArr, pageData }: Props) => {
             <Box key={item} display='block' width='33%'>
               <PinchZoom>
                 <Image
-                  src={images[item - 1].src}
-                  alt={images[item - 1].alt}
+                  src={imgArr[item - 1].src}
+                  alt={imgArr[item - 1].alt}
                   height='360px'
                   width='100%'
-                  title={images[item - 1].title}
+                  title={imgArr[item - 1].title}
                   style={{ borderRadius: '8px' }}
                 />
               </PinchZoom>
@@ -306,9 +319,9 @@ const EE4L05C01A06aP02 = ({ layout, imgArr, pageData }: Props) => {
                       type='radio'
                       name={`radio-group-${item}`}
                       status={index === 1 ? EChipButtonType.O : EChipButtonType.X}
-                      isActive={index === getValueInputData(mainKey, `${subKey}-${item}`)}
+                      isActive={index === getValueInputData(mainKey, `TEXT-${item}`)}
                       size='44px'
-                      onClick={() => changeInputData(mainKey, `${subKey}-${item}`, index)}
+                      onClick={() => handleChangeInputData(mainKey, `TEXT-${item}`, index)}
                     ></ChipButton>
                   )}
                 />
@@ -322,7 +335,9 @@ const EE4L05C01A06aP02 = ({ layout, imgArr, pageData }: Props) => {
               <Box margin='25px 0'>
                 <Tag fontSize='22px' height='auto' label='예시 답안' type={ETagLine.GREEN} width='auto' />
                 <Box margin='25px 0 50px'>
-                  <Typography>{correctAnswer as string}</Typography>
+                  {correctAnswer?.map(correct => (
+                    <Typography>{correct === 1 ? 'O' : 'X'}</Typography>
+                  ))}
                 </Box>
               </Box>
             </Box>
